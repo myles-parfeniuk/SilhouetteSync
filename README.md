@@ -16,6 +16,7 @@
 Open source motion tracker band intended for athletics analytics.
 
 ## To Do
+Finish
 
 ### Hardware
 - Decide on full breadth of features
