@@ -5,8 +5,7 @@ bool NavSwitch::isr_service_installed = false;
 NavSwitch::NavSwitch(Device &d):
 d(d),
 switch_code(0),
-debounced(false),
-task_running(false)
+debounced(false)
 {
     gpio_config_t switch_config; 
     esp_timer_create_args_t debounce_timer_conf;
