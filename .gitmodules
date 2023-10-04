@@ -1,0 +1,12 @@
+[submodule "Firmware/SilhouetteSync_FW/components/u8g2"]
+	path = Firmware/SilhouetteSync_FW/components/u8g2
+	url = https://github.com/olikraus/u8g2.git
+[submodule "Firmware/SilhouetteSync_FW/components/u8g2-hal-esp-idf"]
+	path = Firmware/SilhouetteSync_FW/components/u8g2-hal-esp-idf
+	url = https://github.com/mkfrey/u8g2-hal-esp-idf.git
+[submodule "Firmware/SilhouetteSync_FW/components/task_wrapper"]
+	path = Firmware/SilhouetteSync_FW/components/task_wrapper
+	url = https://github.com/myles-parfeniuk/task_wrapper.git
+[submodule "Firmware/SilhouetteSync_FW/components/data_control"]
+	path = Firmware/SilhouetteSync_FW/components/data_control
+	url = https://github.com/myles-parfeniuk/data_control.git
