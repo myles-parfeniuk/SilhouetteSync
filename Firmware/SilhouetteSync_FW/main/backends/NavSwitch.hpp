@@ -18,6 +18,7 @@ class NavSwitch
 
     private:
     Device &d; 
+
     uint64_t switch_code; 
     bool debounced;
     
@@ -48,7 +49,5 @@ class NavSwitch
     static const constexpr uint64_t BOTH_PRESSED = pin_nav_up | pin_nav_down;
     static const constexpr uint64_t UP_PRESSED = pin_nav_up;
     static const constexpr uint64_t DOWN_PRESSED = pin_nav_down; 
-
-
 
 };

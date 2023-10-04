@@ -1,6 +1,5 @@
 #include "NavSwitch.hpp"
 
-
 bool NavSwitch::isr_service_installed = false; 
 
 NavSwitch::NavSwitch(Device &d):
