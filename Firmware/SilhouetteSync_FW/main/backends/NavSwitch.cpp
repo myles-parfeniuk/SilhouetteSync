@@ -37,7 +37,7 @@ debounced(false)
     debounce_timer_conf.dispatch_method = ESP_TIMER_TASK; 
     ESP_ERROR_CHECK(esp_timer_create(&debounce_timer_conf, &debounce_timer_hdl));
 
-    xTaskCreate(&nav_switch_task_trampoline, "nav_switch_task", 2048, this, 5, &nav_switch_task_hdl);
+    xTaskCreate(&nav_switch_task_trampoline, "nav_switch_task", 8192, this, 5, &nav_switch_task_hdl);
 }
 
 void NavSwitch::nav_switch_task_trampoline(void *nav_switch)
