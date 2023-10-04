@@ -67,8 +67,14 @@ void NavSwitch::nav_switch_task()
             released_check();
 
         
+        //ensure both inputs are released, no events are generated here
+        while(!gpio_get_level(pin_nav_down) || !gpio_get_level(pin_nav_up))
+        {
+            vTaskDelay(15/portTICK_PERIOD_MS); 
+        }
+
         vTaskDelay(15/portTICK_PERIOD_MS); //debounce release
-        
+
         //clear switch code
         switch_code = 0; 
 
