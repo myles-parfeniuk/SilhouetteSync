@@ -4,20 +4,16 @@
 #include "esp_log.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
-//third party includes
-#include "backends/display.hpp"
 //in-house includes
 #include "Device.hpp"
 #include "backends/NavSwitch.hpp"
+#include "UI/UIManager.hpp"
 
 extern "C" void app_main(void)
 {
-    u8g2_t disp;
-
     Device d;
     NavSwitch nav_switch_driver(d);
-
-    displayInit(&disp);
+    UIManager ui_driver(d);
 
 
 
