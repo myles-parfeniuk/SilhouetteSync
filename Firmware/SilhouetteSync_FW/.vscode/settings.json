@@ -1,4 +1,7 @@
 {
     "idf.adapterTargetName": "esp32",
-    "C_Cpp.errorSquiggles": "disabled"
+    "C_Cpp.errorSquiggles": "disabled",
+    "files.associations": {
+        "pin_definitions.hpp": "c"
+    }
 }

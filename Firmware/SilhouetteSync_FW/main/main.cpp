@@ -1,19 +1,26 @@
 //standard library includes
 #include <stdio.h>
-#include "u8g2_esp32_hal.h"
 //esp-idf includes
 #include "esp_log.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
+//third party includes
+#include "backends/display.hpp"
 //in-house includes
 #include "Device.hpp"
 #include "backends/NavSwitch.hpp"
 
 extern "C" void app_main(void)
 {
+    u8g2_t disp;
 
     Device d;
     NavSwitch nav_switch_driver(d);
+
+    displayInit(&disp);
+
+
+
 
     d.nav_switch.follow([](NavSwitchEvent switch_event)
     {
