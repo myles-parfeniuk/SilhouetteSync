@@ -4,6 +4,3 @@
 [submodule "Firmware/SilhouetteSync_FW/components/u8g2-hal-esp-idf-cpp"]
 	path = Firmware/SilhouetteSync_FW/components/u8g2-hal-esp-idf-cpp
 	url = https://github.com/myles-parfeniuk/u8g2-hal-esp-idf-cpp.git
-[submodule "Firmware/SilhouetteSync_FW/components/data_control"]
-	path = Firmware/SilhouetteSync_FW/components/data_control
-	url = https://github.com/myles-parfeniuk/data_control.git
