@@ -10,7 +10,7 @@ timer_menu(d),
 active_menu(&main_menu)
 {
 
-    display_init(); 
+    display_init(); //initialize display
     xTaskCreate(&gui_core_task_trampoline, "gui_core_task", 4096, this, 5, &gui_core_task_hdl); //launch gui_core_task_trampoline
 
     MenuHelper::active_menu.follow([this](MenuCodes next_menu){
@@ -35,7 +35,7 @@ active_menu(&main_menu)
         }
     });
 
-    MenuHelper::active_menu.set(MenuCodes::main_menu_sel); //initially set the menu to main on boot
+    MenuHelper::active_menu.set(MenuCodes::main_menu_sel); //initially set the menu to main on boot (this is only called when constructor is called)
 }
 
 void UIManager::display_init()
