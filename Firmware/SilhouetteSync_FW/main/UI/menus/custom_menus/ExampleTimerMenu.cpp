@@ -53,9 +53,18 @@ void ExampleTimerMenu::exit()
 void ExampleTimerMenu::draw()
 {
     static char mili_seconds_str[10];
-
+    static std::string benis = "B E N I S ";
+    static const uint16_t max_benis_size = benis.size();
+    static std::string temp_benis; 
+    float percentage = (float)mili_seconds/3000.0; 
+    uint16_t benis_size = (uint16_t)(percentage*(float)max_benis_size);
+    
     sprintf(mili_seconds_str, "%dms", mili_seconds); //print current seconds to string
+    temp_benis = benis.substr(0, benis_size);
+
     u8g2_ClearBuffer(&d.display); //clear display buffer
+    u8g2_SetFont(&d.display, u8g2_font_logisoso16_tf); //set the current font
+    u8g2_DrawStr(&d.display, 2, 18, temp_benis.c_str());
     u8g2_SetFont(&d.display, u8g2_font_5x7_tf); //set the current font to something that will fit inside progress bar
     DrawingUtils::draw_progress_bar_with_label(&d.display, 2, 22, 124, 10, mili_seconds, 0, 3000, mili_seconds_str); //draw timer progress bar
 
@@ -64,9 +73,8 @@ void ExampleTimerMenu::draw()
 /*timer callback executed every 20ms*/
 void ExampleTimerMenu::timer_cb(void *arg)
 {
-    static bool dec = false; //whether the milisecond count is incrementing or decrementing 
-
     ExampleTimerMenu *active_timer_menu = (ExampleTimerMenu *)arg; //cast 'this' pointer passed into esp_timer_create from constructor to correct object pointer
+    static bool dec = false; //whether the milisecond count is incrementing or decrementing 
 
     if(!dec)
     {

@@ -7,3 +7,6 @@
 [submodule "Firmware/SilhouetteSync_FW/components/data_control"]
 	path = Firmware/SilhouetteSync_FW/components/data_control
 	url = https://github.com/myles-parfeniuk/data_control.git
+[submodule "Firmware/SilhouetteSync_FW/components/BNO055ESP32-esp-idf-v5.x"]
+	path = Firmware/SilhouetteSync_FW/components/BNO055ESP32-esp-idf-v5.x
+	url = https://github.com/myles-parfeniuk/BNO055ESP32-esp-idf-v5.x.git

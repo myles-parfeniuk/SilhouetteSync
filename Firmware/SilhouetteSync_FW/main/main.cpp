@@ -7,65 +7,36 @@
 //in-house includes
 #include "Device.hpp"
 #include "backends/NavSwitch.hpp"
+#include "backends/IMU.hpp"
 #include "UI/UIManager.hpp"
+#
 
 extern "C" void app_main(void)
 {
-    Device d;
-    NavSwitch nav_switch_driver(d);
-    UIManager ui_driver(d);
+    Device d; //create device model
+    NavSwitch nav_switch_driver(d); 
+    UIManager ui_driver(d); 
+    IMU imu_driver(d);
 
+    /*
+    //calibrate imu
+    d.imu.state.set(IMUState::calibrate); 
 
-
-
-    d.nav_switch.follow([](NavSwitchEvent switch_event)
+    //wait for calibration to complete
+    while(!d.imu.calibration_status.get())
     {
-        switch(switch_event)
-        {
+        vTaskDelay(10/portTICK_PERIOD_MS);
+    }
+    */
 
-            case NavSwitchEvent::enter_quick_press:
-                ESP_LOGI("Main", "Enter Quick Press");
-            break;
+    //begin taking samples
+    d.imu.state.set(IMUState::sample);
+    
+    //print any incoming samples
+    d.imu.vector.follow([](bno055_vector_t new_vector){
 
-            case NavSwitchEvent::up_quick_press:
-                ESP_LOGI("Main", "Up Quick Press");
-            break;
+        ESP_LOGI("Main", "Euler: X: %.1f Y: %.1f Z: %.1f", new_vector.x, new_vector.y, new_vector.z);
 
-            case NavSwitchEvent::down_quick_press:
-                ESP_LOGI("Main", "Down Quick Press");
-            break;
-
-            case NavSwitchEvent::enter_long_press:
-                ESP_LOGW("Main", "Enter Long Press");
-            break;
-
-            case NavSwitchEvent::up_long_press:
-                ESP_LOGW("Main", "Up Long Press");
-            break;
-
-            case NavSwitchEvent::down_long_press:
-                ESP_LOGW("Main", "Down Long Press");
-            break;
-
-            case NavSwitchEvent::enter_held:
-                ESP_LOGI("Main", "Enter Held");
-            break;
-
-            case NavSwitchEvent::up_held:
-                ESP_LOGI("Main", "Up Held");
-            break;
-
-            case NavSwitchEvent::down_held:
-                ESP_LOGI("Main", "Down Held");
-            break;
-
-            case NavSwitchEvent::released:
-                ESP_LOGE("Main", "Released");
-            break;          
-
-            default:
-            break; 
-        }
     });
 
     while(1)
