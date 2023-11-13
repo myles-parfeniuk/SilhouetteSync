@@ -45,8 +45,8 @@ class NavSwitch
     static const constexpr int64_t long_press_time_us = 200000;
     static const constexpr int64_t held_time_us = 200000; 
 
-    static const constexpr uint64_t BOTH_PRESSED = pin_nav_up | pin_nav_down;
-    static const constexpr uint64_t UP_PRESSED = pin_nav_up;
-    static const constexpr uint64_t DOWN_PRESSED = pin_nav_down; 
+    static const constexpr uint64_t BOTH_PRESSED = (1U << pin_nav_up) | (1U << pin_nav_down);
+    static const constexpr uint64_t UP_PRESSED = (1U << pin_nav_up);
+    static const constexpr uint64_t DOWN_PRESSED = (1U << pin_nav_down); 
 
 };

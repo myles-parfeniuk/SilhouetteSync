@@ -4,7 +4,6 @@
 //in-house includes
 #include "defs/nav_switch_defs.hpp"
 #include "defs/imu_defs.hpp"
-#include "BNO055ESP32.h"
 #include "DataControl.hpp"
 
 class Device
@@ -13,7 +12,7 @@ class Device
     
     typedef struct {
         DataControl::CallAlways<IMUState> state;
-        DataControl::CallAlways<bno055_vector_t> vector;
+        DataControl::CallAlways<imu_data_t> data;
         DataControl::CallAlways<bool> calibration_status; 
     } imu_t;
 

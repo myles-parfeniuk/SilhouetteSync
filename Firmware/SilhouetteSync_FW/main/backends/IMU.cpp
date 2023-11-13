@@ -1,35 +1,25 @@
 #include "IMU.hpp"
 
-//https://cdn-shop.adafruit.com/datasheets/BST_BNO055_DS000_12.pdf
 IMU::IMU(Device &d):
-d(d),
-imu_unit(UART_NUM_1, pin_uart_rx, pin_uart_tx),
-take_samples(false),
-calibrating(false)
+d(d)
 {
     //follow device struct to check for current sensor mode
     d.imu.state.follow([this, &d](IMUState new_state){
         switch(new_state)
         {
             case IMUState::sleep:
-                if(this->take_samples)
-                    this->take_samples = false; 
+                //do nothing, sample loop should exit automatically 
             break;
 
             case IMUState::sample:
-                if(!this->take_samples)
-                    this->take_samples = true; 
-                vTaskResume(this->sample_task_hdl);
+                //if the sample task is not already running notify it to start
+                if(eTaskGetState(sample_task_hdl) != eRunning) 
+                    xTaskNotifyGive(sample_task_hdl);
             break;
 
             case IMUState::calibrate:
-                if(!this->calibrating)
-                    this->calibrating = true; 
-
-                if(this->take_samples)
-                    this->take_samples = false; 
-                else
-                    vTaskResume(this->sample_task_hdl);
+                imu.run_full_calibration_routine();
+                d.imu.state.set(IMUState::sleep);
             break;
 
             default:
@@ -38,123 +28,57 @@ calibrating(false)
         }
     }, true);
 
-    //setup imu unit
-    try 
-    {
-        imu_unit.begin(); //initialize UART and set BNO055 operation mode to config
-        imu_unit.enableExternalCrystal(); //enable BNO055 external oscillator 
-        imu_unit.setOprModeNdof(); //set operation mode to NDOF (fusion mode with 9 degrees of freedom, see section 3.3.3.5 of datasheet)
-        
-        ESP_LOGI(TAG, "Setup succeeded..");
-    }
-    catch(BNO055BaseException& ex)
-    {
-        ESP_LOGE(TAG, "Setup failed, Error: %s", ex.what());
-    }
-    catch(std::exception& ex)
-    {
-        ESP_LOGE(TAG, "Setup failed, Error: %s", ex.what());
-    }
+    imu.initialize(); //initialize IMU unit
 
-    //try some basic reads to ensure imu unit is working
-    try
-    {
-        //read and display bootloader and firmware revision 
-        int16_t sw = imu_unit.getSWRevision();
-        uint8_t bl_rev = imu_unit.getBootloaderRevision(); 
-        ESP_LOGI(TAG, "SW rev: %d, bootloader rev: %u", sw, bl_rev);
-
-        //do self test and display results
-        bno055_self_test_result_t res = imu_unit.getSelfTestResult();
-        ESP_LOGI(TAG, "Self-Test Results: MCU: %u, GYR:%u, MAG:%u, ACC: %u", res.mcuState, res.gyrState, res.magState, res.accState);
-
-        //check calibration
-        bno055_calibration_t cal = imu_unit.getCalibration();
-        ESP_LOGI(TAG, "Calibration Status (0 = not calibrated, 3 = fully calibrated): %u GYRO: %u ACC:%u MAG:%u", cal.sys, cal.gyro, cal.accel, cal.mag);
-    }
-    catch(BNO055BaseException& ex)
-    {
-        ESP_LOGE(TAG, "Error: %s", ex.what());
-    }
-    catch(std::exception& ex)
-    {
-        ESP_LOGE(TAG, "Error: %s", ex.what());
-    }
+    //initialize imu game rotation vector and gyro
+    imu.enable_game_rotation_vector(100); 
+    imu.enable_gyro(150);
 
     xTaskCreate(&sampling_task_trampoline, "imu_sample_task", 4096, this, 5, &sample_task_hdl);
 }
 
-void IMU::calibrate_imu()
-{
 
-        while (1) {
-        try {
-            // Calibration 3 = fully calibrated, 0 = not calibrated
-            bno055_calibration_t cal = imu_unit.getCalibration();
-            bno055_vector_t v = imu_unit.getVectorEuler();
-            ESP_LOGI(TAG, "Euler: X: %.1f Y: %.1f Z: %.1f || Calibration SYS: %u GYRO: %u ACC:%u MAG:%u", v.x, v.y, v.z, cal.sys,
-                     cal.gyro, cal.accel, cal.mag);
-            if (cal.gyro == 3 && cal.accel == 3 && cal.mag == 3) {
-                ESP_LOGI(TAG, "Fully Calibrated.");
-                imu_unit.setOprModeConfig();                         // Change to OPR_MODE
-                bno055_offsets_t txt = imu_unit.getSensorOffsets();  // NOTE: this must be executed in CONFIG_MODE
-
-                //we should consider storing these offsets such that we don't need to calibrate every time
-                //the magnometer unfortunately must be calibrated every time according to BNO055 datasheet
-                ESP_LOGI(TAG,
-                         "\nOffsets:\nAccel: X:%d, Y:%d, Z:%d;\nMag: X:%d, Y:%d, Z:%d;\nGyro: X:%d, Y:%d, Z:%d;\nAccelRadius: "
-                         "%d;\nMagRadius: %d;\n",
-                         txt.accelOffsetX, txt.accelOffsetY, txt.accelOffsetZ, txt.magOffsetX, txt.magOffsetY, txt.magOffsetZ,
-                         txt.gyroOffsetX, txt.gyroOffsetY, txt.gyroOffsetZ, txt.accelRadius, txt.magRadius);
-                
-                d.imu.calibration_status.set(true); //set calibration status as true
-
-                break;
-            }
-        } catch (BNO055BaseException& ex) {
-            ESP_LOGE(TAG, "Something bad happened: %s", ex.what());
-            return;
-        } catch (std::exception& ex) {
-            ESP_LOGE(TAG, "Something bad happened: %s", ex.what());
-        }
-
-        vTaskDelay(100 / portTICK_PERIOD_MS);  // in fusion mode max output rate is 100hz (actual rate: 100ms (10hz))
-    }
-
-}
-
-void IMU::sampling_task_trampoline(void *imu_unit)
+void IMU::sampling_task_trampoline(void *arg)
 {   
-    IMU * active_imu_unit = (IMU *)imu_unit;
+    IMU * active_imu = (IMU *)arg;
 
-    active_imu_unit->sampling_task(); 
+    active_imu->sampling_task(); 
 }
 
 void IMU::sampling_task()
 {
-    while(1)
+    imu_data_t new_data;
+
+    ulTaskNotifyTake(pdTRUE, portMAX_DELAY); //block until notified on index 0 by state switch to sample
+
+    while(d.imu.state.get() == IMUState::sample)
     {
-
-        switch(d.imu.state.get())
+ 
+        if(imu.data_available())
         {
-            case IMUState::sleep:
-                vTaskSuspend(NULL); //self suspend sampling task 
-            break;
-
-            case IMUState::sample:
-                d.imu.vector.set(imu_unit.getVectorEuler()); 
-            break;
-
-            case IMUState::calibrate:
-                calibrate_imu();
-                d.imu.state.set(IMUState::sleep);
-            break;
-
-            default:
-
-            break; 
+            //update euler angle
+            new_data.euler_heading.x = imu.get_roll(); 
+            new_data.euler_heading.y = imu.get_pitch(); 
+            new_data.euler_heading.z = imu.get_yaw(); 
+            new_data.euler_heading.accuracy = imu.get_quat_accuracy(); 
             
+            //update quaternion 
+            new_data.quaternion_heading.i = imu.get_quat_I(); 
+            new_data.quaternion_heading.i = imu.get_quat_J(); 
+            new_data.quaternion_heading.i = imu.get_quat_K(); 
+            new_data.quaternion_heading.i = imu.get_quat_real(); 
+            new_data.quaternion_heading.accuracy = imu.get_quat_accuracy(); 
+
+            //update velocity 
+            new_data.velocity.x = imu.get_gyro_calibrated_velocity_X();
+            new_data.velocity.y = imu.get_gyro_calibrated_velocity_Y();
+            new_data.velocity.z = imu.get_gyro_calibrated_velocity_Z();
+            new_data.velocity.accuracy = imu.get_gyro_accuracy();
+            
+            //update device model with new data
+            d.imu.data.set(new_data);
         }
-        vTaskDelay(100/portTICK_PERIOD_MS);
+
+        vTaskDelay(5/portTICK_PERIOD_MS);
     }
 }

@@ -18,27 +18,6 @@ extern "C" void app_main(void)
     UIManager ui_driver(d); 
     IMU imu_driver(d);
 
-    /*
-    //calibrate imu
-    d.imu.state.set(IMUState::calibrate); 
-
-    //wait for calibration to complete
-    while(!d.imu.calibration_status.get())
-    {
-        vTaskDelay(10/portTICK_PERIOD_MS);
-    }
-    */
-
-    //begin taking samples
-    d.imu.state.set(IMUState::sample);
-    
-    //print any incoming samples
-    d.imu.vector.follow([](bno055_vector_t new_vector){
-
-        ESP_LOGI("Main", "Euler: X: %.1f Y: %.1f Z: %.1f", new_vector.x, new_vector.y, new_vector.z);
-
-    });
-
     while(1)
     {
         
