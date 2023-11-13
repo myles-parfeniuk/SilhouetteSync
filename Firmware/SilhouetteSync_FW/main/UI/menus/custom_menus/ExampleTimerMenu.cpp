@@ -2,30 +2,22 @@
 
 ExampleTimerMenu::ExampleTimerMenu(Device &d):
 Menu(d), //call parent constructor
-nav_switch_id(0), //initialize switch follower id as 0
+nav_switch_enter_id(0), //initialize switch follower id as 0
 mili_seconds(0) //initialize miliseconds count as 0 
 {
     esp_timer_create_args_t timer_conf;
 
-    /*nav switch callback, code inside the below lambda function is executed
-    whenever input is detected on the nav switch (as long as it has not been paused
+    /*nav switch enter callback, code inside the below lambda function is executed
+    whenever input is detected on the nav switch enter input (as long as it has not been paused
     with its follower_id)*/
-    nav_switch_id = d.nav_switch.follow([this, &d](NavSwitchEvent switch_event)
+    nav_switch_enter_id = d.nav_switch.enter.event.follow([this, &d](Button::ButtonEvent enter_event)
     {
-        switch(switch_event)
-        {
-            case NavSwitchEvent::enter_long_press:
-                MenuHelper::active_menu.set(MenuCodes::main_menu_sel); //switch to main menu if enter long press was detected
-            break; 
-
-            default:
-
-            break; 
-        }
+        if(enter_event == Button::ButtonEvent::long_press)
+            MenuHelper::active_menu.set(MenuCodes::main_menu_sel); //switch to main menu if enter long press was detected
 
     }, true);
 
-    d.nav_switch.pause(nav_switch_id); //pause the nav switch call-back on boot
+    d.nav_switch.enter.event.pause(nav_switch_enter_id); //pause the nav switch call-back on boot
 
     //configure timer
     timer_conf.arg = (void *)this;
@@ -38,14 +30,14 @@ mili_seconds(0) //initialize miliseconds count as 0
 
 void ExampleTimerMenu::enter()
 {   
-    d.nav_switch.un_pause_from_cb(nav_switch_id); //unpause the nav switch call-back 
+    d.nav_switch.enter.event.un_pause_from_cb(nav_switch_enter_id); //unpause the nav switch call-back 
     esp_timer_start_periodic(timer, 20000U); //start timer to run periodically with period of 20ms
 
 }
 
 void ExampleTimerMenu::exit()
 {
-    d.nav_switch.pause_from_cb(nav_switch_id); //pause the nav switch callback
+    d.nav_switch.enter.event.pause_from_cb(nav_switch_enter_id); //pause the nav switch callback
     esp_timer_stop(timer); //stop timer
     mili_seconds = 0; //reset ms count to 0
 }

@@ -15,5 +15,6 @@ static constexpr gpio_num_t pin_imu_di = GPIO_NUM_23; ///<IMU DI pin (esp32 MOSI
 
 
 //nav_switch
-static constexpr gpio_num_t pin_nav_up = GPIO_NUM_27;
-static constexpr gpio_num_t pin_nav_down = GPIO_NUM_25;
+static constexpr gpio_num_t pin_nav_up = GPIO_NUM_14;
+static constexpr gpio_num_t pin_nav_enter = GPIO_NUM_25;
+static constexpr gpio_num_t pin_nav_down = GPIO_NUM_27;

@@ -12,7 +12,7 @@ class ExampleTimerMenu : public Menu
         void draw() override; 
 
     private:
-        uint16_t nav_switch_id; //follower id of nav switch callback, used to pause and unpause callback on menu exit and entry
+        uint16_t nav_switch_enter_id; //follower id of enter nav switch callback, used to pause and unpause callback on menu exit and entry
         esp_timer_handle_t timer; //timer handle
         static void timer_cb(void *arg); //timer callback function (executed every 20ms if menu is active)
         int16_t mili_seconds; //the amount of miliseconds being displayed

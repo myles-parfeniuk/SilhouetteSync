@@ -1,8 +1,8 @@
 #include "Device.hpp"
 
 Device::Device():
-nav_switch(NavSwitchEvent::released),
-imu{IMUState::sleep, imu_data_t(), false}
+imu{IMUState::sleep, imu_data_t(), false},
+nav_switch{up_conf, down_conf, enter_conf}
 {
 
 }

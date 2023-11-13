@@ -1,6 +1,5 @@
 #include "UIManager.hpp"
 #include "helpers/DrawingUtils.hpp"
-#include "../defs/nav_switch_defs.hpp"
 
 UIManager::UIManager(Device &d):
 d(d),

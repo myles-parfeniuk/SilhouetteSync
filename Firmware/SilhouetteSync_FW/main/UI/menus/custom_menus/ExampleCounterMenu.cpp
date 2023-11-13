@@ -2,56 +2,80 @@
 
 ExampleCounterMenu::ExampleCounterMenu(Device &d):
 Menu(d), //call parent constructor
-nav_switch_id(0), //initialize switch follower id as 0
+nav_switch_up_id(0), //initialize switch up follower id as 0
+nav_switch_down_id(0), //initialize switch down follower id as 0
+nav_switch_enter_id(0), //initialize switch enter follower id as 0
 press_count(0) //initialize press count as 0
 {
-    /*nav switch callback, code inside the below lambda function is executed
-    whenever input is detected on the nav switch (as long as it has not been paused
+    /*nav switch up callback, code inside the below lambda function is executed
+    whenever input is detected on the nav up input (as long as it has not been paused
     with its follower_id)*/
-    nav_switch_id = d.nav_switch.follow([this, &d](NavSwitchEvent switch_event)
+    nav_switch_up_id = d.nav_switch.up.event.follow([this, &d](Button::ButtonEvent up_event)
     {
-        switch(switch_event)
+        if(up_event == Button::ButtonEvent::quick_press)
+            press_count++; //increment count on up press
+        
+        if(up_event == Button::ButtonEvent::held)
+            press_count += 10; //increment count on up press
+        
+        if(press_count > 100)
+            press_count = 0; 
+    }, true);
+
+    nav_switch_down_id = d.nav_switch.down.event.follow([this, &d](Button::ButtonEvent down_event)
+    {
+        if(down_event == Button::ButtonEvent::quick_press)
+            press_count--; //decrement count on down press 
+        
+        if(down_event == Button::ButtonEvent::held)
+            press_count -= 10; //increment count on up press
+
+        if(press_count > 100)
+            press_count = 0; 
+
+    }, true);
+
+    nav_switch_enter_id = d.nav_switch.enter.event.follow([this, &d](Button::ButtonEvent enter_event)
+    {
+        switch(enter_event)
         {
-            case NavSwitchEvent::up_quick_press:
-                press_count++; 
+            case Button::ButtonEvent::quick_press:
+                press_count = 0; //reset count on enter quickpress
             break;
 
-            case NavSwitchEvent::down_quick_press:
-                press_count--;
-            break;
-
-            case NavSwitchEvent::enter_quick_press:
-                press_count = 0; 
-            break;
-
-            case NavSwitchEvent::enter_long_press:
+            case Button::ButtonEvent::long_press:
                 MenuHelper::active_menu.set(MenuCodes::main_menu_sel); //set menu back to main if long enter press is detected 
             break;
 
             default:
+            
+            break;
 
-            break; 
+
         }
-
-        if(press_count > 100)
-        {
-            press_count = 0; 
-        }
-
     }, true);
 
-    d.nav_switch.pause(nav_switch_id); //pause the nav switch call-back on boot
+    //pause the nav switch call-backs on boot
+    d.nav_switch.up.event.pause(nav_switch_up_id); 
+    d.nav_switch.down.event.pause(nav_switch_down_id); 
+    d.nav_switch.enter.event.pause(nav_switch_enter_id); 
 
 }
 
 void ExampleCounterMenu::enter()
 {   
-    d.nav_switch.un_pause_from_cb(nav_switch_id); //unpause the nav switch call-back on menu entry
+    //unpause the nav switch call-backs on menu entry
+    d.nav_switch.up.event.un_pause_from_cb(nav_switch_up_id); 
+    d.nav_switch.down.event.un_pause_from_cb(nav_switch_down_id); 
+    d.nav_switch.enter.event.un_pause_from_cb(nav_switch_enter_id); 
 }
 
 void ExampleCounterMenu::exit()
 {
-    d.nav_switch.pause_from_cb(nav_switch_id); //pause the nav switch call-back on menu exit 
+    //pause the nav switch call-backs on menu exit 
+    d.nav_switch.up.event.pause_from_cb(nav_switch_up_id); 
+    d.nav_switch.down.event.pause_from_cb(nav_switch_down_id); 
+    d.nav_switch.enter.event.pause_from_cb(nav_switch_enter_id); 
 }
 
 void ExampleCounterMenu::draw()

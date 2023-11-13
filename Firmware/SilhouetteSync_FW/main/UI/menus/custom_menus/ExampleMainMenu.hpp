@@ -23,7 +23,9 @@ class ExampleMainMenu : public Menu
         };
 
 
-        uint16_t nav_switch_id; //follower id of nav switch callback, used to pause and unpause callback on menu exit and entry
+        uint16_t nav_switch_up_id; //follower id of up nav switch callback, used to pause and unpause callback on menu exit and entry
+        uint16_t nav_switch_down_id; //follower id of down nav switch callback, used to pause and unpause callback on menu exit and entry
+        uint16_t nav_switch_enter_id; //follower id of enter nav switch callback, used to pause and unpause callback on menu exit and entry
 
         int16_t sel; //the current menu selection, determines how button is drawn, and which menu will be entered if an enter quick-press is detected
 
