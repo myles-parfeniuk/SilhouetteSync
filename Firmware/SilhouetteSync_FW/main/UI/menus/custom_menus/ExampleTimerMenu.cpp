@@ -10,14 +10,14 @@ mili_seconds(0) //initialize miliseconds count as 0
     /*nav switch enter callback, code inside the below lambda function is executed
     whenever input is detected on the nav switch enter input (as long as it has not been paused
     with its follower_id)*/
-    nav_switch_enter_id = d.nav_switch.enter.event.follow([this, &d](Button::ButtonEvent enter_event)
+    nav_switch_enter_id = d.nav_switch.enter.follow([this, &d](nav_switch_evt_t enter_event)
     {
-        if(enter_event == Button::ButtonEvent::long_press)
+        if(enter_event == nav_switch_evt_t::long_press)
             MenuHelper::active_menu.set(MenuCodes::main_menu_sel); //switch to main menu if enter long press was detected
 
     }, true);
 
-    d.nav_switch.enter.event.pause(nav_switch_enter_id); //pause the nav switch call-back on boot
+    d.nav_switch.enter.pause(nav_switch_enter_id); //pause the nav switch call-back on boot
 
     //configure timer
     timer_conf.arg = (void *)this;
@@ -30,14 +30,14 @@ mili_seconds(0) //initialize miliseconds count as 0
 
 void ExampleTimerMenu::enter()
 {   
-    d.nav_switch.enter.event.un_pause_from_cb(nav_switch_enter_id); //unpause the nav switch call-back 
+    d.nav_switch.enter.un_pause_from_cb(nav_switch_enter_id); //unpause the nav switch call-back 
     esp_timer_start_periodic(timer, 20000U); //start timer to run periodically with period of 20ms
 
 }
 
 void ExampleTimerMenu::exit()
 {
-    d.nav_switch.enter.event.pause_from_cb(nav_switch_enter_id); //pause the nav switch callback
+    d.nav_switch.enter.pause_from_cb(nav_switch_enter_id); //pause the nav switch callback
     esp_timer_stop(timer); //stop timer
     mili_seconds = 0; //reset ms count to 0
 }

@@ -28,57 +28,57 @@
 class UIManager
 {
     public:
-    /**
-     * @brief Construct a DataWrapper object. 
-     * 
-     * Construct a UIManager object to manage a menu system.
-     * 
-     * @param d device object, contains any info that might be needed to draw menu (ex. user input, sensor reading)
-     * @return void, nothing to return
-     */
+      /**
+       * @brief Construct a DataWrapper object. 
+       * 
+       * Construct a UIManager object to manage a menu system.
+       * 
+       * @param d device object, contains any info that might be needed to draw menu (ex. user input, sensor reading)
+       * @return void, nothing to return
+       */
         UIManager(Device &d); 
 
     private:
         Device &d; ///< device object, contains any info that might be needed to draw menu (ex. user input, sensor reading)
 
-     /**
-     * @brief Initialize OLED display.
-     * 
-     * Sets up U8G2 and configures I2C peripheral for communication with OLED.
-     * 
-     * @return void, nothing to return
-     */
+      /**
+       * @brief Initialize OLED display.
+       * 
+       * Sets up U8G2 and configures I2C peripheral for communication with OLED.
+       * 
+       * @return void, nothing to return
+       */
         void display_init(); 
 
-     /**
-     * @brief Launches core GUI task.
-     * 
-     * Static function used to launch gui_core task such that non-static class members can be accessed.
-     * This is a work around with freertos and timers requiring static call-back functions. 
-     * 
-     * @param ui_manager pointer to UI manager objected (referenced by 'this' keyword in constructor)
-     * @return void, nothing to return
-     */
+      /**
+       * @brief Launches core GUI task.
+       * 
+       * Static function used to launch gui_core task such that non-static class members can be accessed.
+       * This is a work around with freertos and timers requiring static call-back functions. 
+       * 
+       * @param ui_manager pointer to UI manager objected (referenced by 'this' keyword in constructor)
+       * @return void, nothing to return
+       */
         static void gui_core_task_trampoline(void *ui_manager);
 
-     /**
-     * @brief Core GUI task
-     * 
-     * Task responsible for drawing the active menu and sending it to the OLED. 
-     * 
-     * @return void, nothing to return
-     */
+      /**
+       * @brief Core GUI task
+       * 
+       * Task responsible for drawing the active menu and sending it to the OLED. 
+       * 
+       * @return void, nothing to return
+       */
         void gui_core_task();
 
-     /**
-     * @brief Set the menu to display.
-     * 
-     * Sets the current menu.
-     * Exits the current menu, overwrites active_menu pointer, and enters new menu. 
-     * 
-     * @param new_menu pointer to the next menu to be displayed 
-     * @return void, nothing to return
-     */
+      /**
+       * @brief Set the menu to display.
+       * 
+       * Sets the current menu.
+       * Exits the current menu, overwrites active_menu pointer, and enters new menu. 
+       * 
+       * @param new_menu pointer to the next menu to be displayed 
+       * @return void, nothing to return
+       */
         void set_active_menu(Menu *new_menu);
 
         TaskHandle_t gui_core_task_hdl; ///<task handle of nav switch task

@@ -16,7 +16,8 @@
 * Class that manages onboard BNO085 IMU and its communication with the Device frontend, 
 * can be set between different states (ex. sample, sleep, calibrate, etc..)
 */
-class IMU {
+class IMU 
+{
     public:
     /**
      * @brief Constructs an IMU backend object. 

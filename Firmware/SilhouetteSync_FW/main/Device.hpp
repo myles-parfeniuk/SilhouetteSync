@@ -4,65 +4,46 @@
 //in-house includes
 #include "defs/imu_defs.hpp"
 #include "defs/pin_definitions.hpp"
+#include "defs/nav_switch_defs.hpp"
 #include "DataControl.hpp"
-#include "Button.hpp"
 
-
+/**
+*
+* @brief Device frontend class.
+*
+* Class that represents SilhouetteSync as a whole, facilitates communication between backends (ie NavSwitch driver)
+* and frontends (ie UIManager).
+*/
 class Device
 {
     public:
     
+    /** 
+    *   @brief  Represents BNO08x IMU unit. 
+    */
     typedef struct 
     {
-        DataControl::CallAlways<IMUState> state;
-        DataControl::CallAlways<imu_data_t> data;
-        DataControl::CallAlways<bool> calibration_status; 
+        DataControl::CallAlways<IMUState> state; ///<The current state of the IMU (ie sample)
+        DataControl::CallAlways<imu_data_t> data; ///<The most recently received IMU data.
+        DataControl::CallAlways<bool> calibration_status; ///<Whether or not the IMU has been calibrated. 
     } imu_t;
 
+    /** 
+    *   @brief  Represents navigation switch. 
+    */
     typedef struct nav_switch_t
     {
-        Button up;
-        Button down;
-        Button enter;
+        DataControl::CallAlways<nav_switch_evt_t> up; ///<Most recent up input event (ie quick-press, long-press, etc...)
+        DataControl::CallAlways<nav_switch_evt_t> down; ///<Most recent down input event (ie quick-press, long-press, etc...)
+        DataControl::CallAlways<nav_switch_evt_t> enter; ///<Most recent enter input event (ie quick-press, long-press, etc...)
     } nav_switch_t; 
 
 
     Device(); 
-    u8g2_t display; ///<oled display
-    imu_t imu;
-    nav_switch_t nav_switch; 
-
-
-    private:
-        static constexpr Button::button_config_t up_conf =
-        {
-            .gpio_num = pin_nav_up, //gpio number connected to button, for ex.25
-            .active_lo = true, //active low
-            .active_hi = false, //not active high
-            .pull_en = false, //internal pullup disabled
-            .long_press_evt_time = 300000, //300ms long-press event generation time
-            .held_evt_time = 200000, //200ms held event generation time
-        };
-
-        static constexpr Button::button_config_t down_conf =
-        {
-            .gpio_num = pin_nav_down, //gpio number connected to button, for ex.25
-            .active_lo = true, //active low
-            .active_hi = false, //not active high
-            .pull_en = false, //internal pullup disabled
-            .long_press_evt_time = 300000, //300ms long-press event generation time
-            .held_evt_time = 200000, //200ms held event generation time
-        };
-
-        static constexpr Button::button_config_t enter_conf =
-        {
-            .gpio_num = pin_nav_enter, //gpio number connected to button, for ex.25
-            .active_lo = true, //active low
-            .active_hi = false, //not active high
-            .pull_en = false, //internal pullup disabled
-            .long_press_evt_time = 300000, //300ms long-press event generation time
-            .held_evt_time = 200000, //200ms held event generation time
-        };
+    u8g2_t display; ///<u8g2 display struct used for u8g2 OLED drawing functions
+    imu_t imu; ///<Device IMU frontend. 
+    nav_switch_t nav_switch; ///<Device navigation switch frontend
+        
 
 
 

@@ -2,7 +2,7 @@
 
 Device::Device():
 imu{IMUState::sleep, imu_data_t(), false},
-nav_switch{up_conf, down_conf, enter_conf}
+nav_switch{nav_switch_evt_t::released, nav_switch_evt_t::released, nav_switch_evt_t::released}
 {
 
 }

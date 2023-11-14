@@ -7,13 +7,15 @@
 //in-house includes
 #include "Device.hpp"
 #include "backends/IMU.hpp"
+#include "backends/NavSwitch.hpp"
 #include "UI/UIManager.hpp"
 
 extern "C" void app_main(void)
 {
     Device d; //create device model
-    UIManager ui_driver(d); 
-    //IMU imu_driver(d);
+    UIManager ui_driver(d); //initialize OLED menu system
+    IMU imu_driver(d); //initialize IMU driver
+    NavSwitch nav_switch(d); //initialize nav switch driver
 
     while(1)
     {
