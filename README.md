@@ -16,28 +16,32 @@
 Open source motion tracker band intended for athletics analytics.
 
 ## To Do
-Finish
 
 ### Hardware
-- Decide on full breadth of features
-- Finalize IMU selection
-- Determine whether an external peripheral or onboard peripheral will be used for communication with software
-- Determine user inputs (most likely single rocker switch)
+- Decide on full breadth of features 
+- Finalize OLED selection
+- Determine whether an external peripheral or onboard peripheral will be used for communication with software 
+- Finalize IMU selection ✔️
+- Determine user inputs (most likely single navigation switch) ✔️
 
 ### Software
 - Decide on choice of language
-- Attempt basic plotting (opencv?)
 - Decide on choice of graphics rendering or plotting library
 - Decide on choice of GUI library
 - Write backend for communication with firmware (for prototyping UART/serial can be used)
-
+- Attempt basic plotting ✔️ 
+ 
 ### Firmware
-- Run tests with BNO-055 IMU to determine if esp-idf I2C driver is suitable for comms
+
 - Run tests and determine whether WiFi or BLE will be used to communicate with software
-- Write driver class for SPI (implementation of BNO-085 later in project)
-- Write menu system for OLED
-- Write drivers for rocker switch or choice of controls
+- Write driver for BLE or UDP (maybe TCP?) over WiFi
 - Write battery gauge driver
+- Write suit calibration routine 
+- Run tests with BNO-055 IMU to determine if esp-idf I2C driver is suitable for comms ✔️
+- Write driver class for SPI (implementation of BNO085 later in project) ✔️
+- Implement BNO085 sensor ✔️
+- Write menu system for OLED ✔️
+- Write drivers for rocker switch or choice of controls ✔️
 
 ## License
 Distributed under the GNU 3.0 License. See `LICENSE.md` for more information.
