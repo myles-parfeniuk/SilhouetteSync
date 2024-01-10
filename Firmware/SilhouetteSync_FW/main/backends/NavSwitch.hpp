@@ -28,7 +28,7 @@ class NavSwitch
          * @return void, nothing to return
          */
          NavSwitch(Device &d);
-         TaskHandle_t nav_switch_task_hdl; ///<imu sampling task handle
+         TaskHandle_t nav_switch_task_hdl; ///<nav switch reading task
 
         /** 
         *   @brief  The three different physical inputs of a nav switch.

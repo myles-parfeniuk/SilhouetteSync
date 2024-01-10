@@ -32,6 +32,7 @@ class IMU
         Device &d; ///<reference to device fontend to update with new samples, or receive state changes
         BNO08x imu; ///<imu driver object
         TaskHandle_t sample_task_hdl; ///<imu sampling task handle
+        bool sampling; 
 
      /**
      * @brief Launches imu sampling task.

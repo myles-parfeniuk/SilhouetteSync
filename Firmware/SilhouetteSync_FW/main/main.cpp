@@ -8,20 +8,36 @@
 #include "Device.hpp"
 #include "backends/IMU.hpp"
 #include "backends/NavSwitch.hpp"
+#include "backends/TCPServer.hpp"
 #include "UI/UIManager.hpp"
 
 extern "C" void app_main(void)
 {
     Device d; //create device model
-    UIManager ui_driver(d); //initialize OLED menu system
+
+    //UIManager ui_driver(d); //initialize OLED menu system
+    //NavSwitch nav_switch(d); //initialize nav switch driver
+
+    TCPServer server(d);
     IMU imu_driver(d); //initialize IMU driver
-    NavSwitch nav_switch(d); //initialize nav switch driver
+
+    d.imu.state.set(IMUState::calibrate);
+    d.imu.state.set(IMUState::sample);
+
+   /*d.imu.data.follow([&d](imu_data_t new_data)
+    {
+        ESP_LOGI("Main", "x_heading: %.3f y_heading: %.3f z_heading: %.3f accuracy: %d", 
+        new_data.euler_heading.x, 
+        new_data.euler_heading.y, 
+        new_data.euler_heading.z, 
+        new_data.euler_heading.accuracy);
+
+    }, true);*/
+
 
     while(1)
     {
-        
         vTaskDelay(10000/portTICK_PERIOD_MS);
-
     }
 
 }
