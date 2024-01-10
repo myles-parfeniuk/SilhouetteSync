@@ -17,7 +17,7 @@ class Payload(Structure):
 # Create a TCP/IP sockets
 imu_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-# when the esp-32 boots up the WifiServer code will print an ip & port number over the serial console, check that, it will remain static until the device is reflashed
+# when the esp-32 boots up the TCPServer firmware will print an ip & port number over the serial console, check that, it will remain static until the device is reflashed
 host = '192.168.1.90'
 port = 49160
 server_address = (host, port)
@@ -28,10 +28,10 @@ prev_time = 0
 while True:
     # send an empty payload (the esp-32 is listening for this, think of it as a request for a measurement)
     payload_out = Payload(0, 0)
-    # send to anemometer_socket
+    # send to esp-32
     nsent = imu_socket.send(payload_out)
     print("Sent {:d} bytes".format(nsent))
-    # receive anemometer_socket data
+    # receive imu data from esp-32
     buff = imu_socket.recv(sizeof(Payload))
     payload_in = Payload.from_buffer_copy(buff)
     # print the received data
