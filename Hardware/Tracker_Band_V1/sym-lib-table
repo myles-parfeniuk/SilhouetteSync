@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "00_tracker_sym")(type "KiCad")(uri "${KIPRJMOD}/custom_sym_fp/00_tracker_sym.kicad_sym")(options "")(descr ""))
+)
