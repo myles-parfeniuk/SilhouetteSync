@@ -1,9 +1,9 @@
-battery_table = readtable('test_output_18650_3AH.csv')
+battery_table = readtable('test_output_1500mA_3000mAh.csv');
 battery_data = table2array(battery_table);
 time_data = battery_data(1:23188, 2);
-time_data = 100 - (time_data/time_data(23188)) * 100.0
+time_data = 100 - (time_data/time_data(23188)) * 100.0;
 voltage_data = battery_data(1:23188, 3);
-voltage_data = voltage_data * (3758/2080)
+voltage_data = voltage_data * (3758/2080);
 vbatt_fn_1 = polyfit(time_data, voltage_data, 1);
 vbatt_fn_2 = polyfit(time_data, voltage_data, 2);
 vbatt_fn_3 = polyfit(time_data, voltage_data, 3);
