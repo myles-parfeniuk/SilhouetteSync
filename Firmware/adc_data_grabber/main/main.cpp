@@ -72,6 +72,9 @@ extern "C" void app_main(void)
             ESP_LOGI(TAG, "SampleNo.: %lld BatteryVoltage: %d mV", sample_no, voltage[0][0]);
         }
 
+        if(voltage[0][0] <= 1600)
+            ESP_LOGE(TAG, "Finished");
+
         sample_no++; 
         
         vTaskDelay(200/portTICK_PERIOD_MS);
