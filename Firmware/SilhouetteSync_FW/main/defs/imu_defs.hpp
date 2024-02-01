@@ -1,5 +1,5 @@
 #pragma once
-
+#include <stdint.h>
     /** 
     *   @brief  The different states the IMU can be in
     */
