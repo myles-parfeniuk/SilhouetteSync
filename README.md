@@ -18,30 +18,34 @@ Open source motion tracker band intended for athletics analytics.
 ## To Do
 
 ### Hardware
-- Decide on full breadth of features 
-- Finalize OLED selection
-- Determine whether an external peripheral or onboard peripheral will be used for communication with software 
+- Decide on full breadth of features ✔️
 - Finalize IMU selection ✔️
-- Determine user inputs (most likely single navigation switch) ✔️
+- Determine user inputs ✔️
+- Finalize schematic
+- Finalize layout
+- First PCB bring-up
+- Test power draw for batter selection
+- Design device enclosure
 
 ### Software
-- Decide on choice of language
-- Decide on choice of graphics rendering or plotting library
-- Decide on choice of GUI library
-- Write backend for communication with firmware (for prototyping UART/serial can be used)
 - Attempt basic plotting ✔️ 
+- Decide on choice of language ✔️
+- Decide on choice of graphics rendering or plotting library ✔️
+- Test animation and basic app layout ✔️
+- Write backend for communication with firmware (for prototyping UART/serial can be used)
+- Algorithm to derive individual joint angle regardless of absolute body position
+- Algorithm to follow through workout and report on effectiveness
+- Tracker information screen
  
 ### Firmware
-
-- Run tests and determine whether WiFi or BLE will be used to communicate with software
-- Write driver for BLE or UDP (maybe TCP?) over WiFi
-- Write battery gauge driver
+- Run tests and determine whether WiFi or BLE will be used to communicate with software ✔️
+- Write driver for BLE or UDP (maybe TCP?) over WiFi ✔️
+- Write driver class for BNO085 SPI IMU ✔️
+- Write battery gauge driver (decided to go with ADC battery measurement)
 - Write suit calibration routine 
-- Run tests with BNO-055 IMU to determine if esp-idf I2C driver is suitable for comms ✔️
-- Write driver class for SPI (implementation of BNO085 later in project) ✔️
-- Implement BNO085 sensor ✔️
-- Write menu system for OLED ✔️
-- Write drivers for rocker switch or choice of controls ✔️
+- Improve wireless stability
+- Implement addressable LEDs
+- Implement device power up and power sensing algorithm
 
 ## License
 Distributed under the GNU 3.0 License. See `LICENSE.md` for more information.
