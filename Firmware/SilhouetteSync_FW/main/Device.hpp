@@ -3,6 +3,7 @@
 //in-house includes
 #include "defs/imu_defs.hpp"
 #include "defs/pin_definitions.hpp"
+#include "defs/connection_defs.hpp"
 #include "DataControl.hpp"
 
 /**
@@ -26,8 +27,8 @@ class Device
         DataControl::CallAlways<bool> calibration_status; ///<Whether or not the IMU has been calibrated. 
     } imu_t;
 
-
     Device(); 
     imu_t imu; ///<Device IMU frontend. 
+    DataControl::CallAlways<LANConnectionStatus> lan_connection_status; ///<Current connection status of device to LAN
 
 };

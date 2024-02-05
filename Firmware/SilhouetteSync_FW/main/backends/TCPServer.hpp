@@ -1,3 +1,5 @@
+#pragma once 
+
 //esp-idf includes
 #include "esp_err.h"
 #include "esp_log.h"
@@ -11,6 +13,7 @@
 #include <lwip/netdb.h>
 
 //in-house includes
+#include "../defs/pin_definitions.hpp"
 #include "../Device.hpp"
 
 #define MAX 80

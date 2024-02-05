@@ -23,7 +23,7 @@ d(d)
 void event_handler(void* arg, esp_event_base_t event_base,
                                 int32_t event_id, void* event_data)
 {
-        if (event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_START) {
+    if (event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_START) {
         esp_wifi_connect();
     } else if (event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_DISCONNECTED) {
         if (s_retry_num < EXAMPLE_ESP_MAXIMUM_RETRY) {
@@ -78,6 +78,8 @@ void TCPServer::wifi_init_sta()
     strcpy((char *)wifi_config.sta.ssid,(char *)ESP_WIFI_SSID);
     strcpy((char *)wifi_config.sta.password,(char *)ESP_WIFI_PASS);
     
+    d.lan_connection_status.set(LANConnectionStatus::attempting_connection);
+
     ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA) );
     ESP_ERROR_CHECK(esp_wifi_set_config(WIFI_IF_STA, &wifi_config) );
     ESP_ERROR_CHECK(esp_wifi_start() );
@@ -95,11 +97,12 @@ void TCPServer::wifi_init_sta()
     /* xEventGroupWaitBits() returns the bits before the call returned, hence we can test which event actually
      * happened. */
     if (bits & WIFI_CONNECTED_BIT) {
-        ESP_LOGI(TAG, "connected to ap SSID:%s password:%s",
-                 ESP_WIFI_SSID, ESP_WIFI_PASS);
+        d.lan_connection_status.set(LANConnectionStatus::connected);
+        ESP_LOGI(TAG, "connected to ap SSID:%s password:%s", ESP_WIFI_SSID, ESP_WIFI_PASS);
     } else if (bits & WIFI_FAIL_BIT) {
-        ESP_LOGI(TAG, "Failed to connect to SSID:%s, password:%s",
-                 ESP_WIFI_SSID, ESP_WIFI_PASS);
+        d.lan_connection_status.set(LANConnectionStatus::failed_connection);
+        ESP_LOGI(TAG, "Failed to connect to SSID:%s, password:%s", ESP_WIFI_SSID, ESP_WIFI_PASS);
+        vTaskDelay(3000/portTICK_PERIOD_MS);
     } else {
         ESP_LOGE(TAG, "UNEXPECTED EVENT");
     }
