@@ -207,7 +207,7 @@ void TCPServer::wait_for_ap_connection(void)
 
     while(!connected)
     {
-        //d.lan_connection_status.set(LANConnectionStatus::attempting_connection);
+        d.lan_connection_status.set(LANConnectionStatus::attempting_connection);
         /* Waiting until either the connection is established (WIFI_CONNECTED_BIT) or connection failed for the maximum
         * number of re-tries (WIFI_FAIL_BIT). The bits are set by event_handler() (see above) */
         bits = xEventGroupWaitBits(s_wifi_event_group,
@@ -219,12 +219,12 @@ void TCPServer::wait_for_ap_connection(void)
         * happened. */
         if (bits & WIFI_CONNECTED_BIT) 
         {
-            //d.lan_connection_status.set(LANConnectionStatus::connected);
+            d.lan_connection_status.set(LANConnectionStatus::connected);
             ESP_LOGI(TAG, "connected to ap SSID:%s password:%s", WIFI_SSID, WIFI_PASS);
             connected = true; 
         } else if (bits & WIFI_FAIL_BIT) 
         {
-            //d.lan_connection_status.set(LANConnectionStatus::failed_connection);
+            d.lan_connection_status.set(LANConnectionStatus::failed_connection);
             ESP_LOGI(TAG, "Failed to connect to SSID:%s, password:%s", WIFI_SSID, WIFI_PASS);
             vTaskDelay(3000/portTICK_PERIOD_MS);
             xEventGroupSetBits(s_wifi_event_group, WIFI_RETRY);
