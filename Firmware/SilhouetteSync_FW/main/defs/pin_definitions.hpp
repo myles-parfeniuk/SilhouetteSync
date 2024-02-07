@@ -10,4 +10,4 @@ static constexpr gpio_num_t pin_imu_sda = GPIO_NUM_19; ///<IMU SDA pin (esp32 MI
 static constexpr gpio_num_t pin_imu_di = GPIO_NUM_23; ///<IMU DI pin (esp32 MOSI pin)
 
 //LED Indicator
-static constexpr gpio_num_t pin_leds_di = GPIO_NUM_8; ///<Data in pin for WS281B LED strip
+static constexpr gpio_num_t pin_leds_di = GPIO_NUM_22; ///<Data in pin for WS281B LED strip
