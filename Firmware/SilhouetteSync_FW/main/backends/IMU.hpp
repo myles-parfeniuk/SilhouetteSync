@@ -33,6 +33,8 @@ class IMU
         BNO08x imu; ///<imu driver object
         TaskHandle_t sample_task_hdl; ///<imu sampling task handle
         bool sampling; 
+        
+        static const constexpr char* TAG = "IMU"; ///<class tag, used in debug logs
 
      /**
      * @brief Launches imu sampling task.
@@ -57,5 +59,5 @@ class IMU
      * @return void, nothing to return
      */
         void sampling_task();  
-        static const constexpr char* TAG = "IMU"; ///<class tag, used in debug logs
+        
 };

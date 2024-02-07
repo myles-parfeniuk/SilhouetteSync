@@ -8,13 +8,14 @@
 #include "Device.hpp"
 #include "backends/IMU.hpp"
 #include "backends/TCPServer.hpp"
+#include "backends/LedIndicator.hpp"
 
 extern "C" void app_main(void)
 {
     Device d; //create device model
-
-    TCPServer server(d);
     IMU imu_driver(d); //initialize IMU driver
+    //LedIndicator led_indicator_driver(d);
+    TCPServer server(d);
 
     d.imu.state.set(IMUState::calibrate);
     d.imu.state.set(IMUState::sample);
