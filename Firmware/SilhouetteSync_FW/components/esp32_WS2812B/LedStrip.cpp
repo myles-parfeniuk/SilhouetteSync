@@ -158,7 +158,6 @@ void LedStrip::set_pixel_color(uint16_t pixel, rgb_color_t color)
 
 void LedStrip::set_strip_color(rgb_color_t color)
 {   
- 
     for(int i = 0; i < WS2812_WORD_LENGTH*led_count; i++)
     {
         strip_pixels[WS2812_WORD_LENGTH*i + 0] = color.green;
@@ -170,13 +169,12 @@ void LedStrip::set_strip_color(rgb_color_t color)
 
 void LedStrip::write_pixel_buffer()
 {
-    
     rmt_transmit_config_t tx_config = 
     {
         .loop_count = 0, // no transfer loop
     };
 
-    ESP_ERROR_CHECK(rmt_transmit(strip_channel, strip_encoder.bytes_encoder, strip_pixels, WS2812_WORD_LENGTH*led_count, &tx_config));
+    rmt_transmit(strip_channel, strip_encoder.bytes_encoder, strip_pixels, WS2812_WORD_LENGTH*led_count, &tx_config);
     ESP_ERROR_CHECK(rmt_tx_wait_all_done(strip_channel, portMAX_DELAY));
    
 }

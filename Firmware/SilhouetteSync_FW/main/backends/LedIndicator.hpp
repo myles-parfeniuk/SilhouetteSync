@@ -17,4 +17,6 @@ class LedIndicator
     private:
         Device d; 
         LedStrip leds; 
+
+        static const constexpr char *TAG = "LedIndicator";
 };

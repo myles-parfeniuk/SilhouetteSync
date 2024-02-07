@@ -57,4 +57,5 @@ class LedStrip
         static esp_err_t reset_led_strip_encoder_cb(rmt_encoder_t *encoder);
         static const constexpr uint32_t LED_STRIP_RESOLUTION_HZ = 10000000UL;
         static const constexpr uint8_t WS2812_WORD_LENGTH = 3; 
+        static const constexpr char *TAG = "LedStrip";
 };

@@ -13,11 +13,10 @@
 extern "C" void app_main(void)
 {
     Device d; //create device model
-
     LedIndicator led_indicator_driver(d);
     TCPServer server(d);
     IMU imu_driver(d); //initialize IMU driver
-
+    
     d.imu.state.set(IMUState::calibrate);
     d.imu.state.set(IMUState::sample);
 

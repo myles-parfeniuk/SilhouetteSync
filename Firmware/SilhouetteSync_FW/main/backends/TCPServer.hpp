@@ -16,50 +16,52 @@
 #include "../defs/pin_definitions.hpp"
 #include "../Device.hpp"
 
-#define MAX 80
-#define PORT 49160
-#define SA struct sockaddr
-
-#define ESP_WIFI_SSID      "xxxxxxxxx"
-#define ESP_WIFI_PASS      "xxxxxxxxx"
-#define EXAMPLE_ESP_MAXIMUM_RETRY  10
-
-#define ESP_WIFI_SCAN_AUTH_MODE_THRESHOLD WIFI_AUTH_OPEN
-
-#define WIFI_CONNECTED_BIT BIT0
-#define WIFI_FAIL_BIT      BIT1
-
-#define KEEPALIVE_IDLE 5
-#define KEEPALIVE_INTERVAL 5
-#define KEEPALIVE_COUNT 3
-
-typedef struct payload_t
-{
-    uint8_t id;
-    float x_heading;
-    float y_heading; 
-    float z_heading; 
-    uint8_t accuracy; 
-    payload_t() :
-    id(0), x_heading(0), y_heading(0), z_heading(0), accuracy(0)
-    {}
-}payload;
-
-static EventGroupHandle_t s_wifi_event_group;
-static int s_retry_num;
-static void event_handler(void* arg, esp_event_base_t event_base,
-                                int32_t event_id, void* event_data);
-
 class TCPServer
 {
+    typedef struct payload_t
+    {
+        uint8_t id;
+        float x_heading;
+        float y_heading; 
+        float z_heading; 
+        uint8_t accuracy; 
+        payload_t() :
+        id(0), x_heading(0), y_heading(0), z_heading(0), accuracy(0)
+        {}
+    }payload;
+
     public:
     TCPServer(Device &d);
-    TaskHandle_t tcp_server_task_hdl; ///<TCP server task handle
+
     private:
     Device &d; ///<reference to device fontend to grab and send any info about device (for ex. IMU samples)
+    int s_retry_num;
+    TaskHandle_t tcp_server_task_hdl; ///<TCP server task handle
+    TaskHandle_t tcp_event_handler_task_hdl; ///<TCP server task handle
+    EventGroupHandle_t s_wifi_event_group;
+    esp_event_handler_instance_t instance_any_id;
+    esp_event_handler_instance_t instance_got_ip;
+    
+    static const constexpr char *WIFI_SSID = "TELUS1544";
+    static const constexpr char *WIFI_PASS = "88htrk5yf9";
+    static const constexpr uint16_t PORT = 49160; 
+    static const constexpr uint16_t MAX_CONNECTION_ATTEMPTS = 2; 
+    static const constexpr uint8_t SOCK_KEEPALIVE_IDLE = 5;
+    static const constexpr uint8_t SOCK_KEEPALIVE_INTERVAL = 5;
+    static const constexpr uint8_t SOCK_KEEPALIVE_COUNT = 3;
+    static const constexpr uint8_t WIFI_CONNECTED_BIT = BIT0; 
+    static const constexpr uint8_t WIFI_FAIL_BIT = BIT1; 
+    static const constexpr uint8_t WIFI_RETRY = BIT2; 
+
+    static const constexpr char *TAG = "TCPServer";
+
     void do_retransmit(const int sock);
     void start_tcp(void);
     void wifi_init_sta(void);
+    void wait_for_ap_connection(void);
     static void tcp_server_task_trampoline(void *arg); 
+    static void event_handler_trampoline(void* arg, esp_event_base_t event_base, int32_t event_id, void* event_data);
     void tcp_server_task(); 
+    void event_handler(void* arg, esp_event_base_t event_base, int32_t event_id, void* event_data);
+
 };
