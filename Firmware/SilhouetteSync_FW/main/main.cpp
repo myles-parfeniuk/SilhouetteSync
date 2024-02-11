@@ -33,7 +33,18 @@ extern "C" void app_main(void)
 
     while(1)
     {
-        vTaskDelay(10000/portTICK_PERIOD_MS);
+        vTaskDelay(100/portTICK_PERIOD_MS);
+        
+        /*LANConnectionStatus status = d.lan_connection_status.get(); 
+
+        if(status == LANConnectionStatus::attempting_connection)
+        {
+            ESP_LOGW("main", "data: attempt conn");
+        }
+        else
+        {
+            ESP_LOGE("main", "data: failed conn");
+        }*/
     }
 
 }

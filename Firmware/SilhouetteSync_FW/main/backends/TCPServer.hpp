@@ -31,37 +31,35 @@ class TCPServer
     }payload;
 
     public:
-    TCPServer(Device &d);
+        TCPServer(Device &d);
 
     private:
-    Device &d; ///<reference to device fontend to grab and send any info about device (for ex. IMU samples)
-    int s_retry_num;
-    TaskHandle_t tcp_server_task_hdl; ///<TCP server task handle
-    TaskHandle_t tcp_event_handler_task_hdl; ///<TCP server task handle
-    EventGroupHandle_t s_wifi_event_group;
-    esp_event_handler_instance_t instance_any_id;
-    esp_event_handler_instance_t instance_got_ip;
-    
-    static const constexpr char *WIFI_SSID = "xx";
-    static const constexpr char *WIFI_PASS = "xx";
-    static const constexpr uint16_t PORT = 49160; 
-    static const constexpr uint16_t MAX_CONNECTION_ATTEMPTS = 2; 
-    static const constexpr uint8_t SOCK_KEEPALIVE_IDLE = 5;
-    static const constexpr uint8_t SOCK_KEEPALIVE_INTERVAL = 5;
-    static const constexpr uint8_t SOCK_KEEPALIVE_COUNT = 3;
-    static const constexpr uint8_t WIFI_CONNECTED_BIT = BIT0; 
-    static const constexpr uint8_t WIFI_FAIL_BIT = BIT1; 
-    static const constexpr uint8_t WIFI_RETRY = BIT2; 
+        Device &d; ///<reference to device fontend to grab and send any info about device (for ex. IMU samples)
+        uint8_t s_retry_num;
+        int16_t imu_data_socket; 
+        TaskHandle_t tcp_server_task_hdl; ///<TCP server task handle
+        esp_event_handler_instance_t instance_any_id;
+        esp_event_handler_instance_t instance_got_ip;
+        
+        static const constexpr char *WIFI_SSID = "ChadNetwork";
+        static const constexpr char *WIFI_PASS = "hxbc6333";
+        static const constexpr uint16_t PORT = 49160; 
+        static const constexpr uint16_t MAX_CONNECTION_ATTEMPTS = 2; 
+        static const constexpr uint8_t SOCK_KEEPALIVE_IDLE = 5;
+        static const constexpr uint8_t SOCK_KEEPALIVE_INTERVAL = 5;
+        static const constexpr uint8_t SOCK_KEEPALIVE_COUNT = 3;
+        static const constexpr uint8_t WIFI_CONNECTED_BIT = BIT0; 
+        static const constexpr uint8_t WIFI_FAIL_BIT = BIT1; 
+        static const constexpr uint8_t WIFI_RETRY = BIT2; 
 
-    static const constexpr char *TAG = "TCPServer";
+        static const constexpr char *TAG = "TCPServer";
 
-    void do_retransmit(const int sock);
-    void start_tcp(void);
-    void wifi_init_sta(void);
-    void wait_for_ap_connection(void);
-    static void tcp_server_task_trampoline(void *arg); 
-    static void event_handler_trampoline(void* arg, esp_event_base_t event_base, int32_t event_id, void* event_data);
-    void tcp_server_task(); 
-    void event_handler(void* arg, esp_event_base_t event_base, int32_t event_id, void* event_data);
+        void do_retransmit(const int sock);
+        void start_tcp(void);
+        void wifi_init_sta(void);
+        static void tcp_server_task_trampoline(void *arg); 
+        static void event_handler_trampoline(void* arg, esp_event_base_t event_base, int32_t event_id, void* event_data);
+        void tcp_server_task(); 
+        void event_handler(void* arg, esp_event_base_t event_base, int32_t event_id, void* event_data);
 
 };

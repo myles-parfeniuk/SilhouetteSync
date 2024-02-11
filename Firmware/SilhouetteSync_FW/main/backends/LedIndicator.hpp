@@ -17,6 +17,14 @@ class LedIndicator
     private:
         Device d; 
         LedStrip leds; 
+        TaskHandle_t led_anim_task_hdl;
+        EventGroupHandle_t led_anim_event_group_hdl;
+        static void led_anim_task_trampoline(void *arg); 
+        void led_anim_task(); 
+        void attempting_connection_anim(); 
+        static const constexpr uint8_t ATTEMPT_CONNECTION_ANIM = BIT1; 
+        static const constexpr uint8_t FAILED_CONNECTION_ANIM = BIT2; 
+
 
         static const constexpr char *TAG = "LedIndicator";
 };
