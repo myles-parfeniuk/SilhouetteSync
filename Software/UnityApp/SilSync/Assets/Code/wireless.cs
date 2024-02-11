@@ -8,7 +8,6 @@ using TMPro;
 
 public class IMUController : MonoBehaviour
 {
-    //public static IMUController instance;
     [System.Serializable]
     public struct Payload
     {
@@ -20,51 +19,94 @@ public class IMUController : MonoBehaviour
     }
     public Transform limb1;
     public Transform limb2;
-    /*
     public Transform limb3;
+    /*
     public Transform limb4;
     public Transform limb5;
     */
 
+    private bool sensor1State = false;
+    private bool sensor2State = false;
+    private bool sensor3State = false;
+    //private bool sensor4State;
+    //private bool sensor5State;
+
+    public Calibration calbool;
+
     public TcpClient imuTcpClient1;
     public TcpClient imuTcpClient2;
+    public TcpClient imuTcpClient3;
+    //public TcpClient imuTcpClient4;
+    //public TcpClient imuTcpClient5;
     private NetworkStream imuNetworkStream1;
     private NetworkStream imuNetworkStream2;
+    private NetworkStream imuNetworkStream3;
+    //private NetworkStream imuNetworkStream4;
+    //private NetworkStream imuNetworkStream5;
     private Thread imuThread;
     private bool isRunning = true;
-
+    public TextMeshProUGUI sensor1Text;  
+    public TextMeshProUGUI sensor2Text;
+    public TextMeshProUGUI sensor3Text; 
+    //public TextMeshProUGUI sensor4Text; 
+    //public TextMeshProUGUI sensor5Text;  
     private Quaternion position1;
     private Quaternion position2;
-    /*
     private Quaternion position3;
-    private Quaternion position4;
-    private Quaternion position5;
-    
-
-    void Awake() {
-        if(instance != null && instance != this) {
-            DestroyImmediate(gameObject);
-            return;
-        }
-        instance = this;
-        DontDestroyOnLoad(gameObject);
-    }
-    */
+    //private Quaternion position4;
+    //private Quaternion position5;
+    private Quaternion pos1cal = Quaternion.Euler(0, 0, 0);
+    private Quaternion pos2cal = Quaternion.Euler(0, 0, 0);
+    private Quaternion pos3cal = Quaternion.Euler(0, 0, 0);
+    //private Quaternion pos4cal = Quaternion.Euler(0, 0, 0);
+    //private Quaternion pos5cal = Quaternion.Euler(0, 0, 0);
 
     void Start()
     {
         imuThread = new Thread(ReceiveData);
         imuThread.Start();
+        sensor1State = false;
+        sensor2State = false;
     }
 
     void Update()
     {
         limb1.transform.rotation = position1;
         limb2.transform.rotation = position2;
+        limb3.transform.rotation = position3;
+        if (sensor1State)
+        {
+            sensor1Text.color = Color.green;
+        }
+        else
+        {
+            sensor1Text.color = Color.red;
+        }
+        if (sensor2State)
+        {
+            sensor2Text.color = Color.green;
+        }
+        else
+        {
+            sensor2Text.color = Color.red;
+        }
+        if (sensor3State)
+        {
+            sensor3Text.color = Color.green;
+        }
+        else
+        {
+            sensor3Text.color = Color.red;
+        }
+        if (calbool) 
+        {
+            pos1cal = position1;
+            pos2cal = position2;
+            pos3cal = position3;
+        }
         /*
-        limb3.rotation = position1;
-        limb4.rotation = position1;
-        limb5.rotation = position1;
+        limb4.rotation = position4;
+        limb5.rotation = position5;
         */
     }
 
@@ -76,23 +118,43 @@ public class IMUController : MonoBehaviour
             imuNetworkStream1.Close();
 
         if (imuTcpClient1 != null)
+        {
             imuTcpClient1.Close();
+            sensor1State = false;
+        }
 
         if (imuNetworkStream2 != null)
             imuNetworkStream2.Close();
 
         if (imuTcpClient2 != null)
+        {
             imuTcpClient2.Close();
+            sensor2State = false;
+        }
+
+        if (imuNetworkStream3 != null)
+            imuNetworkStream3.Close();
+
+        if (imuTcpClient3 != null)
+        {
+            imuTcpClient3.Close();
+            sensor3State = false;
+        }
     }
 
     void ReceiveData()
     {
         try
         {
-            imuTcpClient1 = new TcpClient("192.168.187.50", 49160);
+            imuTcpClient1 = new TcpClient("192.168.168.50", 49160);
             imuNetworkStream1 = imuTcpClient1.GetStream();
-            imuTcpClient2 = new TcpClient("192.168.187.65", 49160);
+            sensor1State = true;
+            imuTcpClient2 = new TcpClient("192.168.168.248", 49160);
             imuNetworkStream2 = imuTcpClient2.GetStream();
+            sensor2State = true;
+            imuTcpClient3 = new TcpClient("192.168.168.", 49160);
+            imuNetworkStream3 = imuTcpClient3.GetStream();
+            sensor3State = true;
 
             //long prevTime = 0;
 
@@ -121,6 +183,7 @@ public class IMUController : MonoBehaviour
 
                 position1 = Quaternion.Euler(x, y, z);
 
+                //copy and paste from here on
                 payloadOut = new Payload { id = 0, x_heading = 0 };
 
                 // Convert struct to byte array
@@ -144,15 +207,29 @@ public class IMUController : MonoBehaviour
 
                 position2 = Quaternion.Euler(x, y, z);
 
-                //long currentTime = DateTimeOffset.Now.ToUnixTimeMilliseconds();
-                //Debug.Log("Received id=" + payloadIn.id + ", X_heading=" + payloadIn.x_heading.ToString("F4") +
-                //         ", Y_heading=" + payloadIn.y_heading.ToString("F4") + ", Z_Heading=" + payloadIn.z_heading.ToString("F4") +
-                //          ", Accuracy=" + payloadIn.accuracy + ", TIMESTAMP: " + ((currentTime - prevTime) / 1000.0).ToString("F4"));
+                //copy and paste from here on
+                payloadOut = new Payload { id = 0, x_heading = 0 };
 
-                //prevTime = currentTime;
+                // Convert struct to byte array
+                payloadBytes = StructToBytes(payloadOut);
 
-                // Add a delay to avoid flooding the server with requests
-                //Thread.Sleep(10);
+                imuNetworkStream3.Write(payloadBytes, 0, payloadBytes.Length);
+                Debug.Log("Sent " + payloadBytes.Length + " bytes");
+
+                buffer = new byte[Marshal.SizeOf<Payload>()]; // Use Marshal.SizeOf to get the size of the struct
+                bytesRead = imuNetworkStream3.Read(buffer, 0, buffer.Length);
+
+                // Convert byte array to struct
+                payloadIn = BytesToStruct<Payload>(buffer);
+                x = payloadIn.x_heading  * 180 / Mathf.PI;
+                y =  payloadIn.y_heading * 180 / Mathf.PI;
+                z = payloadIn.z_heading  * 180 / Mathf.PI;
+                
+                Debug.Log("Received id=" + payloadIn.id + ", X_heading=" + x.ToString("F4") +
+                        ", Y_heading=" + y.ToString("F4") + ", Z_Heading=" + z.ToString("F4") +
+                         ", Accuracy=" + payloadIn.accuracy);
+
+                position3 = Quaternion.Euler(x, y, z);
             }
         }
         catch (Exception e)
