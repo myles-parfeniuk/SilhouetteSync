@@ -74,4 +74,9 @@
   (pad "2" smd rect (at -1.03 -0.9182) (size 1.143 0.7112) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp 960eedb0-92c5-44f0-bdbe-4bfc1b50f0c2))
   (pad "3" smd rect (at 1.03 -0.9182) (size 1.143 0.7112) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp bee931f3-84bc-46d6-94f2-3d71a41fbc80))
   (pad "4" smd rect (at 1.174999 0.176799) (size 0.8382 0.4572) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp bf323438-2150-4853-bf6e-839608c9cb88))
+  (model "${KIPRJMOD}/custom_sym_fp/custom_step/Panasonic_EVPAV-AVAA1A.step"
+    (offset (xyz -1.4 -0.73 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 0))
+  )
 )
