@@ -41,8 +41,8 @@ class TCPServer
         esp_event_handler_instance_t instance_any_id;
         esp_event_handler_instance_t instance_got_ip;
         
-        static const constexpr char *WIFI_SSID = "ChadNetwork";
-        static const constexpr char *WIFI_PASS = "hxbc6333";
+        static const constexpr char *WIFI_SSID = "xxx";
+        static const constexpr char *WIFI_PASS = "xxx";
         static const constexpr uint16_t PORT = 49160; 
         static const constexpr uint16_t MAX_CONNECTION_ATTEMPTS = 2; 
         static const constexpr uint8_t SOCK_KEEPALIVE_IDLE = 5;

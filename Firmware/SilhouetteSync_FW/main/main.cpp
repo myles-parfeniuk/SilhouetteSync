@@ -32,8 +32,8 @@ extern "C" void app_main(void)
 
     }, true);*/
 
-    char task_run_time_stats[255];
-    char task_list[255];
+    //char task_run_time_stats[255];
+    //char task_list[255];
     while(1)
     {
         vTaskDelay(5000/portTICK_PERIOD_MS);

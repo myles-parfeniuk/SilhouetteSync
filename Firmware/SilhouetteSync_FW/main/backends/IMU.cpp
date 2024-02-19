@@ -28,14 +28,18 @@ sampling(false)
                     sampling = false; 
 
                 if(imu.run_full_calibration_routine())
+                {
                     d.imu.calibration_status.set(true); 
+                    d.imu.state.set(IMUState::sample);
+                }
+
             break;
 
             default:
 
             break;
         }
-    }, true);
+    });
 
     imu.initialize(); //initialize IMU unit
 
