@@ -3,8 +3,7 @@
 
 TCPServer::TCPServer(Device &d):
 d(d),
-s_retry_num(0),
-s_wifi_event_group(NULL)
+s_retry_num(0)
 {
     esp_err_t ret = nvs_flash_init();
     if (ret == ESP_ERR_NVS_NO_FREE_PAGES || ret == ESP_ERR_NVS_NEW_VERSION_FOUND) 
@@ -18,12 +17,13 @@ s_wifi_event_group(NULL)
     xTaskCreate(&tcp_server_task_trampoline, "tcp_server_task", 8192, this, 12, &tcp_server_task_hdl); //launch tcp server task
 }
 
-void TCPServer::event_handler(void* arg, esp_event_base_t event_base,
-                                int32_t event_id, void* event_data)
+void TCPServer::event_handler(void* arg, esp_event_base_t event_base, int32_t event_id, void* event_data)
 {
     EventBits_t bits;
 
-    if (event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_START) {
+    if (event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_START) 
+    {
+        d.lan_connection_status.set(LANConnectionStatus::attempting_connection);
         esp_wifi_connect();
     } 
     else if (event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_DISCONNECTED) 
@@ -34,12 +34,9 @@ void TCPServer::event_handler(void* arg, esp_event_base_t event_base,
             ESP_LOGI(TAG, "retry to connect to the AP");
         } else {
             s_retry_num = 0; 
-            xEventGroupSetBits(s_wifi_event_group, WIFI_FAIL_BIT);
-            bits = xEventGroupWaitBits(s_wifi_event_group,
-                WIFI_RETRY,
-                pdTRUE,
-                pdFALSE,
-                portMAX_DELAY);
+            d.lan_connection_status.set(LANConnectionStatus::failed_connection);
+            vTaskDelay(3000/portTICK_PERIOD_MS);
+            d.lan_connection_status.set(LANConnectionStatus::attempting_connection);
             esp_wifi_connect();
         }
         ESP_LOGI(TAG,"connect to the AP fail");
@@ -47,16 +44,17 @@ void TCPServer::event_handler(void* arg, esp_event_base_t event_base,
     else if (event_base == IP_EVENT && event_id == IP_EVENT_STA_GOT_IP) 
     {
         ip_event_got_ip_t* event = (ip_event_got_ip_t*) event_data;
+        d.lan_connection_status.set(LANConnectionStatus::connected);
         ESP_LOGI(TAG, "got ip: " IPSTR, IP2STR(&event->ip_info.ip));
         s_retry_num = 0;
-        xEventGroupSetBits(s_wifi_event_group, WIFI_CONNECTED_BIT);
     }
+
+    /*ESP_ERROR_CHECK(esp_event_handler_instance_unregister(IP_EVENT, IP_EVENT_STA_GOT_IP, instance_got_ip));
+    ESP_ERROR_CHECK(esp_event_handler_instance_unregister(WIFI_EVENT, ESP_EVENT_ANY_ID, instance_any_id));*/
 }
 
 void TCPServer::wifi_init_sta()
 {
-    s_wifi_event_group = xEventGroupCreate();
-
     ESP_ERROR_CHECK(esp_netif_init());
 
     ESP_ERROR_CHECK(esp_event_loop_create_default());
@@ -97,10 +95,12 @@ void TCPServer::start_tcp()
     char addr_str[128];
     int addr_family = AF_INET;
     int ip_protocol = 0;
-    int keepAlive = 1;
-    int keepIdle = SOCK_KEEPALIVE_IDLE;
-    int keepInterval = SOCK_KEEPALIVE_INTERVAL;
-    int keepCount = SOCK_KEEPALIVE_COUNT;
+    int keep_alive = 1;
+    int keep_idle = SOCK_KEEPALIVE_IDLE;
+    int keep_interval = SOCK_KEEPALIVE_INTERVAL;
+    int keep_count = SOCK_KEEPALIVE_COUNT;
+    int err = 0; 
+    bool listening = true; 
     struct sockaddr_storage dest_addr;
 
     if (addr_family == AF_INET) 
@@ -112,57 +112,71 @@ void TCPServer::start_tcp()
         ip_protocol = IPPROTO_IP;
     }
 
-    int listen_sock = socket(addr_family, SOCK_STREAM, ip_protocol);
-    if (listen_sock < 0) 
+    imu_data_socket = socket(addr_family, SOCK_STREAM, ip_protocol);
+
+    if (imu_data_socket < 0) 
     {
         ESP_LOGE(TAG, "Unable to create socket: errno %d", errno);
-        // vTaskDelete(NULL);
+
         return;
     }
 
     int opt = 1;
-    setsockopt(listen_sock, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt));
+    setsockopt(imu_data_socket, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt));
 
     ESP_LOGI(TAG, "Socket created");
 
-    int err = bind(listen_sock, (struct sockaddr *)&dest_addr, sizeof(dest_addr));
+    err = bind(imu_data_socket, (struct sockaddr *)&dest_addr, sizeof(dest_addr));
     if (err != 0) 
     {
         ESP_LOGE(TAG, "Socket unable to bind: errno %d", errno);
         ESP_LOGE(TAG, "IPPROTO: %d", addr_family);
-        goto CLEAN_UP;
+        //goto CLEAN_UP;
+        close(imu_data_socket);
+        listening = false; 
     }
-    ESP_LOGI(TAG, "Socket bound, port %d", PORT);
-
-    err = listen(listen_sock, 1);
-    if (err != 0) 
+    else
     {
-        ESP_LOGE(TAG, "Error occurred during listen: errno %d", errno);
-        goto CLEAN_UP;
-    }
+        ESP_LOGI(TAG, "Socket bound, port %d", PORT);
 
-    while (1) 
+        err = listen(imu_data_socket, 1);
+        if (err != 0) 
+        {
+            ESP_LOGE(TAG, "Error occurred during listen: errno %d", errno);
+            close(imu_data_socket);
+            listening = false; 
+        }
+    }
+    
+
+    
+
+
+    while (listening) 
     {
 
         ESP_LOGI(TAG, "Socket listening");
 
         struct sockaddr_storage source_addr; // Large enough for both IPv4 or IPv6
         socklen_t addr_len = sizeof(source_addr);
-        int sock = accept(listen_sock, (struct sockaddr *)&source_addr, &addr_len);
-        if (sock < 0) {
+        int sock = accept(imu_data_socket, (struct sockaddr *)&source_addr, &addr_len);
+
+        if (sock < 0) 
+        {
             ESP_LOGE(TAG, "Unable to accept connection: errno %d", errno);
             break;
         }
 
         // Set tcp keepalive option
-        setsockopt(sock, SOL_SOCKET, SO_KEEPALIVE, &keepAlive, sizeof(int));
-        setsockopt(sock, IPPROTO_TCP, TCP_KEEPIDLE, &keepIdle, sizeof(int));
-        setsockopt(sock, IPPROTO_TCP, TCP_KEEPINTVL, &keepInterval, sizeof(int));
-        setsockopt(sock, IPPROTO_TCP, TCP_KEEPCNT, &keepCount, sizeof(int));
+        setsockopt(sock, SOL_SOCKET, SO_KEEPALIVE, &keep_alive, sizeof(int));
+        setsockopt(sock, IPPROTO_TCP, TCP_KEEPIDLE, &keep_idle, sizeof(int));
+        setsockopt(sock, IPPROTO_TCP, TCP_KEEPINTVL, &keep_interval, sizeof(int));
+        setsockopt(sock, IPPROTO_TCP, TCP_KEEPCNT, &keep_count, sizeof(int));
         // Convert ip address to string
         if (source_addr.ss_family == PF_INET) {
             inet_ntoa_r(((struct sockaddr_in *)&source_addr)->sin_addr, addr_str, sizeof(addr_str) - 1);
         }
+
         ESP_LOGI(TAG, "Socket accepted ip address: %s", addr_str);
 
        
@@ -172,8 +186,6 @@ void TCPServer::start_tcp()
         close(sock);
     }
 
-CLEAN_UP:
-    close(listen_sock);
 }
 
 void TCPServer::do_retransmit(const int sock)
@@ -200,47 +212,6 @@ void TCPServer::do_retransmit(const int sock)
         } while (len > 0);
 }
 
-void TCPServer::wait_for_ap_connection(void)
-{
-    bool connected = false; 
-    EventBits_t bits;
-
-    while(!connected)
-    {
-        d.lan_connection_status.set(LANConnectionStatus::attempting_connection);
-        /* Waiting until either the connection is established (WIFI_CONNECTED_BIT) or connection failed for the maximum
-        * number of re-tries (WIFI_FAIL_BIT). The bits are set by event_handler() (see above) */
-        bits = xEventGroupWaitBits(s_wifi_event_group,
-                WIFI_CONNECTED_BIT | WIFI_FAIL_BIT,
-                pdTRUE,
-                pdFALSE,
-                portMAX_DELAY);
-        /* xEventGroupWaitBits() returns the bits before the call returned, hence we can test which event actually
-        * happened. */
-        if (bits & WIFI_CONNECTED_BIT) 
-        {
-            d.lan_connection_status.set(LANConnectionStatus::connected);
-            ESP_LOGI(TAG, "connected to ap SSID:%s password:%s", WIFI_SSID, WIFI_PASS);
-            connected = true; 
-        } else if (bits & WIFI_FAIL_BIT) 
-        {
-            d.lan_connection_status.set(LANConnectionStatus::failed_connection);
-            ESP_LOGI(TAG, "Failed to connect to SSID:%s, password:%s", WIFI_SSID, WIFI_PASS);
-            vTaskDelay(3000/portTICK_PERIOD_MS);
-            xEventGroupSetBits(s_wifi_event_group, WIFI_RETRY);
-        } else 
-        {
-            ESP_LOGE(TAG, "UNEXPECTED EVENT");
-        }
-
-    }
-
-    /* The event will not be processed after unregister */
-    ESP_ERROR_CHECK(esp_event_handler_instance_unregister(IP_EVENT, IP_EVENT_STA_GOT_IP, instance_got_ip));
-    ESP_ERROR_CHECK(esp_event_handler_instance_unregister(WIFI_EVENT, ESP_EVENT_ANY_ID, instance_any_id));
-    vEventGroupDelete(s_wifi_event_group);
-}
-
 void TCPServer:: event_handler_trampoline(void* arg, esp_event_base_t event_base, int32_t event_id, void* event_data)
 {
     TCPServer *local_server = (TCPServer *)arg; //cast to TCPServer pointer
@@ -259,7 +230,6 @@ void TCPServer::tcp_server_task_trampoline(void *arg)
 void TCPServer::tcp_server_task()
 {
     wifi_init_sta();
-    wait_for_ap_connection(); 
     while(1)
     {
       start_tcp();

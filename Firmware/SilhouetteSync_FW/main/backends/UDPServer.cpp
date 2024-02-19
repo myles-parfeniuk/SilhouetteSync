@@ -147,7 +147,7 @@ bool UDPServer::send_packet(payload_t *tx_buffer)
     }
     
     current_data = d.imu.data.get(); 
-    tx_buffer->id = 2; 
+    tx_buffer->id = 0; 
     tx_buffer->x_heading = current_data.euler_heading.x;
     tx_buffer->y_heading = current_data.euler_heading.y;
     tx_buffer->z_heading = current_data.euler_heading.z;
