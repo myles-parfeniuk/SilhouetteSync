@@ -12,7 +12,7 @@ led_count(strip_config.led_count)
         .mem_block_symbols = 64, 
         .trans_queue_depth = 4,
     };
-    
+
     ESP_ERROR_CHECK(rmt_new_tx_channel(&rgb_led_chan_cfg, &strip_channel));
     create_led_strip_encoder(LED_STRIP_RESOLUTION_HZ);
     ESP_ERROR_CHECK(rmt_enable(strip_channel));

@@ -1,3 +1,5 @@
+#pragma once
+
 #include <vector>
 #include <iostream> 
 #include "esp_log.h"
@@ -7,11 +9,21 @@
 #include "driver/rmt_tx.h"
 #include "driver/rmt_encoder.h"
 
-typedef struct
+typedef struct rgb_color_t
 {
     uint8_t red;
     uint8_t green;
     uint8_t blue;
+
+    inline bool operator!=(const rgb_color_t& rhs) const 
+    {
+        return (red != rhs.red) || (green != rhs.green) || (blue != rhs.blue);
+    }
+
+    inline bool operator==(const rgb_color_t& rhs) const 
+    {
+        return (red == rhs.red) && (green == rhs.green) && (blue == rhs.blue);
+    }
 
 } rgb_color_t;
 

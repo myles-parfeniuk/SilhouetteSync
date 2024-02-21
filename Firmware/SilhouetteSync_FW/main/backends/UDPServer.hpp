@@ -40,8 +40,8 @@ class UDPServer
         struct sockaddr_storage source_addr; 
         bool connected; 
 
-        static const constexpr char *WIFI_SSID = "xxx";
-        static const constexpr char *WIFI_PASS = "xxx";
+        static const constexpr char *WIFI_SSID = "TELUS1544";
+        static const constexpr char *WIFI_PASS = "88htrk5yf9";
         static const constexpr uint16_t PORT = 49160; 
         static const constexpr uint16_t MAX_CONNECTION_ATTEMPTS = 2; 
 
