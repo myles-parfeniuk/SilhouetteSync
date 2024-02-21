@@ -28,12 +28,18 @@ class IMU
      * @return void, nothing to return
      */
         IMU(Device &d);
+
+        void wait_for_calibration(); 
     private:
         Device &d; ///<reference to device fontend to update with new samples, or receive state changes
         BNO08x imu; ///<imu driver object
-        TaskHandle_t sample_task_hdl; ///<imu sampling task handle
-        bool sampling; 
-        
+        TaskHandle_t imu_task_hdl; ///<imu task handle
+        EventGroupHandle_t imu_state_event_group_hdl;
+        EventBits_t imu_state_bits;
+
+        static const constexpr uint8_t CALIBRATION_STATE_BIT = BIT0; 
+        static const constexpr uint8_t SAMPLING_STATE_BIT = BIT1; 
+        static const constexpr uint8_t ALL_IMU_STATE_BITS = CALIBRATION_STATE_BIT | SAMPLING_STATE_BIT;
         static const constexpr char* TAG = "IMU"; ///<class tag, used in debug logs
 
      /**
@@ -41,23 +47,25 @@ class IMU
      * 
      * This function is used to get around the fact xTaskCreate() from the freertos api requires a static task function.
      * 
-     * To prevent having to write the imu sampling task from the context of a static function, this launches the sampling_task()
+     * To prevent having to write the imu sampling task from the context of a static function, this launches the imu_task()
      * from the IMU object passed into xTaskCreate().
      * 
      * @param arg a void pointer to the IMU object from xTaskCreate() call
      * @return void, nothing to return
      */
-        static void sampling_task_trampoline(void *arg);
+        static void imu_task_trampoline(void *arg);
     
     /**
      * @brief IMU sampling task.
      * 
-     * This task updates the device model with new IMU data whenever it is received. 
-     * It is notified and begins execution upon a switch to the sampling state.
-     * It will execute until the state is switched out of the sampling state. 
-     * 
+     * Task responsible for handling sampling, passing of new data to the device model, and calibration. 
+     * The imu_event_group_hdl controls the flow of its execution. 
      * @return void, nothing to return
      */
-        void sampling_task();  
+        void imu_task();  
+
+        void take_samples(); 
+
+        void calibrate_imu(); 
         
 };

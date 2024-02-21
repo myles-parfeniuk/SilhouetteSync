@@ -7,9 +7,9 @@
 //in-house includes
 #include "Device.hpp"
 #include "backends/IMU.hpp"
-//#include "backends/TCPServer.hpp"
+#include "defs/imu_defs.hpp"
 #include "backends/UDPServer.hpp"
-#include "backends/LedIndicator.hpp"
+#include "backends/led_indicator_driver/LedIndicator.hpp"
 
 extern "C" void app_main(void)
 {
@@ -17,8 +17,9 @@ extern "C" void app_main(void)
     IMU imu_driver(d); //initialize IMU driver
     LedIndicator led_indicator_driver(d);
     UDPServer server(d);
-    //TCPServer server(d);
 
+    //d.imu.state.set(IMUState::calibrate);
+    //imu_driver.wait_for_calibration(); 
     d.imu.state.set(IMUState::sample);
 
     //uncomment for live IMU data over serial for debug
@@ -31,6 +32,8 @@ extern "C" void app_main(void)
         new_data.euler_heading.accuracy);
 
     }, true);*/
+
+
 
     //char task_run_time_stats[255];
     //char task_list[255];

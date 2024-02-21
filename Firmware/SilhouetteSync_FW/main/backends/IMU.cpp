@@ -2,37 +2,24 @@
 
 IMU::IMU(Device &d):
 d(d),
-sampling(false)
+imu_state_event_group_hdl(xEventGroupCreate())
 {
     //follow device struct to check for current sensor mode
     d.imu.state.follow([this, &d](IMUState new_state){
         switch(new_state)
         {
             case IMUState::sleep:
-                if(sampling)
-                    sampling = false; 
-                //do nothing, sample loop should exit automatically 
+                //do nothing
             break;
 
             case IMUState::sample:
-                //if the sample task is not already running notify it to start
-                if(!sampling)
-                {
-                    sampling = true; 
-                    xTaskNotifyGive(sample_task_hdl);
-                }
+                xEventGroupClearBits(imu_state_event_group_hdl, ALL_IMU_STATE_BITS);
+                xEventGroupSetBits(imu_state_event_group_hdl, SAMPLING_STATE_BIT);
             break;
 
             case IMUState::calibrate:
-                if(sampling)
-                    sampling = false; 
-
-                if(imu.run_full_calibration_routine())
-                {
-                    d.imu.calibration_status.set(true); 
-                    d.imu.state.set(IMUState::sample);
-                }
-
+                xEventGroupClearBits(imu_state_event_group_hdl, ALL_IMU_STATE_BITS);
+                xEventGroupSetBits(imu_state_event_group_hdl, CALIBRATION_STATE_BIT);
             break;
 
             default:
@@ -47,27 +34,41 @@ sampling(false)
     imu.enable_game_rotation_vector(100); 
     imu.enable_gyro(150);
 
-    xTaskCreate(&sampling_task_trampoline, "imu_sample_task", 4096, this, 5, &sample_task_hdl);
+    xTaskCreate(&imu_task_trampoline, "imu_task", 4096, this, 5, &imu_task_hdl);
 }
 
 
-void IMU::sampling_task_trampoline(void *arg)
+void IMU::imu_task_trampoline(void *arg)
 {   
     IMU * active_imu = (IMU *)arg;
 
-    active_imu->sampling_task(); 
+    active_imu->imu_task(); 
 }
 
-void IMU::sampling_task()
+void IMU::imu_task()
 {
-    imu_data_t new_data;
 
     while(1)
     {
-        ulTaskNotifyTake(pdTRUE, portMAX_DELAY); //block until notified on index 0 by state switch to sample
+        imu_state_bits = xEventGroupWaitBits(imu_state_event_group_hdl, ALL_IMU_STATE_BITS, pdFALSE, pdFALSE, portMAX_DELAY);
         
-        while(sampling)
-        {
+
+        if(imu_state_bits & SAMPLING_STATE_BIT)
+            take_samples(); 
+        else if(imu_state_bits & CALIBRATION_STATE_BIT)
+            calibrate_imu(); 
+      
+        
+    }
+
+}
+
+void IMU::take_samples()
+{
+        imu_data_t new_data;
+
+        do
+        {   
             if(imu.data_available())
             {
                 //update euler angle
@@ -94,7 +95,26 @@ void IMU::sampling_task()
             }
 
             vTaskDelay(5/portTICK_PERIOD_MS);
-        }
-    }
 
+            imu_state_bits = xEventGroupWaitBits(imu_state_event_group_hdl, ALL_IMU_STATE_BITS, pdFALSE, pdFALSE, 0);
+
+        } while (imu_state_bits & SAMPLING_STATE_BIT);
+
+}
+
+void IMU::calibrate_imu()
+{
+    if(imu.run_full_calibration_routine())
+    {
+        d.imu.calibration_status.set(true); 
+    }
+    xEventGroupClearBits(imu_state_event_group_hdl, ALL_IMU_STATE_BITS);
+}
+
+void IMU::wait_for_calibration()
+{
+    while(!d.imu.calibration_status.get())
+    {
+        vTaskDelay(50/portTICK_PERIOD_MS);
+    }
 }
