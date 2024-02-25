@@ -34,7 +34,7 @@
   (pad "2" smd rect (at -0.475 0.47498) (size 0.5588 0.5588) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp 043a4dfe-0f48-4d41-a2dd-d7b838ac3809))
   (pad "3" smd rect (at 0.475 0.47498) (size 0.5588 0.5588) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp 7131324f-11dc-465c-8de1-3ca169d1bd6d))
   (pad "4" smd rect (at 0.475 -0.47498) (size 0.5588 0.5588) (layers "F.Cu" "F.Paste" "F.Mask") (tstamp af747507-d866-4cf8-b2f9-b19055db0a9d))
-  (model "${KIPRJMOD}/downloaded_footprints/IN_PI15TAT5R5G5B/IN-PI15_INL.step"
+  (model "${KIPRJMOD}/downloaded_footprints/IN_PI15TAT5R5G5B/IN-PI15_INL_RGB.step"
     (offset (xyz 0 0 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))
