@@ -45,7 +45,7 @@
         "silk_text_thickness": 0.15,
         "silk_text_upright": false,
         "zones": {
-          "min_clearance": 0.12
+          "min_clearance": 0.15
         }
       },
       "diff_pair_dimensions": [
@@ -55,7 +55,12 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [],
+      "drc_exclusions": [
+        "hole_clearance|135830000|93150000|1ac2752b-065d-4e05-98e4-a013f37c7bdf|75ebf5ef-4d6d-4bff-b183-5899817dab00",
+        "hole_clearance|135830000|93150000|1ac2752b-065d-4e05-98e4-a013f37c7bdf|d58dd737-bdf9-4fb9-af18-be76a7be6e77",
+        "hole_clearance|135830000|98950000|55ea2bb1-a6f7-4cf1-9f15-3a09bdd54aec|2e467e71-9824-4126-a657-37883743e599",
+        "hole_clearance|135830000|98950000|55ea2bb1-a6f7-4cf1-9f15-3a09bdd54aec|90043c10-4186-4f55-9b57-b728265565d6"
+      ],
       "meta": {
         "version": 2
       },
@@ -81,7 +86,7 @@
         "items_not_allowed": "error",
         "length_out_of_range": "error",
         "lib_footprint_issues": "warning",
-        "lib_footprint_mismatch": "warning",
+        "lib_footprint_mismatch": "ignore",
         "malformed_courtyard": "error",
         "microvia_drill_out_of_range": "error",
         "missing_courtyard": "ignore",

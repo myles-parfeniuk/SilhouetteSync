@@ -72,7 +72,7 @@
     (solder_paste_margin -0.02) (tstamp fc278bd7-5f64-40f5-90a5-bc7829fe837d))
   (pad "8" smd roundrect (at 0.7493 -0.750189) (size 0.67 0.3) (layers "F.Cu" "F.Paste" "F.Mask") (roundrect_rratio 0.1666666667)
     (solder_paste_margin -0.02) (tstamp 26264e81-d083-4283-b7d1-05ce34f98aaf))
-  (model "${KIPRJMOD}/downloaded_footprints/LM66200DRLR_step/DRL0008A.stp"
+  (model "${KIPRJMOD}/downloaded_footprints/LM66200DRLR_step/DRL0008A_P1line.step"
     (offset (xyz 0 0 0))
     (scale (xyz 1 1 1))
     (rotate (xyz 0 0 0))
