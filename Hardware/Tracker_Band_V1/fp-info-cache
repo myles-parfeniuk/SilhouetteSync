@@ -1,4 +1,4 @@
-22427968210666666
+22431386580695424
 00_tracker_fp
 AB_logo
 
@@ -34,6 +34,20 @@ OSC_ECS-1618-300-BN-TR
 0
 4
 4
+00_tracker_fp
+R_0402_1005Metric_2pos
+Resistor SMD 0402 (1005 Metric), 2 position
+resistor
+0
+3
+3
+00_tracker_fp
+R_0603_1608Metric_2pos
+Resistor SMD 0603 (1608 Metric), 2 position
+resistor
+0
+3
+3
 00_tracker_fp
 SOT-5X3_DRL_TEX-L
 
