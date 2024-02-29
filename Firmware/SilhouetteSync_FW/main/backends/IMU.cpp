@@ -2,6 +2,16 @@
 
 IMU::IMU(Device &d):
 d(d),
+imu(bno08x_config_t(SPI2_HOST,
+                     pin_imu_di,
+                     pin_imu_sda,
+                     pin_imu_scl,
+                     pin_imu_cs,
+                     pin_imu_hint,
+                     pin_imu_rst,
+                     GPIO_NUM_NC,
+                     2000000UL,
+                     false)),
 imu_state_event_group_hdl(xEventGroupCreate())
 {
     //follow device struct to check for current sensor mode
