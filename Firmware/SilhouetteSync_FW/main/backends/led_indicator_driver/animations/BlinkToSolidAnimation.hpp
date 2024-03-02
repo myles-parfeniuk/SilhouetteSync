@@ -2,15 +2,15 @@
 
 #include "../LedAnimation.hpp"
 
-class BlinkToSolidAnimation: public LedAnimation
+class BlinkToSolidAnimation : public LedAnimation
 {
     public:
-        BlinkToSolidAnimation(LedStrip &leds, EventGroupHandle_t &animation_event_group_hdl, uint8_t animation_bit, rgb_color_t color);
-        void animation_core() override; 
-    
+        BlinkToSolidAnimation(LedStrip& leds, uint8_t priority, rgb_color_t color);
+
     private:
-        rgb_color_t color; 
-        static const constexpr char *TAG = "BlinkToSolidAnimation";
-
+        void animation_timer_cb() override;
+        void start() override;
+        rgb_color_t color;
+        uint8_t blink_count;
+        static const constexpr char* TAG = "BlinkToSolidAnimation";
 };
-
