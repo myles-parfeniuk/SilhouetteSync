@@ -1,24 +1,23 @@
 #include "LedAnimation.hpp"
 
-LedAnimation::LedAnimation(LedStrip &leds, EventGroupHandle_t &animation_event_group_hdl, uint8_t animation_bit):
-leds(leds),
-animation_event_group_hdl(animation_event_group_hdl),
-animation_bit(animation_bit)
+LedAnimation::LedAnimation(LedStrip& leds, uint8_t priority)
+    : leds(leds)
+    , priority(priority)
 {
-
 }
 
 void LedAnimation::stop()
 {
-    xEventGroupClearBits(animation_event_group_hdl, animation_bit);
+    esp_timer_stop(animation_timer_hdl);
 }
 
-void LedAnimation::start()
+uint8_t LedAnimation::get_priority()
 {
-    xEventGroupSetBits(animation_event_group_hdl, animation_bit);
+    return priority;
 }
 
-uint8_t LedAnimation::get_animation_bit()
+void LedAnimation::animation_timer_cb_trampoline(void* arg)
 {
-    return animation_bit; 
+    LedAnimation* local_animation = (LedAnimation*) arg;
+    local_animation->animation_timer_cb();
 }

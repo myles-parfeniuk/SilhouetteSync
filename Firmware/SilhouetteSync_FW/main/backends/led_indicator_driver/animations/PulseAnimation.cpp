@@ -1,82 +1,84 @@
 #include "PulseAnimation.hpp"
 
-PulseAnimation::PulseAnimation(LedStrip &leds, EventGroupHandle_t &animation_event_group_hdl, uint8_t animation_bit, color_channels_t color_channels, color_multiplier_t multipliers):
-LedAnimation(leds, animation_event_group_hdl, animation_bit),
-color_channels(color_channels),
-multipliers(multipliers)
-{   
+PulseAnimation::PulseAnimation(LedStrip& leds, uint8_t priority, color_channels_t color_channels, color_multiplier_t multipliers)
+    : LedAnimation(leds, priority)
+    , color_channels(color_channels)
+    , multipliers(multipliers)
+    , red(0)
+    , green(0)
+    , blue(0)
+    , increasing_brightness(true)
+{
+    esp_timer_create_args_t animation_timer_args = {.callback = &this->animation_timer_cb_trampoline, .arg = this, .name = "PulseAnimationTimer"};
 
+    esp_timer_create(&animation_timer_args, &animation_timer_hdl);
 }
 
-void PulseAnimation::animation_core()
+void PulseAnimation::start()
 {
-    EventBits_t animation_bits;
-    int16_t red = 0;
-    int16_t green = 0; 
-    int16_t blue = 0; 
-    bool increasing_brightness = true;
+    red = 0;
+    green = 0;
+    blue = 0;
+    increasing_brightness = true;
+    esp_timer_start_periodic(animation_timer_hdl, 40000ULL);
+}
 
-    do
+void PulseAnimation::animation_timer_cb()
+{
+    leds.set_strip_color({(uint8_t) red, (uint8_t) green, (uint8_t) blue});
+    leds.write_pixel_buffer();
+
+    if (increasing_brightness)
     {
+        if (color_channels.red)
+            red += multipliers.red;
 
-        leds.set_strip_color({(uint8_t)red, (uint8_t)green, (uint8_t)blue});
-        leds.write_pixel_buffer(); 
+        if (color_channels.green)
+            green += multipliers.green;
 
-        if(increasing_brightness)
-        {
-            if(color_channels.red)
-                red+= multipliers.red;
+        if (color_channels.blue)
+            blue += multipliers.blue;
+    }
+    else
+    {
+        if (color_channels.red)
+            red -= multipliers.red;
 
-            if(color_channels.green)
-                green+= multipliers.green;
+        if (color_channels.green)
+            green -= multipliers.green;
 
-            if(color_channels.blue)
-                blue+= multipliers.blue;
-        }
+        if (color_channels.blue)
+            blue -= multipliers.blue;
+    }
+
+    if (red >= 80 || green >= 80 || blue >= 80)
+    {
+        increasing_brightness = false;
+    }
+    else if (red < 0 || green < 0 || blue < 0)
+    {
+        increasing_brightness = true;
+        red = 0;
+        green = 0;
+        blue = 0;
+    }
+
+    if (multipliers != (color_multiplier_t){1, 1, 1})
+    {
+        if (red > 40 || green > 40 || blue > 40)
+            esp_timer_restart(animation_timer_hdl, 20000ULL);
+        else if (red > 20 || green > 20 || blue > 20)
+            esp_timer_restart(animation_timer_hdl, 30000ULL);
         else
-        {
-            if(color_channels.red)
-                red-= multipliers.red;
-
-            if(color_channels.green)
-                green-= multipliers.green;
-
-            if(color_channels.blue)
-                blue-= multipliers.blue;
-        }
-
-        if(red >= 80 || green >= 80 || blue >= 80)
-        {
-            increasing_brightness = false;
-        }
-        else if(red < 0 || green < 0 || blue < 0)
-        {
-            increasing_brightness = true; 
-            red = 0;
-            green = 0; 
-            blue = 0; 
-        }
-        
-        if(multipliers != (color_multiplier_t){1, 1, 1})
-        {
-            if(red > 40 || green > 40 || blue > 40)
-                vTaskDelay(20/portTICK_PERIOD_MS);
-            else if(red > 20 || green > 20 || blue > 20)
-                vTaskDelay(30/portTICK_PERIOD_MS);
-            else
-                vTaskDelay(40/portTICK_PERIOD_MS);
-        }
+            esp_timer_restart(animation_timer_hdl, 40000ULL);
+    }
+    else
+    {
+        if (red > 40 || green > 40 || blue > 40)
+            esp_timer_restart(animation_timer_hdl, 10000ULL);
+        else if (red > 20 || green > 20 || blue > 20)
+            esp_timer_restart(animation_timer_hdl, 15000ULL);
         else
-        {
-            if(red > 40 || green > 40 || blue > 40)
-                vTaskDelay(10/portTICK_PERIOD_MS);
-            else if(red > 20 || green > 20 || blue > 20)
-                vTaskDelay(15/portTICK_PERIOD_MS);
-            else
-                vTaskDelay(20/portTICK_PERIOD_MS);
-        }
-
-        animation_bits = xEventGroupWaitBits(animation_event_group_hdl, animation_bit, pdFALSE, pdFALSE, 0);
-
-    } while (animation_bits & animation_bit);
+            esp_timer_restart(animation_timer_hdl, 20000ULL);
+    };
 }
