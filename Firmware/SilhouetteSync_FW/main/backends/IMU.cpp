@@ -43,10 +43,12 @@ IMU::IMU(Device& d)
     imu.initialize(); // initialize IMU unit
 
     // initialize imu game rotation vector and gyro
-    imu.enable_game_rotation_vector(50);
-    imu.enable_gyro(50);
+    imu.enable_game_rotation_vector(25);
+    imu.enable_gyro(25);
 
-    xTaskCreate(&imu_task_trampoline, "imu_task", 4096, this, 5, &imu_task_hdl);
+    xTaskCreate(&imu_task_trampoline, "imu_task", 4096, this, 7, &imu_task_hdl);
+
+    d.imu.state.set(IMUState::sample);
 }
 
 void IMU::imu_task_trampoline(void* arg)
@@ -75,7 +77,8 @@ void IMU::imu_task()
 void IMU::take_samples()
 {
     imu_data_t new_data;
-
+    imu.enable_game_rotation_vector(3);
+    imu.enable_gyro(3);
     do
     {
         if (imu.data_available())
@@ -102,8 +105,6 @@ void IMU::take_samples()
             // update device model with new data
             d.imu.data.set(new_data);
         }
-
-        vTaskDelay(5 / portTICK_PERIOD_MS);
 
         imu_state_bits = xEventGroupWaitBits(imu_state_event_group_hdl, ALL_IMU_STATE_BITS, pdFALSE, pdFALSE, 0);
 
@@ -166,7 +167,7 @@ bool IMU::calibration_routine()
             else
                 high_accuracy = 0;
 
-            if (high_accuracy > 10)
+            if (high_accuracy > 100)
             {
                 imu.save_calibration();
                 imu.request_calibration_status();

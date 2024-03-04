@@ -3,13 +3,14 @@
 // standard library includes
 #include <cmath>
 #include <vector>
+#include <iostream>
 // esp-idf includes
 #include "esp_log.h"
 
 // in-house includes
 #include "../../Device.hpp"
 #include "../../defs/pin_definitions.hpp"
-#include "../../defs/connection_defs.hpp"
+#include "../../defs/wireless_com_defs.hpp"
 #include "LedStrip.hpp"
 #include "LedAnimation.hpp"
 #include "animations/PulseAnimation.hpp"
@@ -21,16 +22,23 @@ class LedIndicator
         LedIndicator(Device& d);
 
     private:
+        enum class AnimationPriorities
+        {
+            lan_connection_status = 0, ///< show connection status animation group (failed_connection_animation, attempting_connection_animation)
+            calibration_status,        ///< show calibration animation
+            max
+        };
+
         Device d;
         LedStrip leds;
-        LedAnimation* active_animation;
-        std::vector<LedAnimation*> queued_animations;
-        PulseAnimation attempting_connection_animation;
-        BlinkToSolidAnimation connected_animation;
-        BlinkToSolidAnimation failed_connection_animation;
-        PulseAnimation calibration_animation;
-        void add_animation_to_queue(LedAnimation* new_animation);
-        void remove_animation_from_queue(uint8_t priority);
+        LedAnimation* active_anim;
+        std::vector<LedAnimation*> queued_anims;
+        PulseAnimation attempting_connection_anim;
+        BlinkToSolidAnimation connected_anim;
+        BlinkToSolidAnimation failed_connection_anim;
+        PulseAnimation calibration_anim;
+        void add_animation_to_queue(LedAnimation* new_anim);
+        void remove_animation_from_queue(AnimationPriorities priority);
         void play_next_animation();
 
         static const constexpr uint8_t LED_COUNT = 1;
