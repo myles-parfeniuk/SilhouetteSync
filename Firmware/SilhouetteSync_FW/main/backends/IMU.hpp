@@ -40,6 +40,7 @@ class IMU
         static const constexpr uint8_t SAMPLING_STATE_BIT = BIT1;
         static const constexpr uint8_t TARE_STATE_BIT = BIT2;
         static const constexpr uint8_t ALL_IMU_STATE_BITS = CALIBRATION_STATE_BIT | SAMPLING_STATE_BIT | TARE_STATE_BIT;
+
         static const constexpr char* TAG = "IMU"; ///<class tag, used in debug logs
 
         /**

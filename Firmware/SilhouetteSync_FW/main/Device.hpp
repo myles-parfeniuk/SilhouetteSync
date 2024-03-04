@@ -3,7 +3,7 @@
 // in-house includes
 #include "defs/imu_defs.hpp"
 #include "defs/pin_definitions.hpp"
-#include "defs/connection_defs.hpp"
+#include "defs/wireless_com_defs.hpp"
 #include "DataControl.hpp"
 
 /**
@@ -27,6 +27,7 @@ class Device
         } imu_t;
 
         Device();
+        DataControl::CallAlways<uint8_t> id;                                ///<Device id.
         imu_t imu;                                                          ///<Device IMU frontend.
         DataControl::CallAlways<LANConnectionStatus> lan_connection_status; ///<Current connection status of device to LAN
 };
