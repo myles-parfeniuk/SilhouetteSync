@@ -1003,7 +1003,7 @@
     (property "Value" "GSB3CN1130DSHR" (at -12.7 -35.56 0)
       (effects (font (size 1.27 1.27)) (justify left bottom))
     )
-    (property "Footprint" "00_tracker_fp:AMPHENOL_GSB3CN1130DSHR" (at 0 0 0)
+    (property "Footprint" "00_tracker_fp:AMPHENOL_GSB3CN1130DSHR_NEW1" (at 0 0 0)
       (effects (font (size 1.27 1.27)) (justify bottom) hide)
     )
     (property "Datasheet" "" (at 0 0 0)
@@ -1022,7 +1022,7 @@
       (effects (font (size 1.27 1.27)) (justify bottom) hide)
     )
     (symbol "GSB3CN1130DSHR_0_0"
-      (rectangle (start -12.7 -33.02) (end 12.7 15.24)
+      (rectangle (start -12.7 15.24) (end 12.7 -33.02)
         (stroke (width 0.254) (type default))
         (fill (type background))
       )
