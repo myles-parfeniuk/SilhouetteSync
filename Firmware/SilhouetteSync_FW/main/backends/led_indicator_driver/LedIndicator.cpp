@@ -3,11 +3,11 @@
 LedIndicator::LedIndicator(Device& d)
     : d(d)
     , leds({LED_COUNT, pin_leds_di})
-    , active_animation(nullptr)
-    , attempting_connection_animation(leds, 0, {true, true, false}, {2, 1, 1})
-    , connected_animation(leds, 0, {0, 30, 0})
-    , failed_connection_animation(leds, 0, {120, 0, 0})
-    , calibration_animation(leds, 1, {false, false, true})
+    , active_anim(nullptr)
+    , attempting_connection_anim(leds, static_cast<uint8_t>(AnimationPriorities::lan_connection_status), {true, true, false}, {2, 1, 1})
+    , connected_anim(leds, static_cast<uint8_t>(AnimationPriorities::lan_connection_status), {0, 30, 0})
+    , failed_connection_anim(leds, static_cast<uint8_t>(AnimationPriorities::lan_connection_status), {120, 0, 0})
+    , calibration_anim(leds, static_cast<uint8_t>(AnimationPriorities::calibration_status), {false, false, true})
 {
     d.lan_connection_status.follow(
             [this](LANConnectionStatus new_status)
@@ -16,19 +16,19 @@ LedIndicator::LedIndicator(Device& d)
                 {
                 case LANConnectionStatus::failed_connection:
                     ESP_LOGE(TAG, "FAILED");
-                    add_animation_to_queue(&failed_connection_animation);
+                    add_animation_to_queue(&failed_connection_anim);
                     play_next_animation();
                     break;
 
                 case LANConnectionStatus::attempting_connection:
                     ESP_LOGE(TAG, "ATTEMPTING");
-                    add_animation_to_queue(&attempting_connection_animation);
+                    add_animation_to_queue(&attempting_connection_anim);
                     play_next_animation();
                     break;
 
                 case LANConnectionStatus::connected:
                     ESP_LOGE(TAG, "CONNECTED");
-                    add_animation_to_queue(&connected_animation);
+                    add_animation_to_queue(&connected_anim);
                     play_next_animation();
                     break;
 
@@ -43,12 +43,12 @@ LedIndicator::LedIndicator(Device& d)
             {
                 if (new_state == IMUState::calibrate)
                 {
-                    add_animation_to_queue(&calibration_animation);
+                    add_animation_to_queue(&calibration_anim);
                     play_next_animation();
                 }
                 else
                 {
-                    remove_animation_from_queue(1);
+                    remove_animation_from_queue(AnimationPriorities::calibration_status);
                     play_next_animation();
                 }
             });
@@ -58,34 +58,34 @@ void LedIndicator::add_animation_to_queue(LedAnimation* new_animation)
 {
     bool found = false;
 
-    if (queued_animations.size() != 0)
+    if (queued_anims.size() != 0)
     {
-        for (int i = 0; i < queued_animations.size(); i++)
+        for (int i = 0; i < queued_anims.size(); i++)
         {
-            if (queued_animations.at(i)->get_priority() == new_animation->get_priority())
+            if (queued_anims.at(i)->get_priority() == new_animation->get_priority())
             {
-                queued_animations.at(i) = new_animation;
+                queued_anims.at(i) = new_animation;
                 found = true;
             }
         }
 
         if (!found)
-            queued_animations.push_back(new_animation);
+            queued_anims.push_back(new_animation);
     }
     else
     {
-        queued_animations.push_back(new_animation);
+        queued_anims.push_back(new_animation);
     }
 }
 
-void LedIndicator::remove_animation_from_queue(uint8_t priority)
+void LedIndicator::remove_animation_from_queue(AnimationPriorities priority)
 {
-    if (queued_animations.size() != 0)
+    if (queued_anims.size() != 0)
     {
-        for (int i = 0; i < queued_animations.size(); i++)
+        for (int i = 0; i < queued_anims.size(); i++)
         {
-            if (queued_animations.at(i)->get_priority() == priority)
-                queued_animations.erase(queued_animations.begin() + i);
+            if (static_cast<AnimationPriorities>(queued_anims.at(i)->get_priority()) == priority)
+                queued_anims.erase(queued_anims.begin() + i);
         }
     }
 }
@@ -94,24 +94,24 @@ void LedIndicator::play_next_animation()
 {
     uint8_t highest_priority = 0;
     uint8_t index = 0;
-    if (queued_animations.size() != 0)
+    if (queued_anims.size() != 0)
     {
-        for (int i = 0; i < queued_animations.size(); i++)
+        for (int i = 0; i < queued_anims.size(); i++)
         {
-            if (queued_animations.at(i)->get_priority() > highest_priority)
+            if (queued_anims.at(i)->get_priority() > highest_priority)
             {
-                highest_priority = queued_animations.at(i)->get_priority();
+                highest_priority = queued_anims.at(i)->get_priority();
                 index = i;
             }
         }
 
-        if (queued_animations.at(index) != active_animation)
+        if (queued_anims.at(index) != active_anim)
         {
-            if (active_animation != nullptr)
-                active_animation->stop();
+            if (active_anim != nullptr)
+                active_anim->stop();
 
-            active_animation = queued_animations.at(index);
-            active_animation->start();
+            active_anim = queued_anims.at(index);
+            active_anim->start();
         }
     }
 }
