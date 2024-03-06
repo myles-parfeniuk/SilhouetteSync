@@ -27,7 +27,10 @@ class Device
         } imu_t;
 
         Device();
-        DataControl::CallAlways<uint8_t> id;                                ///<Device id.
+        DataControl::CallAlways<uint64_t> id;                                ///<Device id (unique MAC address).
         imu_t imu;                                                          ///<Device IMU frontend.
         DataControl::CallAlways<LANConnectionStatus> lan_connection_status; ///<Current connection status of device to LAN
+
+        private:
+        uint32_t get_hardware_id();
 };

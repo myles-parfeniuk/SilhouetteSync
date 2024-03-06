@@ -16,7 +16,7 @@ typedef struct payload_t
 {
         uint8_t request;
         uint8_t response;
-        uint8_t id;
+        uint64_t id;
         float quat_i;
         float quat_j;
         float quat_k;

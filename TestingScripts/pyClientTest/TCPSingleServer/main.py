@@ -18,7 +18,7 @@ class Payload(Structure):
 imu_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 # when the esp-32 boots up the TCPServer firmware will print an ip & port number over the serial console, check that, it will remain static until the device is reflashed
-host = '192.168.1.90'
+host = '192.168.1.96'
 port = 49160
 server_address = (host, port)
 # Connect the socket to the port where the server is listening
