@@ -25,7 +25,7 @@ class Responses(Enum):
 class Payload(Structure):
     _fields_ = [("request", c_uint8),
                 ("response", c_uint8),
-                ("id", c_uint8),
+                ("id", c_uint64),
                 ("quat_i", c_float),
                 ("quat_j", c_float),
                 ("quat_k", c_float),
@@ -76,7 +76,7 @@ def print_packet(payload_in, payload_out, current_time, prev_time):
     timestamp = "N/A"
     request = Requests(payload_out.request).name
     response = Responses(payload_out.response).name
-    id_value = "{:d}".format(payload_out.id)
+    id_value = "0x{:X}".format(payload_out.id)
     quat_i = "{:.4f}".format(payload_out.quat_i)
     quat_j = "{:.4f}".format(payload_out.quat_j)
     quat_k = "{:.4f}".format(payload_out.quat_k)
@@ -88,7 +88,7 @@ def print_packet(payload_in, payload_out, current_time, prev_time):
     timestamp = "{:.4f}".format((current_time - prev_time)/1000)
     request = Requests(payload_in.request).name
     response = Responses(payload_in.response).name
-    id_value = "{:d}".format(payload_in.id)
+    id_value = "0x{:X}".format(payload_in.id)
     quat_i = "{:.4f}".format(payload_in.quat_i)
     quat_j = "{:.4f}".format(payload_in.quat_j)
     quat_k = "{:.4f}".format(payload_in.quat_k)
