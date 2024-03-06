@@ -53,4 +53,4 @@ enum class Responses
     sampling = 0
 };
 
-static const constexpr uint8_t RETRANSMIT_DELAY_MS = 7;
+static const constexpr uint8_t RETRANSMIT_DELAY_MS = 15;

@@ -43,8 +43,8 @@ IMU::IMU(Device& d)
     imu.initialize(); // initialize IMU unit
 
     // initialize imu game rotation vector and gyro
-    imu.enable_game_rotation_vector(25);
-    imu.enable_gyro(25);
+    imu.enable_game_rotation_vector(ROTATION_VECTOR_REPORT_PERIOD_US);
+    //imu.enable_gyro(GYRO_REPORT_PERIOD_US);
 
     xTaskCreate(&imu_task_trampoline, "imu_task", 4096, this, 7, &imu_task_hdl);
 
@@ -77,8 +77,8 @@ void IMU::imu_task()
 void IMU::take_samples()
 {
     imu_data_t new_data;
-    imu.enable_game_rotation_vector(3);
-    imu.enable_gyro(3);
+    imu.enable_game_rotation_vector(ROTATION_VECTOR_REPORT_PERIOD_US);
+    //imu.enable_gyro(GYRO_REPORT_PERIOD_US);
     do
     {
         if (imu.data_available())
@@ -137,10 +137,10 @@ bool IMU::calibration_routine()
     imu.calibrate_all(); // Turn on cal for Accel, Gyro, and Mag
 
     // Enable Game Rotation Vector output
-    imu.enable_game_rotation_vector(50); // Send data update every 100ms
+    imu.enable_game_rotation_vector(25); // Send data update every 25ms
 
     // Enable Magnetic Field output
-    imu.enable_magnetometer(50); // Send data update every 100ms
+    imu.enable_magnetometer(25); // Send data update every 25ms
 
     vTaskDelay(80 / portTICK_PERIOD_MS);
 
@@ -182,6 +182,7 @@ bool IMU::calibration_routine()
                         if (imu.calibration_complete())
                         {
                             ESP_LOGW(TAG, "Calibration data successfully stored.");
+                            imu.disable_magnetometer(); 
                             return true;
                         }
                         else
@@ -198,6 +199,7 @@ bool IMU::calibration_routine()
                 if (save_calibration_attempt >= 20)
                     ESP_LOGE(TAG, "Calibration data failed to store.");
 
+                imu.disable_magnetometer(); 
                 return false;
             }
         }
