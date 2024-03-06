@@ -41,6 +41,8 @@ class IMU
         static const constexpr uint8_t TARE_STATE_BIT = BIT2;
         static const constexpr uint8_t ALL_IMU_STATE_BITS = CALIBRATION_STATE_BIT | SAMPLING_STATE_BIT | TARE_STATE_BIT;
 
+        static const constexpr uint32_t ROTATION_VECTOR_REPORT_PERIOD_US = 5000;
+        static const constexpr uint32_t GYRO_REPORT_PERIOD_US = 1000;
         static const constexpr char* TAG = "IMU"; ///<class tag, used in debug logs
 
         /**
