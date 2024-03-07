@@ -55,7 +55,22 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [],
+      "drc_exclusions": [
+        "hole_clearance|118300000|71190000|53149827-06d0-4a80-a9d4-7266f632f27a|4857bbf2-6293-4f34-8d3e-857a9d876dde",
+        "hole_clearance|118700000|78810000|5e948c8f-5d9b-4403-a023-2456998ff020|2a167f70-4dc8-49df-8fef-2d27e1e800b8",
+        "hole_clearance|139800000|71190000|491af93d-ddea-49f7-a98d-b40476291064|cac6316c-589e-474d-b68e-6121e02b07c1",
+        "hole_clearance|140200000|78810000|c09c3ee3-b380-411a-9aac-5220eb4f2e16|3a0e28f7-d87e-4224-997f-cbf2655d27e2",
+        "hole_clearance|161300000|71190000|288dd762-55dc-4f93-9b45-bffc494d823d|807345ce-43fa-4eea-93d3-915799f51f26",
+        "hole_clearance|161700000|78810000|6db92e36-1804-49da-a750-cfd9111a9c4d|ae168c6e-82d9-4cf5-9e6c-0d74eb5cb266",
+        "hole_clearance|182800000|71190000|6e00eae5-fece-489e-8888-7173cdaaa781|f9b83454-8742-4962-a6b2-0118f775cd83",
+        "hole_clearance|183200000|78810000|71d58b20-6d4f-41ff-96a1-f41db73a3ff8|8d48bd68-619c-4b88-aeec-dcffb3b31885",
+        "hole_clearance|96800000|71190000|4157a756-ca67-4f9c-83e8-477bc3961a33|6a79d4b4-b7bb-4f32-a9dd-5fae436746c6",
+        "hole_clearance|97200000|78810000|9aa84373-37f8-4b5c-aaae-c16bb2af54f5|1cdaf34e-95bf-4890-8e4b-73b2e8d03176",
+        "hole_clearance|97295000|108350000|857bb4f5-32ab-40a3-bee7-af3d3a6268d6|53b60e1e-8816-4bb8-a7f2-b95c92cde10c",
+        "hole_clearance|97295000|108350000|857bb4f5-32ab-40a3-bee7-af3d3a6268d6|b76a9689-eac5-4988-956a-5b190264a12b",
+        "hole_clearance|97295000|114150000|d441e4d1-9ee3-43da-a1c7-812f67c24343|1c2ec49a-f536-4ef1-8656-7586c6709d80",
+        "hole_clearance|97295000|114150000|d441e4d1-9ee3-43da-a1c7-812f67c24343|70771e84-5b00-46fd-a85c-21b81d7e2bfa"
+      ],
       "meta": {
         "version": 2
       },
@@ -407,7 +422,7 @@
       "pin_not_connected": "error",
       "pin_not_driven": "error",
       "pin_to_pin": "error",
-      "power_pin_not_driven": "error",
+      "power_pin_not_driven": "ignore",
       "similar_labels": "warning",
       "simulation_model_issue": "ignore",
       "unannotated": "error",
