@@ -5803,6 +5803,10 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid e4bb3aa6-2b4e-4ad7-b8f1-296639b5bf23)
   )
+  (text "Crystal load cap = 18p\n27^2/2(27)+5 = 18.5p" (at 417.83 172.72 0)
+    (effects (font (size 1.27 1.27)) (justify left bottom))
+    (uuid e6e8cbed-0f19-4289-a77c-b28d88a50cb7)
+  )
   (text "USART2" (at 481.33 118.11 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid fec056e7-cc52-40f7-9f8b-84ff9dd08efc)
@@ -6354,7 +6358,7 @@
   )
 
   (symbol (lib_id "Jumper:SolderJumper_3_Open") (at 209.55 332.74 90) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
+    (in_bom no) (on_board yes) (dnp no)
     (uuid 074e514c-b6e1-4461-b750-473fa226c4ca)
     (property "Reference" "JP3" (at 214.63 330.2 90)
       (effects (font (size 1.27 1.27)) (justify left))
@@ -6464,7 +6468,7 @@
   )
 
   (symbol (lib_id "00_tracker_sym:LOGO_MISC") (at 128.27 217.17 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (in_bom no) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 0a0cb287-e6f9-4fe4-aff7-0a9a7b195d81)
     (property "Reference" "LG4" (at 134.62 219.71 0)
       (effects (font (size 1.27 1.27)) (justify left))
@@ -6732,7 +6736,7 @@
   )
 
   (symbol (lib_id "Mechanical:MountingHole_Pad") (at 102.87 208.28 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (in_bom no) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 0fa2bcd2-5ca7-4330-adaa-43d05c3a23be)
     (property "Reference" "H1" (at 105.41 205.74 0)
       (effects (font (size 1.27 1.27)) (justify left))
@@ -7078,7 +7082,7 @@
   )
 
   (symbol (lib_id "Mechanical:MountingHole_Pad") (at 102.87 215.9 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (in_bom no) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 1c2eb5f6-a7c6-4480-b617-a9b1292cc688)
     (property "Reference" "H2" (at 105.41 213.36 0)
       (effects (font (size 1.27 1.27)) (justify left))
@@ -7217,7 +7221,7 @@
   )
 
   (symbol (lib_id "Mechanical:MountingHole_Pad") (at 113.03 208.28 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (in_bom no) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 25dcb6e5-00d9-4ac6-8b42-20ccbdff6c93)
     (property "Reference" "H4" (at 115.57 205.74 0)
       (effects (font (size 1.27 1.27)) (justify left))
@@ -7572,7 +7576,7 @@
   )
 
   (symbol (lib_id "Jumper:SolderJumper_3_Open") (at 322.58 332.74 90) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
+    (in_bom no) (on_board yes) (dnp no)
     (uuid 31258ee9-30c7-43a8-b2a8-c19d5d257512)
     (property "Reference" "JP4" (at 327.66 330.2 90)
       (effects (font (size 1.27 1.27)) (justify left))
@@ -7599,7 +7603,7 @@
   )
 
   (symbol (lib_id "Mechanical:MountingHole_Pad") (at 113.03 223.52 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (in_bom no) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 31376a41-f06d-41ba-bfbb-5fdb1f811e7e)
     (property "Reference" "H6" (at 115.57 220.98 0)
       (effects (font (size 1.27 1.27)) (justify left))
@@ -7903,7 +7907,7 @@
   )
 
   (symbol (lib_id "00_tracker_sym:LOGO_MISC") (at 128.27 204.47 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (in_bom no) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 3f3268cd-50dd-4fbf-b523-0b5ae1392bca)
     (property "Reference" "LG2" (at 134.62 207.01 0)
       (effects (font (size 1.27 1.27)) (justify left))
@@ -8433,7 +8437,7 @@
   )
 
   (symbol (lib_id "Mechanical:MountingHole_Pad") (at 102.87 223.52 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (in_bom no) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 5076d2ce-87cb-4db5-ba0b-e2efc50397d9)
     (property "Reference" "H3" (at 105.41 220.98 0)
       (effects (font (size 1.27 1.27)) (justify left))
@@ -9100,7 +9104,7 @@
   )
 
   (symbol (lib_id "Jumper:SolderJumper_3_Open") (at 96.52 332.74 90) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
+    (in_bom no) (on_board yes) (dnp no)
     (uuid 6f44115d-8b0f-4cb9-81a2-52676413373b)
     (property "Reference" "JP2" (at 101.6 330.2 90)
       (effects (font (size 1.27 1.27)) (justify left))
@@ -9297,7 +9301,7 @@
   )
 
   (symbol (lib_id "Mechanical:MountingHole_Pad") (at 113.03 215.9 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (in_bom no) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 751400fe-b119-45ff-b92f-d4d11847c299)
     (property "Reference" "H5" (at 115.57 213.36 0)
       (effects (font (size 1.27 1.27)) (justify left))
@@ -9997,7 +10001,7 @@
   )
 
   (symbol (lib_id "00_tracker_sym:LOGO_MISC") (at 128.27 229.87 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (in_bom no) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 8d03f5f3-e2ca-423b-80b9-65217ef5c72c)
     (property "Reference" "LG6" (at 134.62 232.41 0)
       (effects (font (size 1.27 1.27)) (justify left))
@@ -10185,7 +10189,7 @@
   )
 
   (symbol (lib_id "Jumper:SolderJumper_3_Open") (at 435.61 332.74 90) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
+    (in_bom no) (on_board yes) (dnp no)
     (uuid 91aafa91-6e0b-4e17-909c-acf6571c2e51)
     (property "Reference" "JP5" (at 440.69 330.2 90)
       (effects (font (size 1.27 1.27)) (justify left))
@@ -11729,7 +11733,7 @@
   )
 
   (symbol (lib_id "00_tracker_sym:LOGO_MISC") (at 128.27 223.52 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (in_bom no) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid c591cf3c-fa85-4ccf-a4e0-4d9493af6c6f)
     (property "Reference" "LG5" (at 134.62 226.06 0)
       (effects (font (size 1.27 1.27)) (justify left))
@@ -12594,7 +12598,7 @@
   )
 
   (symbol (lib_id "00_tracker_sym:LOGO_MISC") (at 128.27 210.82 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (in_bom no) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid e553847e-c403-42ae-95ec-2a03667260b5)
     (property "Reference" "LG3" (at 134.62 213.36 0)
       (effects (font (size 1.27 1.27)) (justify left))
@@ -12906,7 +12910,7 @@
   )
 
   (symbol (lib_id "Jumper:SolderJumper_3_Open") (at 250.19 196.85 90) (mirror x) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
+    (in_bom no) (on_board yes) (dnp no)
     (uuid ef720ced-8a44-4651-88d1-3137c73ab680)
     (property "Reference" "JP1" (at 256.54 194.31 90)
       (effects (font (size 1.27 1.27)) (justify left))
@@ -12958,7 +12962,7 @@
   )
 
   (symbol (lib_id "00_tracker_sym:AB_LOGO") (at 571.5 379.73 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
+    (in_bom no) (on_board yes) (dnp no)
     (uuid f17557a4-1f49-4a83-b52c-784761cf54b2)
     (property "Reference" "LG1" (at 568.96 379.73 0)
       (effects (font (size 1.27 1.27)) (justify left))
@@ -13092,7 +13096,7 @@
   )
 
   (symbol (lib_id "Jumper:SolderJumper_3_Open") (at 548.64 332.74 90) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
+    (in_bom no) (on_board yes) (dnp no)
     (uuid f4bc2feb-5c26-400b-95aa-99562cb18572)
     (property "Reference" "JP6" (at 553.72 330.2 90)
       (effects (font (size 1.27 1.27)) (justify left))

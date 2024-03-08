@@ -1,0 +1,3336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="E">
+  <design>
+    <source>C:\Users\Anton\Documents\GitHub_Projs\sil-sync-hw-local\Tracker_Charger_V1\Tracker_Charger_V1.kicad_sch</source>
+    <date>3/7/2024 7:48:13 PM</date>
+    <tool>Eeschema 7.0.10</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title>SilhouetteSync Charger V1</title>
+        <company>BCIT BENG 2024</company>
+        <rev>1</rev>
+        <date>2024-02-27</date>
+        <source>Tracker_Charger_V1.kicad_sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value="HW Designer: Anton B"/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="C1">
+      <value>0.1u</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Class">X7R</field>
+        <field name="Size">0402</field>
+        <field name="Voltage">25V</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Voltage" value="25V"/>
+      <property name="Class" value="X7R"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>0a3b833c-08a7-472a-9cf8-aca68dff5791</tstamps>
+    </comp>
+    <comp ref="C2">
+      <value>10u</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <fields>
+        <field name="Class">X7R</field>
+        <field name="Size">0805</field>
+        <field name="Voltage">10V</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Voltage" value="10V"/>
+      <property name="Class" value="X7R"/>
+      <property name="Size" value="0805"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>4838c16a-78df-4f71-b0cd-92b1b5b23e84</tstamps>
+    </comp>
+    <comp ref="C3">
+      <value>10u</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <fields>
+        <field name="Class">X7R</field>
+        <field name="Size">0805</field>
+        <field name="Voltage">10V</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Voltage" value="10V"/>
+      <property name="Class" value="X7R"/>
+      <property name="Size" value="0805"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>416f6d21-febf-4fc9-8c1f-fa4c9bd6cc8e</tstamps>
+    </comp>
+    <comp ref="C4">
+      <value>0.1u</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Class">X7R</field>
+        <field name="Size">0402</field>
+        <field name="Voltage">25V</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Voltage" value="25V"/>
+      <property name="Class" value="X7R"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>92d0b49c-e274-458c-bc0a-cd17720409a8</tstamps>
+    </comp>
+    <comp ref="C5">
+      <value>10u</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <fields>
+        <field name="Class">X7R</field>
+        <field name="Size">0805</field>
+        <field name="Voltage">10V</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Voltage" value="10V"/>
+      <property name="Class" value="X7R"/>
+      <property name="Size" value="0805"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>690e1992-052e-48d9-a854-82b3f8bfbc35</tstamps>
+    </comp>
+    <comp ref="C6">
+      <value>0.1u</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Class">X7R</field>
+        <field name="Size">0402</field>
+        <field name="Voltage">25V</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Voltage" value="25V"/>
+      <property name="Class" value="X7R"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>7c3c18fb-742b-446e-8390-f52c2596a973</tstamps>
+    </comp>
+    <comp ref="C7">
+      <value>0.1u</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Class">X7R</field>
+        <field name="Size">0402</field>
+        <field name="Voltage">25V</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Voltage" value="25V"/>
+      <property name="Class" value="X7R"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>06613fdd-a824-44ec-9e8c-31612ad225aa</tstamps>
+    </comp>
+    <comp ref="C8">
+      <value>10u</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <fields>
+        <field name="Class">X7R</field>
+        <field name="Size">0805</field>
+        <field name="Voltage">10V</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Voltage" value="10V"/>
+      <property name="Class" value="X7R"/>
+      <property name="Size" value="0805"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>3b6661af-0dab-4f18-852d-d0445875ee25</tstamps>
+    </comp>
+    <comp ref="C9">
+      <value>0.1u</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Class">X7R</field>
+        <field name="Size">0402</field>
+        <field name="Voltage">25V</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Voltage" value="25V"/>
+      <property name="Class" value="X7R"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>47e5b72c-6183-46c4-a116-ab040bab5609</tstamps>
+    </comp>
+    <comp ref="C10">
+      <value>0.1u</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Class">X7R</field>
+        <field name="Size">0402</field>
+        <field name="Voltage">25V</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Voltage" value="25V"/>
+      <property name="Class" value="X7R"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>2231b49c-52dd-4ce8-af4f-8a7ca73de946</tstamps>
+    </comp>
+    <comp ref="C11">
+      <value>10u</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <fields>
+        <field name="Class">X7R</field>
+        <field name="Size">0805</field>
+        <field name="Voltage">10V</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Voltage" value="10V"/>
+      <property name="Class" value="X7R"/>
+      <property name="Size" value="0805"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>a25b5d62-e658-440e-b78d-e2c270e932cf</tstamps>
+    </comp>
+    <comp ref="C12">
+      <value>47p</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Class">C0G</field>
+        <field name="Size">0402</field>
+        <field name="Voltage">25V</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Voltage" value="25V"/>
+      <property name="Class" value="C0G"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>18b141f3-2a16-45d2-9e4b-f65989aaa28f</tstamps>
+    </comp>
+    <comp ref="C13">
+      <value>0.1u</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Class">X7R</field>
+        <field name="Size">0402</field>
+        <field name="Voltage">25V</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Voltage" value="25V"/>
+      <property name="Class" value="X7R"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>6648576f-c776-4923-91be-81ae15fcf056</tstamps>
+    </comp>
+    <comp ref="C14">
+      <value>47p</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Class">C0G</field>
+        <field name="Size">0402</field>
+        <field name="Voltage">25V</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Voltage" value="25V"/>
+      <property name="Class" value="C0G"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>9b95a998-d918-4ced-93d4-db4c7d3b369d</tstamps>
+    </comp>
+    <comp ref="C15">
+      <value>0.1u</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Class">X7R</field>
+        <field name="Size">0402</field>
+        <field name="Voltage">25V</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Voltage" value="25V"/>
+      <property name="Class" value="X7R"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>96452836-cb11-4ee5-926c-181ae5d4ac6f</tstamps>
+    </comp>
+    <comp ref="C16">
+      <value>0.1u</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Class">X7R</field>
+        <field name="Size">0402</field>
+        <field name="Voltage">25V</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Voltage" value="25V"/>
+      <property name="Class" value="X7R"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>ebe7904e-404e-4ca4-94ec-f9e71272896c</tstamps>
+    </comp>
+    <comp ref="C17">
+      <value>0.1u</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Class">X7R</field>
+        <field name="Size">0402</field>
+        <field name="Voltage">25V</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Voltage" value="25V"/>
+      <property name="Class" value="X7R"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>7242f6af-0a0a-4531-a5bd-ee92763450b5</tstamps>
+    </comp>
+    <comp ref="C18">
+      <value>0.1u</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Class">X7R</field>
+        <field name="Size">0402</field>
+        <field name="Voltage">25V</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Voltage" value="25V"/>
+      <property name="Class" value="X7R"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>f76302a0-81f6-49e4-a151-47f48ad35ccf</tstamps>
+    </comp>
+    <comp ref="C19">
+      <value>0.1u</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Class">X7R</field>
+        <field name="Size">0402</field>
+        <field name="Voltage">25V</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Voltage" value="25V"/>
+      <property name="Class" value="X7R"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>f36902a8-1023-4b10-90c5-f5aff4ae1385</tstamps>
+    </comp>
+    <comp ref="C20">
+      <value>0.1u</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Class">X7R</field>
+        <field name="Size">0402</field>
+        <field name="Voltage">25V</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Voltage" value="25V"/>
+      <property name="Class" value="X7R"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>96eb49c4-5ead-4bdc-a778-5a9ef5e2180c</tstamps>
+    </comp>
+    <comp ref="C21">
+      <value>0.1u</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Class">X7R</field>
+        <field name="Size">0402</field>
+        <field name="Voltage">25V</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Voltage" value="25V"/>
+      <property name="Class" value="X7R"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>c94ce254-8f01-49ff-8bcd-01efc2723168</tstamps>
+    </comp>
+    <comp ref="C22">
+      <value>27p</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>341b3d13-c975-4d43-a2ec-b7cebbd9eed8</tstamps>
+    </comp>
+    <comp ref="C23">
+      <value>27p</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>ac9423dd-0359-42ff-84d9-e4a39e2668a6</tstamps>
+    </comp>
+    <comp ref="C24">
+      <value>1u</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Class">X7R</field>
+        <field name="Size">0402</field>
+        <field name="Voltage">10V</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Voltage" value="10V"/>
+      <property name="Class" value="X7R"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>c7935f04-db19-49c1-af26-9e8e74854dd1</tstamps>
+    </comp>
+    <comp ref="C25">
+      <value>0.1u</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Class">X7R</field>
+        <field name="Size">0402</field>
+        <field name="Voltage">25V</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Voltage" value="25V"/>
+      <property name="Class" value="X7R"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>14d4b702-1b97-4da2-8b77-05dd738152b5</tstamps>
+    </comp>
+    <comp ref="C26">
+      <value>0.1u</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Class">X7R</field>
+        <field name="Size">0402</field>
+        <field name="Voltage">25V</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Voltage" value="25V"/>
+      <property name="Class" value="X7R"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>451eb3a9-a957-4d41-b0f4-0a54e0cd505e</tstamps>
+    </comp>
+    <comp ref="C27">
+      <value>0.1u</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Class">X7R</field>
+        <field name="Size">0402</field>
+        <field name="Voltage">25V</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Voltage" value="25V"/>
+      <property name="Class" value="X7R"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>07107e26-c782-4540-ad54-2a3fee2340e1</tstamps>
+    </comp>
+    <comp ref="C28">
+      <value>0.1u</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Class">X7R</field>
+        <field name="Size">0402</field>
+        <field name="Voltage">25V</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Voltage" value="25V"/>
+      <property name="Class" value="X7R"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>75d151c2-19df-4fcb-9739-63021ad98a51</tstamps>
+    </comp>
+    <comp ref="C29">
+      <value>0.1u</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Class">X7R</field>
+        <field name="Size">0402</field>
+        <field name="Voltage">25V</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Voltage" value="25V"/>
+      <property name="Class" value="X7R"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>d26f641e-9482-4f20-bac2-866e6e90bd4c</tstamps>
+    </comp>
+    <comp ref="C30">
+      <value>0.1u</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Class">X7R</field>
+        <field name="Size">0402</field>
+        <field name="Voltage">25V</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Voltage" value="25V"/>
+      <property name="Class" value="X7R"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>eeb58108-5a56-48c5-9233-6e11aa154146</tstamps>
+    </comp>
+    <comp ref="C31">
+      <value>0.1u</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Class">X7R</field>
+        <field name="Size">0402</field>
+        <field name="Voltage">25V</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Voltage" value="25V"/>
+      <property name="Class" value="X7R"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>281c92f3-f3f9-4e52-b3d3-57719e86d5af</tstamps>
+    </comp>
+    <comp ref="C32">
+      <value>0.1u</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Class">X7R</field>
+        <field name="Size">0402</field>
+        <field name="Voltage">25V</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Voltage" value="25V"/>
+      <property name="Class" value="X7R"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>3b8a594c-0108-421c-bd35-ea175963371a</tstamps>
+    </comp>
+    <comp ref="C33">
+      <value>0.1u</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Class">X7R</field>
+        <field name="Size">0402</field>
+        <field name="Voltage">25V</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Voltage" value="25V"/>
+      <property name="Class" value="X7R"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>8ede9539-4c0f-46c6-a79c-cd461381a11c</tstamps>
+    </comp>
+    <comp ref="C34">
+      <value>0.1u</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Class">X7R</field>
+        <field name="Size">0402</field>
+        <field name="Voltage">25V</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Voltage" value="25V"/>
+      <property name="Class" value="X7R"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>faebfa58-817f-4290-a492-864a5fe9f7b1</tstamps>
+    </comp>
+    <comp ref="C35">
+      <value>0.1u</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Class">X7R</field>
+        <field name="Size">0402</field>
+        <field name="Voltage">25V</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Voltage" value="25V"/>
+      <property name="Class" value="X7R"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>800c6b4e-383f-4a05-83cf-ecafd1790a17</tstamps>
+    </comp>
+    <comp ref="C36">
+      <value>0.1u</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Class">X7R</field>
+        <field name="Size">0402</field>
+        <field name="Voltage">25V</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Voltage" value="25V"/>
+      <property name="Class" value="X7R"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>a272a119-1ee7-4125-ac41-a91e7083ea95</tstamps>
+    </comp>
+    <comp ref="C37">
+      <value>0.1u</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Class">X7R</field>
+        <field name="Size">0402</field>
+        <field name="Voltage">25V</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Voltage" value="25V"/>
+      <property name="Class" value="X7R"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>fb2ab390-67e4-4327-b339-f6b7d9fb6d66</tstamps>
+    </comp>
+    <comp ref="C38">
+      <value>0.1u</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Class">X7R</field>
+        <field name="Size">0402</field>
+        <field name="Voltage">25V</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Voltage" value="25V"/>
+      <property name="Class" value="X7R"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>9ba5a118-3fc4-4d27-a87d-dc5f77a15efa</tstamps>
+    </comp>
+    <comp ref="C39">
+      <value>0.1u</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Class">X7R</field>
+        <field name="Size">0402</field>
+        <field name="Voltage">25V</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Voltage" value="25V"/>
+      <property name="Class" value="X7R"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>0ec9372a-6922-44b4-9c7f-28ab144b52ec</tstamps>
+    </comp>
+    <comp ref="C40">
+      <value>0.1u</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Class">X7R</field>
+        <field name="Size">0402</field>
+        <field name="Voltage">25V</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Voltage" value="25V"/>
+      <property name="Class" value="X7R"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>7ef33e74-bcd6-47e3-9bac-c44a6c173575</tstamps>
+    </comp>
+    <comp ref="C41">
+      <value>0.1u</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Class">X7R</field>
+        <field name="Size">0402</field>
+        <field name="Voltage">25V</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Voltage" value="25V"/>
+      <property name="Class" value="X7R"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>14195e92-60c8-4824-ae78-4574b2031c5c</tstamps>
+    </comp>
+    <comp ref="C42">
+      <value>0.1u</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Class">X7R</field>
+        <field name="Size">0402</field>
+        <field name="Voltage">25V</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Voltage" value="25V"/>
+      <property name="Class" value="X7R"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>d7fbff97-332f-4353-8768-f8a6db5f42ff</tstamps>
+    </comp>
+    <comp ref="C43">
+      <value>0.1u</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Class">X7R</field>
+        <field name="Size">0402</field>
+        <field name="Voltage">25V</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Voltage" value="25V"/>
+      <property name="Class" value="X7R"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>c5239c62-c0fe-4240-ac77-44df71a7c400</tstamps>
+    </comp>
+    <comp ref="C44">
+      <value>0.1u</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Class">X7R</field>
+        <field name="Size">0402</field>
+        <field name="Voltage">25V</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Voltage" value="25V"/>
+      <property name="Class" value="X7R"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>85bb0b97-5e30-4469-933e-c02f40ba2350</tstamps>
+    </comp>
+    <comp ref="C45">
+      <value>0.1u</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Class">X7R</field>
+        <field name="Size">0402</field>
+        <field name="Voltage">25V</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Voltage" value="25V"/>
+      <property name="Class" value="X7R"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>0e621e30-d00e-41f6-944d-7a81334bf7d6</tstamps>
+    </comp>
+    <comp ref="C46">
+      <value>0.1u</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Class">X7R</field>
+        <field name="Size">0402</field>
+        <field name="Voltage">25V</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Voltage" value="25V"/>
+      <property name="Class" value="X7R"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>2f60a986-a181-4c6a-bd46-2abdbfd79469</tstamps>
+    </comp>
+    <comp ref="C47">
+      <value>0.1u</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Class">X7R</field>
+        <field name="Size">0402</field>
+        <field name="Voltage">25V</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Voltage" value="25V"/>
+      <property name="Class" value="X7R"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>0c8a8893-79f8-4164-abc3-bd6ddc16c1de</tstamps>
+    </comp>
+    <comp ref="C48">
+      <value>0.1u</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Class">X7R</field>
+        <field name="Size">0402</field>
+        <field name="Voltage">25V</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Voltage" value="25V"/>
+      <property name="Class" value="X7R"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>7cc9a522-0d3b-40e5-b2b6-dc2144c4f431</tstamps>
+    </comp>
+    <comp ref="C49">
+      <value>0.1u</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Class">X7R</field>
+        <field name="Size">0402</field>
+        <field name="Voltage">25V</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Voltage" value="25V"/>
+      <property name="Class" value="X7R"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>e897c463-4f38-4868-9c99-7f06c5184d9e</tstamps>
+    </comp>
+    <comp ref="C50">
+      <value>1u</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Class">X7R</field>
+        <field name="Size">0402</field>
+        <field name="Voltage">10V</field>
+      </fields>
+      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <property name="Voltage" value="10V"/>
+      <property name="Class" value="X7R"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor, small symbol"/>
+      <property name="ki_keywords" value="capacitor cap"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>5924cab6-4198-4a82-9ed7-6a6f3b0af2be</tstamps>
+    </comp>
+    <comp ref="D1">
+      <value>GREEN</value>
+      <footprint>LED_SMD:LED_0603_1608Metric</footprint>
+      <fields>
+        <field name="Field4">0603</field>
+      </fields>
+      <libsource lib="Device" part="LED" description="Light emitting diode"/>
+      <property name="Field4" value="0603"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Light emitting diode"/>
+      <property name="ki_keywords" value="LED diode"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>061f1a77-636b-4943-8fdd-5fa7d852372f</tstamps>
+    </comp>
+    <comp ref="D2">
+      <value>GREEN</value>
+      <footprint>LED_SMD:LED_0603_1608Metric</footprint>
+      <fields>
+        <field name="Field4">0603</field>
+      </fields>
+      <libsource lib="Device" part="LED" description="Light emitting diode"/>
+      <property name="Field4" value="0603"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Light emitting diode"/>
+      <property name="ki_keywords" value="LED diode"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>27074916-cdc8-4759-8383-e872752e2e1a</tstamps>
+    </comp>
+    <comp ref="D3">
+      <value>GREEN</value>
+      <footprint>LED_SMD:LED_0603_1608Metric</footprint>
+      <fields>
+        <field name="Field4">0603</field>
+      </fields>
+      <libsource lib="Device" part="LED" description="Light emitting diode"/>
+      <property name="Field4" value="0603"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Light emitting diode"/>
+      <property name="ki_keywords" value="LED diode"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>2e52b53d-64df-4d5c-9f4e-358c2d2c3968</tstamps>
+    </comp>
+    <comp ref="FB1">
+      <value>600@100MHz</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <libsource lib="Device" part="FerriteBead_Small" description="Ferrite bead, small symbol"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Ferrite bead, small symbol"/>
+      <property name="ki_keywords" value="L ferrite bead inductor filter"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>b675bd49-ab32-453a-b15f-2f425c7d89b7</tstamps>
+    </comp>
+    <comp ref="FB2">
+      <value>600@100MHz</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <libsource lib="Device" part="FerriteBead_Small" description="Ferrite bead, small symbol"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Ferrite bead, small symbol"/>
+      <property name="ki_keywords" value="L ferrite bead inductor filter"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>70a06488-0990-4f50-b103-cc4c281661f8</tstamps>
+    </comp>
+    <comp ref="J1">
+      <value>USB_C_USB20</value>
+      <footprint>00_tracker_fp:USB_C_Receptacle_G-Switch_GT-USB-7010ASV_local3d</footprint>
+      <datasheet>https://www.usb.org/sites/default/files/documents/usb_type-c.zip</datasheet>
+      <libsource lib="Connector" part="USB_C_Receptacle_USB2.0_16P" description="USB 2.0-only 16P Type-C Receptacle connector"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="USB 2.0-only 16P Type-C Receptacle connector"/>
+      <property name="ki_keywords" value="usb universal serial bus type-C USB2.0"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>851a5e70-c5fa-4236-a690-02d617a7db3a</tstamps>
+    </comp>
+    <comp ref="J2">
+      <value>GSB3CN1130DSHR</value>
+      <footprint>00_tracker_fp:AMPHENOL_GSB3CN1130DSHR_NEW1</footprint>
+      <fields>
+        <field name="MANUFACTURER">Amphenol</field>
+        <field name="MAXIMUM_PACKAGE_HEIGHT">11.9 mm</field>
+        <field name="PARTREV">AX1</field>
+        <field name="STANDARD">Manufacturer Recommendations</field>
+      </fields>
+      <libsource lib="00_tracker_sym" part="GSB3CN1130DSHR" description=""/>
+      <property name="PARTREV" value="AX1"/>
+      <property name="STANDARD" value="Manufacturer Recommendations"/>
+      <property name="MAXIMUM_PACKAGE_HEIGHT" value="11.9 mm"/>
+      <property name="MANUFACTURER" value="Amphenol"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>d2364993-04fa-4573-871b-75bcee1ff0b7</tstamps>
+    </comp>
+    <comp ref="J3">
+      <value>GSB3CN1130DSHR</value>
+      <footprint>00_tracker_fp:AMPHENOL_GSB3CN1130DSHR_NEW1</footprint>
+      <fields>
+        <field name="MANUFACTURER">Amphenol</field>
+        <field name="MAXIMUM_PACKAGE_HEIGHT">11.9 mm</field>
+        <field name="PARTREV">AX1</field>
+        <field name="STANDARD">Manufacturer Recommendations</field>
+      </fields>
+      <libsource lib="00_tracker_sym" part="GSB3CN1130DSHR" description=""/>
+      <property name="PARTREV" value="AX1"/>
+      <property name="STANDARD" value="Manufacturer Recommendations"/>
+      <property name="MAXIMUM_PACKAGE_HEIGHT" value="11.9 mm"/>
+      <property name="MANUFACTURER" value="Amphenol"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>5ada6297-8678-481d-814a-70356e2ac30f</tstamps>
+    </comp>
+    <comp ref="J4">
+      <value>GSB3CN1130DSHR</value>
+      <footprint>00_tracker_fp:AMPHENOL_GSB3CN1130DSHR_NEW1</footprint>
+      <fields>
+        <field name="MANUFACTURER">Amphenol</field>
+        <field name="MAXIMUM_PACKAGE_HEIGHT">11.9 mm</field>
+        <field name="PARTREV">AX1</field>
+        <field name="STANDARD">Manufacturer Recommendations</field>
+      </fields>
+      <libsource lib="00_tracker_sym" part="GSB3CN1130DSHR" description=""/>
+      <property name="PARTREV" value="AX1"/>
+      <property name="STANDARD" value="Manufacturer Recommendations"/>
+      <property name="MAXIMUM_PACKAGE_HEIGHT" value="11.9 mm"/>
+      <property name="MANUFACTURER" value="Amphenol"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>948a68c9-3f93-47f6-bf7f-4341f56869d7</tstamps>
+    </comp>
+    <comp ref="J5">
+      <value>SSD1306_I2C_128x64</value>
+      <footprint>00_tracker_fp:SSD1306_12864_I2C_13in</footprint>
+      <libsource lib="00_tracker_sym" part="SSD1306_I2C_128x64" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_keywords" value="connector"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>fb179a6a-5383-4f65-ad9f-eeadc225fd74</tstamps>
+    </comp>
+    <comp ref="J6">
+      <value>GSB3CN1130DSHR</value>
+      <footprint>00_tracker_fp:AMPHENOL_GSB3CN1130DSHR_NEW1</footprint>
+      <fields>
+        <field name="MANUFACTURER">Amphenol</field>
+        <field name="MAXIMUM_PACKAGE_HEIGHT">11.9 mm</field>
+        <field name="PARTREV">AX1</field>
+        <field name="STANDARD">Manufacturer Recommendations</field>
+      </fields>
+      <libsource lib="00_tracker_sym" part="GSB3CN1130DSHR" description=""/>
+      <property name="PARTREV" value="AX1"/>
+      <property name="STANDARD" value="Manufacturer Recommendations"/>
+      <property name="MAXIMUM_PACKAGE_HEIGHT" value="11.9 mm"/>
+      <property name="MANUFACTURER" value="Amphenol"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>28cbf266-bbb8-4d2f-be16-77e5845a4bc7</tstamps>
+    </comp>
+    <comp ref="J7">
+      <value>GSB3CN1130DSHR</value>
+      <footprint>00_tracker_fp:AMPHENOL_GSB3CN1130DSHR_NEW1</footprint>
+      <fields>
+        <field name="MANUFACTURER">Amphenol</field>
+        <field name="MAXIMUM_PACKAGE_HEIGHT">11.9 mm</field>
+        <field name="PARTREV">AX1</field>
+        <field name="STANDARD">Manufacturer Recommendations</field>
+      </fields>
+      <libsource lib="00_tracker_sym" part="GSB3CN1130DSHR" description=""/>
+      <property name="PARTREV" value="AX1"/>
+      <property name="STANDARD" value="Manufacturer Recommendations"/>
+      <property name="MAXIMUM_PACKAGE_HEIGHT" value="11.9 mm"/>
+      <property name="MANUFACTURER" value="Amphenol"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>51a9f4a3-168e-46da-bb59-cccd147d4952</tstamps>
+    </comp>
+    <comp ref="J8">
+      <value>ST-LINK</value>
+      <footprint>Connector_PinHeader_2.54mm:PinHeader_1x08_P2.54mm_Horizontal</footprint>
+      <libsource lib="Connector" part="Conn_01x08_Pin" description="Generic connector, single row, 01x08, script generated"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Generic connector, single row, 01x08, script generated"/>
+      <property name="ki_keywords" value="connector"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>fbcf1d59-c28f-4580-ae90-f5898e74aa6a</tstamps>
+    </comp>
+    <comp ref="L1">
+      <value>4.7uH</value>
+      <footprint>Inductor_SMD:L_Taiyo-Yuden_NR-30xx</footprint>
+      <libsource lib="Device" part="L" description="Inductor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Inductor"/>
+      <property name="ki_keywords" value="inductor choke coil reactor magnetic"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>73288456-0ae1-4375-b271-269e43113996</tstamps>
+    </comp>
+    <comp ref="L2">
+      <value>4.7uH</value>
+      <footprint>Inductor_SMD:L_Taiyo-Yuden_NR-30xx</footprint>
+      <libsource lib="Device" part="L" description="Inductor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Inductor"/>
+      <property name="ki_keywords" value="inductor choke coil reactor magnetic"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>cd1dca46-746a-40ba-9c50-598d260fd002</tstamps>
+    </comp>
+    <comp ref="R1">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Size">0402</field>
+      </fields>
+      <libsource lib="Device" part="R_Small_US" description="Resistor, small US symbol"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Resistor, small US symbol"/>
+      <property name="ki_keywords" value="r resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>33d64ff2-662b-46b1-b577-1f34db485f17</tstamps>
+    </comp>
+    <comp ref="R2">
+      <value>330</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Size">0402</field>
+      </fields>
+      <libsource lib="Device" part="R_Small_US" description="Resistor, small US symbol"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Resistor, small US symbol"/>
+      <property name="ki_keywords" value="r resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>d5f08e0a-15fb-4560-bb9e-7c977efc30a7</tstamps>
+    </comp>
+    <comp ref="R3">
+      <value>330</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Size">0402</field>
+      </fields>
+      <libsource lib="Device" part="R_Small_US" description="Resistor, small US symbol"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Resistor, small US symbol"/>
+      <property name="ki_keywords" value="r resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>2854e0ed-468b-4300-a4d1-52edcc3ae6af</tstamps>
+    </comp>
+    <comp ref="R4">
+      <value>330</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Size">0402</field>
+      </fields>
+      <libsource lib="Device" part="R_Small_US" description="Resistor, small US symbol"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Resistor, small US symbol"/>
+      <property name="ki_keywords" value="r resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>86f91c81-1b83-4048-80ca-a36226e7dc69</tstamps>
+    </comp>
+    <comp ref="R5">
+      <value>330</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Size">0402</field>
+      </fields>
+      <libsource lib="Device" part="R_Small_US" description="Resistor, small US symbol"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Resistor, small US symbol"/>
+      <property name="ki_keywords" value="r resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>18d37cf6-a027-4ce7-8f91-db86a2718bc0</tstamps>
+    </comp>
+    <comp ref="R6">
+      <value>330</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Size">0402</field>
+      </fields>
+      <libsource lib="Device" part="R_Small_US" description="Resistor, small US symbol"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Resistor, small US symbol"/>
+      <property name="ki_keywords" value="r resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>c5506332-ac38-4414-b701-5691b2aa1aad</tstamps>
+    </comp>
+    <comp ref="R7">
+      <value>5.1k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Size">0402</field>
+      </fields>
+      <libsource lib="Device" part="R_Small_US" description="Resistor, small US symbol"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Resistor, small US symbol"/>
+      <property name="ki_keywords" value="r resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>85eee470-813f-49c0-ad80-6ed6756be8ad</tstamps>
+    </comp>
+    <comp ref="R8">
+      <value>5.1k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Size">0402</field>
+      </fields>
+      <libsource lib="Device" part="R_Small_US" description="Resistor, small US symbol"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Resistor, small US symbol"/>
+      <property name="ki_keywords" value="r resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>44ab622b-dbc9-46a1-8b11-8ae0d11b0f93</tstamps>
+    </comp>
+    <comp ref="R9">
+      <value>330</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Size">0402</field>
+      </fields>
+      <libsource lib="Device" part="R_Small_US" description="Resistor, small US symbol"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Resistor, small US symbol"/>
+      <property name="ki_keywords" value="r resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>edb5afac-6b92-4de4-a5c1-bb89113a4bc8</tstamps>
+    </comp>
+    <comp ref="R10">
+      <value>330</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Size">0402</field>
+      </fields>
+      <libsource lib="Device" part="R_Small_US" description="Resistor, small US symbol"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Resistor, small US symbol"/>
+      <property name="ki_keywords" value="r resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>3253ccac-234e-4a88-b2c7-2ace3b3a1604</tstamps>
+    </comp>
+    <comp ref="R11">
+      <value>330</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Size">0402</field>
+      </fields>
+      <libsource lib="Device" part="R_Small_US" description="Resistor, small US symbol"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Resistor, small US symbol"/>
+      <property name="ki_keywords" value="r resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>7467e28c-9950-43c0-a41b-22502ff95d6f</tstamps>
+    </comp>
+    <comp ref="R12">
+      <value>330</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Size">0402</field>
+      </fields>
+      <libsource lib="Device" part="R_Small_US" description="Resistor, small US symbol"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Resistor, small US symbol"/>
+      <property name="ki_keywords" value="r resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>d088f7e5-ef2a-464a-9803-44167754b3bd</tstamps>
+    </comp>
+    <comp ref="R13">
+      <value>22</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Size">0402</field>
+      </fields>
+      <libsource lib="Device" part="R_Small_US" description="Resistor, small US symbol"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Resistor, small US symbol"/>
+      <property name="ki_keywords" value="r resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>c658b8af-cc25-49cd-84d8-acf09b244dd4</tstamps>
+    </comp>
+    <comp ref="R14">
+      <value>22</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Size">0402</field>
+      </fields>
+      <libsource lib="Device" part="R_Small_US" description="Resistor, small US symbol"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Resistor, small US symbol"/>
+      <property name="ki_keywords" value="r resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>89fec5b1-566e-43d1-93d9-46bb97890196</tstamps>
+    </comp>
+    <comp ref="R15">
+      <value>330</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Size">0402</field>
+      </fields>
+      <libsource lib="Device" part="R_Small_US" description="Resistor, small US symbol"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Resistor, small US symbol"/>
+      <property name="ki_keywords" value="r resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>5afc23e7-d7a6-4ece-a6aa-cab372810633</tstamps>
+    </comp>
+    <comp ref="R16">
+      <value>4.7k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Size">0402</field>
+      </fields>
+      <libsource lib="Device" part="R_Small_US" description="Resistor, small US symbol"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Resistor, small US symbol"/>
+      <property name="ki_keywords" value="r resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>e0eb2714-bf82-4197-b90a-bc08ee271d89</tstamps>
+    </comp>
+    <comp ref="R17">
+      <value>4.7k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Size">0402</field>
+      </fields>
+      <libsource lib="Device" part="R_Small_US" description="Resistor, small US symbol"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Resistor, small US symbol"/>
+      <property name="ki_keywords" value="r resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>ec271567-dd20-4f70-aa08-e64e755d1627</tstamps>
+    </comp>
+    <comp ref="R18">
+      <value>1k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Size">0402</field>
+      </fields>
+      <libsource lib="Device" part="R_Small_US" description="Resistor, small US symbol"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Resistor, small US symbol"/>
+      <property name="ki_keywords" value="r resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>90faa31c-14ff-4847-9afb-da9a7867f083</tstamps>
+    </comp>
+    <comp ref="R19">
+      <value>330</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Size">0402</field>
+      </fields>
+      <libsource lib="Device" part="R_Small_US" description="Resistor, small US symbol"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Resistor, small US symbol"/>
+      <property name="ki_keywords" value="r resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>3f6bffd2-e2fc-49fb-8d97-905f7355a607</tstamps>
+    </comp>
+    <comp ref="R20">
+      <value>330</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Size">0402</field>
+      </fields>
+      <libsource lib="Device" part="R_Small_US" description="Resistor, small US symbol"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Resistor, small US symbol"/>
+      <property name="ki_keywords" value="r resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>85b6cf61-a690-4baf-9bd7-d8d9ef9d0d74</tstamps>
+    </comp>
+    <comp ref="R21">
+      <value>1k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Size">0402</field>
+      </fields>
+      <libsource lib="Device" part="R_Small_US" description="Resistor, small US symbol"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Resistor, small US symbol"/>
+      <property name="ki_keywords" value="r resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>a0b9eaff-24ba-4d28-8b9f-0a993bfcf338</tstamps>
+    </comp>
+    <comp ref="R22">
+      <value>1k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Size">0402</field>
+      </fields>
+      <libsource lib="Device" part="R_Small_US" description="Resistor, small US symbol"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Resistor, small US symbol"/>
+      <property name="ki_keywords" value="r resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>186da172-3277-4afd-a2d7-1ffb1c7e7e5c</tstamps>
+    </comp>
+    <comp ref="R23">
+      <value>330</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Size">0402</field>
+      </fields>
+      <libsource lib="Device" part="R_Small_US" description="Resistor, small US symbol"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Resistor, small US symbol"/>
+      <property name="ki_keywords" value="r resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>12b10d1c-5317-4382-a958-a312ede8041d</tstamps>
+    </comp>
+    <comp ref="R24">
+      <value>330</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Size">0402</field>
+      </fields>
+      <libsource lib="Device" part="R_Small_US" description="Resistor, small US symbol"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Resistor, small US symbol"/>
+      <property name="ki_keywords" value="r resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>4861cd91-f02f-4243-aaae-1511b0d1e98c</tstamps>
+    </comp>
+    <comp ref="R25">
+      <value>330</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Size">0402</field>
+      </fields>
+      <libsource lib="Device" part="R_Small_US" description="Resistor, small US symbol"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Resistor, small US symbol"/>
+      <property name="ki_keywords" value="r resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>08c29889-7cdf-46d0-bdd6-d161f9b863ab</tstamps>
+    </comp>
+    <comp ref="R26">
+      <value>330</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Size">0402</field>
+      </fields>
+      <libsource lib="Device" part="R_Small_US" description="Resistor, small US symbol"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Resistor, small US symbol"/>
+      <property name="ki_keywords" value="r resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>f8f382ad-dacd-45dd-a82b-4e68e2a0be6d</tstamps>
+    </comp>
+    <comp ref="R27">
+      <value>330</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Size">0402</field>
+      </fields>
+      <libsource lib="Device" part="R_Small_US" description="Resistor, small US symbol"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Resistor, small US symbol"/>
+      <property name="ki_keywords" value="r resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>cd4c8fe0-51c5-43fc-b3a2-dc3bc4da3ea3</tstamps>
+    </comp>
+    <comp ref="R28">
+      <value>1k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Size">0402</field>
+      </fields>
+      <libsource lib="Device" part="R_Small_US" description="Resistor, small US symbol"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Resistor, small US symbol"/>
+      <property name="ki_keywords" value="r resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>07ef1548-afad-4995-960a-45767b5ae7c5</tstamps>
+    </comp>
+    <comp ref="R29">
+      <value>33m</value>
+      <footprint>Resistor_SMD:R_1206_3216Metric</footprint>
+      <fields>
+        <field name="Size">1206</field>
+      </fields>
+      <libsource lib="Device" part="R_Small_US" description="Resistor, small US symbol"/>
+      <property name="Size" value="1206"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Resistor, small US symbol"/>
+      <property name="ki_keywords" value="r resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>ac21d340-b325-449e-8387-a0459b6d4751</tstamps>
+    </comp>
+    <comp ref="R30">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Size">0402</field>
+      </fields>
+      <libsource lib="Device" part="R_Small_US" description="Resistor, small US symbol"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Resistor, small US symbol"/>
+      <property name="ki_keywords" value="r resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>309376be-ae30-44df-97d3-5ffe61358ad0</tstamps>
+    </comp>
+    <comp ref="R31">
+      <value>33m</value>
+      <footprint>Resistor_SMD:R_1206_3216Metric</footprint>
+      <fields>
+        <field name="Size">1206</field>
+      </fields>
+      <libsource lib="Device" part="R_Small_US" description="Resistor, small US symbol"/>
+      <property name="Size" value="1206"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Resistor, small US symbol"/>
+      <property name="ki_keywords" value="r resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>e026be8f-1564-4793-80c2-96734f7918e4</tstamps>
+    </comp>
+    <comp ref="R32">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Size">0402</field>
+      </fields>
+      <libsource lib="Device" part="R_Small_US" description="Resistor, small US symbol"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Resistor, small US symbol"/>
+      <property name="ki_keywords" value="r resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>b706f8f7-5c91-40c5-aaba-afb8bac0b38b</tstamps>
+    </comp>
+    <comp ref="R33">
+      <value>33m</value>
+      <footprint>Resistor_SMD:R_1206_3216Metric</footprint>
+      <fields>
+        <field name="Size">1206</field>
+      </fields>
+      <libsource lib="Device" part="R_Small_US" description="Resistor, small US symbol"/>
+      <property name="Size" value="1206"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Resistor, small US symbol"/>
+      <property name="ki_keywords" value="r resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>0b6c2c30-0a24-4256-8572-6cdac5584890</tstamps>
+    </comp>
+    <comp ref="R34">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Size">0402</field>
+      </fields>
+      <libsource lib="Device" part="R_Small_US" description="Resistor, small US symbol"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Resistor, small US symbol"/>
+      <property name="ki_keywords" value="r resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>aa297c98-d193-418a-a1cf-ad32cf30ed99</tstamps>
+    </comp>
+    <comp ref="R35">
+      <value>33m</value>
+      <footprint>Resistor_SMD:R_1206_3216Metric</footprint>
+      <fields>
+        <field name="Size">1206</field>
+      </fields>
+      <libsource lib="Device" part="R_Small_US" description="Resistor, small US symbol"/>
+      <property name="Size" value="1206"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Resistor, small US symbol"/>
+      <property name="ki_keywords" value="r resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>100801fe-e70d-442a-b977-3cd0f0b5773e</tstamps>
+    </comp>
+    <comp ref="R36">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Size">0402</field>
+      </fields>
+      <libsource lib="Device" part="R_Small_US" description="Resistor, small US symbol"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Resistor, small US symbol"/>
+      <property name="ki_keywords" value="r resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>2b1cb4a8-0290-4374-b591-f69ed14228eb</tstamps>
+    </comp>
+    <comp ref="R37">
+      <value>33m</value>
+      <footprint>Resistor_SMD:R_1206_3216Metric</footprint>
+      <fields>
+        <field name="Size">1206</field>
+      </fields>
+      <libsource lib="Device" part="R_Small_US" description="Resistor, small US symbol"/>
+      <property name="Size" value="1206"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Resistor, small US symbol"/>
+      <property name="ki_keywords" value="r resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>d87f0f59-0746-4dd8-8584-b2e45790e046</tstamps>
+    </comp>
+    <comp ref="R38">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Size">0402</field>
+      </fields>
+      <libsource lib="Device" part="R_Small_US" description="Resistor, small US symbol"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Resistor, small US symbol"/>
+      <property name="ki_keywords" value="r resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>b5bb8fce-b65d-40c3-b5c6-04ff965561e9</tstamps>
+    </comp>
+    <comp ref="R39">
+      <value>100k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Size">0402</field>
+      </fields>
+      <libsource lib="Device" part="R_Small_US" description="Resistor, small US symbol"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Resistor, small US symbol"/>
+      <property name="ki_keywords" value="r resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>78130b79-e2e3-4ad3-845d-5437c3234a01</tstamps>
+    </comp>
+    <comp ref="R40">
+      <value>100k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Size">0402</field>
+      </fields>
+      <libsource lib="Device" part="R_Small_US" description="Resistor, small US symbol"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Resistor, small US symbol"/>
+      <property name="ki_keywords" value="r resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>2355c880-017c-460d-a5da-64edbae113ca</tstamps>
+    </comp>
+    <comp ref="R41">
+      <value>100k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Size">0402</field>
+      </fields>
+      <libsource lib="Device" part="R_Small_US" description="Resistor, small US symbol"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Resistor, small US symbol"/>
+      <property name="ki_keywords" value="r resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>76a5ae51-7ead-461a-ba98-af0b29155f51</tstamps>
+    </comp>
+    <comp ref="R42">
+      <value>100k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Size">0402</field>
+      </fields>
+      <libsource lib="Device" part="R_Small_US" description="Resistor, small US symbol"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Resistor, small US symbol"/>
+      <property name="ki_keywords" value="r resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>76af06a4-8b0d-4822-8ac6-42b61dff6421</tstamps>
+    </comp>
+    <comp ref="R43">
+      <value>100k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Size">0402</field>
+      </fields>
+      <libsource lib="Device" part="R_Small_US" description="Resistor, small US symbol"/>
+      <property name="Size" value="0402"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Resistor, small US symbol"/>
+      <property name="ki_keywords" value="r resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>b3ea5ba8-0fda-44e3-957a-6c226a463733</tstamps>
+    </comp>
+    <comp ref="SW1">
+      <value>SW_Push</value>
+      <footprint>Button_Switch_SMD:SW_SPST_CK_RS282G05A3</footprint>
+      <libsource lib="Switch" part="SW_Push" description="Push button switch, generic, two pins"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Push button switch, generic, two pins"/>
+      <property name="ki_keywords" value="switch normally-open pushbutton push-button"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>635bf213-1802-4198-9feb-7a17a9db4b5a</tstamps>
+    </comp>
+    <comp ref="SW2">
+      <value>SW_Push</value>
+      <footprint>Button_Switch_SMD:SW_SPST_CK_RS282G05A3</footprint>
+      <libsource lib="Switch" part="SW_Push" description="Push button switch, generic, two pins"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Push button switch, generic, two pins"/>
+      <property name="ki_keywords" value="switch normally-open pushbutton push-button"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>a8f6f2a0-319a-4360-bd71-ed29a342c70b</tstamps>
+    </comp>
+    <comp ref="SW3">
+      <value>SW_Push</value>
+      <footprint>Button_Switch_SMD:SW_SPST_CK_RS282G05A3</footprint>
+      <libsource lib="Switch" part="SW_Push" description="Push button switch, generic, two pins"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Push button switch, generic, two pins"/>
+      <property name="ki_keywords" value="switch normally-open pushbutton push-button"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>60a6665f-c258-43f1-a6f4-1659d314c4da</tstamps>
+    </comp>
+    <comp ref="SW4">
+      <value>SW_Push</value>
+      <footprint>Button_Switch_SMD:SW_SPST_CK_RS282G05A3</footprint>
+      <libsource lib="Switch" part="SW_Push" description="Push button switch, generic, two pins"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Push button switch, generic, two pins"/>
+      <property name="ki_keywords" value="switch normally-open pushbutton push-button"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>05c7fe07-4107-4920-9028-0b1f75ed2119</tstamps>
+    </comp>
+    <comp ref="SW5">
+      <value>SW_Push</value>
+      <footprint>Button_Switch_SMD:SW_SPST_CK_RS282G05A3</footprint>
+      <libsource lib="Switch" part="SW_Push" description="Push button switch, generic, two pins"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Push button switch, generic, two pins"/>
+      <property name="ki_keywords" value="switch normally-open pushbutton push-button"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>fada58ff-ba60-4905-8a9d-2d05ef1f1bf0</tstamps>
+    </comp>
+    <comp ref="SW6">
+      <value>SW_Push</value>
+      <footprint>Button_Switch_SMD:SW_SPST_CK_RS282G05A3</footprint>
+      <libsource lib="Switch" part="SW_Push" description="Push button switch, generic, two pins"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Push button switch, generic, two pins"/>
+      <property name="ki_keywords" value="switch normally-open pushbutton push-button"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>9e10e5d2-ab80-45a7-b6a9-fc91a42ea100</tstamps>
+    </comp>
+    <comp ref="U1">
+      <value>FT234XD-T</value>
+      <footprint>Package_DFN_QFN:DFN-12-1EP_3x3mm_P0.45mm_EP1.66x2.38mm</footprint>
+      <fields>
+        <field name="MANUFACTURER">FTDI Chip</field>
+      </fields>
+      <libsource lib="00_tracker_sym" part="FT234XD-T" description=""/>
+      <property name="MANUFACTURER" value="FTDI Chip"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>8b4cd684-e48b-4d3a-bf58-5a205b684f75</tstamps>
+    </comp>
+    <comp ref="U2">
+      <value>IN-PI15TAT5R5G5B</value>
+      <footprint>00_tracker_fp:IN-PI15_INL</footprint>
+      <datasheet>${KIPRJMOD}/datasheets/IN-PI15TAT5R5G5B_v1.0.pdf</datasheet>
+      <libsource lib="00_tracker_sym" part="IN-PI15TAT5R5G5B" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_keywords" value="IN-PI15TAT5R5G5B"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>a51ecd70-ebd4-4a9e-b8e2-3c727fb46af8</tstamps>
+    </comp>
+    <comp ref="U3">
+      <value>RT8010</value>
+      <footprint>Package_DFN_QFN:DFN-6-1EP_2x2mm_P0.65mm_EP1x1.6mm</footprint>
+      <datasheet>${KIPRJMOD}/datasheets/DS8010A-12.pdf</datasheet>
+      <libsource lib="00_tracker_sym" part="RT8010" description="Buck Switching Regulator IC Positive Fixed 3.3V 1 Output 1A 6-WDFN Exposed Pad"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Buck Switching Regulator IC Positive Fixed 3.3V 1 Output 1A 6-WDFN Exposed Pad"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>a62699b8-024c-4422-8efc-3c63f6b991db</tstamps>
+    </comp>
+    <comp ref="U4">
+      <value>STM32G070CBTx</value>
+      <footprint>Package_QFP:LQFP-48_7x7mm_P0.5mm</footprint>
+      <datasheet>https://www.st.com/resource/en/datasheet/stm32g070cb.pdf</datasheet>
+      <libsource lib="MCU_ST_STM32G0" part="STM32G070CBTx" description="STMicroelectronics Arm Cortex-M0+ MCU, 128KB flash, 36KB RAM, 64 MHz, 2.0-3.6V, 43 GPIO, LQFP48"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="STMicroelectronics Arm Cortex-M0+ MCU, 128KB flash, 36KB RAM, 64 MHz, 2.0-3.6V, 43 GPIO, LQFP48"/>
+      <property name="ki_keywords" value="Arm Cortex-M0+ STM32G0 STM32G0x0 Value line"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>5c43b81a-ce1e-4024-91fe-5d9833532d62</tstamps>
+    </comp>
+    <comp ref="U5">
+      <value>INA180A3</value>
+      <footprint>Package_TO_SOT_SMD:SOT-23-5</footprint>
+      <datasheet>http://www.ti.com/lit/ds/symlink/ina180.pdf</datasheet>
+      <libsource lib="Amplifier_Current" part="INA180A3" description="Current Sense Amplifier, 1 Circuit, Rail-to-Rail, 26V, Gain 100 V/V, SOT-23-5"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Current Sense Amplifier, 1 Circuit, Rail-to-Rail, 26V, Gain 100 V/V, SOT-23-5"/>
+      <property name="ki_keywords" value="current monitor shunt sensor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>720bc631-4736-4db7-8537-a44e2b9def81</tstamps>
+    </comp>
+    <comp ref="U6">
+      <value>IN-PI15TAT5R5G5B</value>
+      <footprint>00_tracker_fp:IN-PI15_INL</footprint>
+      <datasheet>${KIPRJMOD}/datasheets/IN-PI15TAT5R5G5B_v1.0.pdf</datasheet>
+      <libsource lib="00_tracker_sym" part="IN-PI15TAT5R5G5B" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_keywords" value="IN-PI15TAT5R5G5B"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>7c992e99-5173-4ea4-af81-cb1f590248ed</tstamps>
+    </comp>
+    <comp ref="U7">
+      <value>IN-PI15TAT5R5G5B</value>
+      <footprint>00_tracker_fp:IN-PI15_INL</footprint>
+      <datasheet>${KIPRJMOD}/datasheets/IN-PI15TAT5R5G5B_v1.0.pdf</datasheet>
+      <libsource lib="00_tracker_sym" part="IN-PI15TAT5R5G5B" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_keywords" value="IN-PI15TAT5R5G5B"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>cb4e10c5-0933-4cfe-b206-f142f14f9353</tstamps>
+    </comp>
+    <comp ref="U8">
+      <value>IN-PI15TAT5R5G5B</value>
+      <footprint>00_tracker_fp:IN-PI15_INL</footprint>
+      <datasheet>${KIPRJMOD}/datasheets/IN-PI15TAT5R5G5B_v1.0.pdf</datasheet>
+      <libsource lib="00_tracker_sym" part="IN-PI15TAT5R5G5B" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_keywords" value="IN-PI15TAT5R5G5B"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>b89a0156-7bd6-49fa-b44a-2c4fab3c4fc7</tstamps>
+    </comp>
+    <comp ref="U9">
+      <value>IN-PI15TAT5R5G5B</value>
+      <footprint>00_tracker_fp:IN-PI15_INL</footprint>
+      <datasheet>${KIPRJMOD}/datasheets/IN-PI15TAT5R5G5B_v1.0.pdf</datasheet>
+      <libsource lib="00_tracker_sym" part="IN-PI15TAT5R5G5B" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_keywords" value="IN-PI15TAT5R5G5B"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>7e34d1ae-c068-473e-bb75-355a6128338f</tstamps>
+    </comp>
+    <comp ref="U10">
+      <value>INA180A3</value>
+      <footprint>Package_TO_SOT_SMD:SOT-23-5</footprint>
+      <datasheet>http://www.ti.com/lit/ds/symlink/ina180.pdf</datasheet>
+      <libsource lib="Amplifier_Current" part="INA180A3" description="Current Sense Amplifier, 1 Circuit, Rail-to-Rail, 26V, Gain 100 V/V, SOT-23-5"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Current Sense Amplifier, 1 Circuit, Rail-to-Rail, 26V, Gain 100 V/V, SOT-23-5"/>
+      <property name="ki_keywords" value="current monitor shunt sensor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>58d5ea1f-027a-4fe8-8b2c-fb55111123a7</tstamps>
+    </comp>
+    <comp ref="U11">
+      <value>INA180A3</value>
+      <footprint>Package_TO_SOT_SMD:SOT-23-5</footprint>
+      <datasheet>http://www.ti.com/lit/ds/symlink/ina180.pdf</datasheet>
+      <libsource lib="Amplifier_Current" part="INA180A3" description="Current Sense Amplifier, 1 Circuit, Rail-to-Rail, 26V, Gain 100 V/V, SOT-23-5"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Current Sense Amplifier, 1 Circuit, Rail-to-Rail, 26V, Gain 100 V/V, SOT-23-5"/>
+      <property name="ki_keywords" value="current monitor shunt sensor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>f6b32640-8949-4a4f-887e-b0036ecbb859</tstamps>
+    </comp>
+    <comp ref="U12">
+      <value>INA180A3</value>
+      <footprint>Package_TO_SOT_SMD:SOT-23-5</footprint>
+      <datasheet>http://www.ti.com/lit/ds/symlink/ina180.pdf</datasheet>
+      <libsource lib="Amplifier_Current" part="INA180A3" description="Current Sense Amplifier, 1 Circuit, Rail-to-Rail, 26V, Gain 100 V/V, SOT-23-5"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Current Sense Amplifier, 1 Circuit, Rail-to-Rail, 26V, Gain 100 V/V, SOT-23-5"/>
+      <property name="ki_keywords" value="current monitor shunt sensor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>49354d04-f7ad-43b7-86ef-62e92244563b</tstamps>
+    </comp>
+    <comp ref="U13">
+      <value>INA180A3</value>
+      <footprint>Package_TO_SOT_SMD:SOT-23-5</footprint>
+      <datasheet>http://www.ti.com/lit/ds/symlink/ina180.pdf</datasheet>
+      <libsource lib="Amplifier_Current" part="INA180A3" description="Current Sense Amplifier, 1 Circuit, Rail-to-Rail, 26V, Gain 100 V/V, SOT-23-5"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Current Sense Amplifier, 1 Circuit, Rail-to-Rail, 26V, Gain 100 V/V, SOT-23-5"/>
+      <property name="ki_keywords" value="current monitor shunt sensor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>de66afeb-e042-4808-b350-4d09ed84674a</tstamps>
+    </comp>
+    <comp ref="Y1">
+      <value>8MHz</value>
+      <footprint>Crystal:Crystal_SMD_Abracon_ABM8G-4Pin_3.2x2.5mm</footprint>
+      <libsource lib="Device" part="Crystal_GND24_Small" description="Four pin crystal, GND on pins 2 and 4, small symbol"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Tracker_Charger_V1.kicad_sch"/>
+      <property name="ki_description" value="Four pin crystal, GND on pins 2 and 4, small symbol"/>
+      <property name="ki_keywords" value="quartz ceramic resonator oscillator"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>ba91252b-6a0b-429a-a4df-78e663908e08</tstamps>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="00_tracker_sym" part="AB_LOGO">
+      <fields>
+        <field name="Reference">LG</field>
+      </fields>
+    </libpart>
+    <libpart lib="00_tracker_sym" part="FT234XD-T">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">FT234XD-T</field>
+        <field name="Footprint">Package_DFN_QFN:DFN-12-1EP_3x3mm_P0.45mm_EP1.66x2.38mm</field>
+        <field name="MANUFACTURER">FTDI Chip</field>
+      </fields>
+      <pins>
+        <pin num="1" name="USBDM" type="bidirectional"/>
+        <pin num="2" name="~{RESET}#" type="input"/>
+        <pin num="3" name="3V3OUT" type="power_in"/>
+        <pin num="4" name="VCC" type="power_in"/>
+        <pin num="5" name="GND" type="power_in"/>
+        <pin num="6" name="CBUS0" type="bidirectional"/>
+        <pin num="7" name="TXD" type="output"/>
+        <pin num="8" name="RTS#" type="output"/>
+        <pin num="9" name="VCCIO" type="power_in"/>
+        <pin num="10" name="RXD" type="input"/>
+        <pin num="11" name="CTS#" type="input"/>
+        <pin num="12" name="USBDP" type="bidirectional"/>
+        <pin num="13" name="GND__1" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="00_tracker_sym" part="GSB3CN1130DSHR">
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">GSB3CN1130DSHR</field>
+        <field name="Footprint">00_tracker_fp:AMPHENOL_GSB3CN1130DSHR_NEW1</field>
+        <field name="PARTREV">AX1</field>
+        <field name="STANDARD">Manufacturer Recommendations</field>
+        <field name="MAXIMUM_PACKAGE_HEIGHT">11.9 mm</field>
+        <field name="MANUFACTURER">Amphenol</field>
+      </fields>
+      <pins>
+        <pin num="A1" name="GND_A" type="power_in"/>
+        <pin num="A2" name="SSTXP1" type="bidirectional"/>
+        <pin num="A3" name="SSTXN1" type="bidirectional"/>
+        <pin num="A4" name="VBUS_A" type="power_in"/>
+        <pin num="A5" name="CC1" type="bidirectional"/>
+        <pin num="A6" name="DP1" type="bidirectional"/>
+        <pin num="A7" name="DN1" type="bidirectional"/>
+        <pin num="A8" name="SBU1" type="bidirectional"/>
+        <pin num="A9" name="VBUS_A__1" type="power_in"/>
+        <pin num="A10" name="SSRXN2" type="bidirectional"/>
+        <pin num="A11" name="SSRXP2" type="bidirectional"/>
+        <pin num="A12" name="GND_A__1" type="power_in"/>
+        <pin num="B1" name="GND_B" type="power_in"/>
+        <pin num="B2" name="SSTXP2" type="bidirectional"/>
+        <pin num="B3" name="SSTXN2" type="bidirectional"/>
+        <pin num="B4" name="VBUS_B" type="power_in"/>
+        <pin num="B5" name="CC2" type="bidirectional"/>
+        <pin num="B6" name="DP2" type="bidirectional"/>
+        <pin num="B7" name="DN2" type="bidirectional"/>
+        <pin num="B8" name="SBU2" type="bidirectional"/>
+        <pin num="B9" name="VBUS_B__1" type="power_in"/>
+        <pin num="B10" name="SSRXN1" type="bidirectional"/>
+        <pin num="B11" name="SSRXP1" type="bidirectional"/>
+        <pin num="B12" name="GND_B__1" type="power_in"/>
+        <pin num="SH1" name="SHIELD" type="passive"/>
+        <pin num="SH2" name="SHIELD__1" type="passive"/>
+        <pin num="SH3" name="SHIELD__2" type="passive"/>
+        <pin num="SH4" name="SHIELD__3" type="passive"/>
+        <pin num="SH5" name="SHIELD__4" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="00_tracker_sym" part="IN-PI15TAT5R5G5B">
+      <docs>${KIPRJMOD}/datasheets/IN-PI15TAT5R5G5B_v1.0.pdf</docs>
+      <footprints>
+        <fp>IN-PI15_INL</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">IN-PI15TAT5R5G5B</field>
+        <field name="Footprint">00_tracker_fp:IN-PI15_INL</field>
+        <field name="Datasheet">${KIPRJMOD}/datasheets/IN-PI15TAT5R5G5B_v1.0.pdf</field>
+      </fields>
+      <pins>
+        <pin num="1" name="DIN" type="input"/>
+        <pin num="2" name="VDD" type="power_in"/>
+        <pin num="3" name="DOUT" type="output"/>
+        <pin num="4" name="GND" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="00_tracker_sym" part="LOGO_MISC">
+      <fields>
+        <field name="Reference">LG</field>
+      </fields>
+    </libpart>
+    <libpart lib="00_tracker_sym" part="RT8010">
+      <description>Buck Switching Regulator IC Positive Fixed 3.3V 1 Output 1A 6-WDFN Exposed Pad</description>
+      <docs>${KIPRJMOD}/datasheets/DS8010A-12.pdf</docs>
+      <fields>
+        <field name="Reference">U3</field>
+        <field name="Value">RT8010</field>
+        <field name="Footprint">Package_DFN_QFN:DFN-6-1EP_2x2mm_P0.65mm_EP1x1.6mm</field>
+        <field name="Datasheet">${KIPRJMOD}/datasheets/DS8010A-12.pdf</field>
+      </fields>
+      <pins>
+        <pin num="1" name="IC" type="no_connect"/>
+        <pin num="2" name="EN" type="input"/>
+        <pin num="3" name="VIN" type="power_in"/>
+        <pin num="4" name="LX" type="power_out"/>
+        <pin num="5" name="GND" type="power_in"/>
+        <pin num="6" name="VOUT" type="power_out"/>
+        <pin num="7" name="EP" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="00_tracker_sym" part="SSD1306_I2C_128x64">
+      <docs>~</docs>
+      <footprints>
+        <fp>Connector*:*_1x??_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J?</field>
+        <field name="Value">SSD1306_I2C_128x64</field>
+        <field name="Footprint">Display:SSD1306_12864_I2C</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="GND" type="power_in"/>
+        <pin num="2" name="VCC" type="power_in"/>
+        <pin num="3" name="SCL" type="input"/>
+        <pin num="4" name="SDA" type="bidirectional"/>
+      </pins>
+    </libpart>
+    <libpart lib="Amplifier_Current" part="INA180A3">
+      <description>Current Sense Amplifier, 1 Circuit, Rail-to-Rail, 26V, Gain 100 V/V, SOT-23-5</description>
+      <docs>http://www.ti.com/lit/ds/symlink/ina180.pdf</docs>
+      <footprints>
+        <fp>SOT?23*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">INA180A3</field>
+        <field name="Footprint">Package_TO_SOT_SMD:SOT-23-5</field>
+        <field name="Datasheet">http://www.ti.com/lit/ds/symlink/ina180.pdf</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="output"/>
+        <pin num="2" name="GND" type="power_in"/>
+        <pin num="3" name="+" type="input"/>
+        <pin num="4" name="-" type="input"/>
+        <pin num="5" name="V+" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector" part="Conn_01x08_Pin">
+      <description>Generic connector, single row, 01x08, script generated</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Connector*:*_1x??_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_01x08_Pin</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+        <pin num="3" name="Pin_3" type="passive"/>
+        <pin num="4" name="Pin_4" type="passive"/>
+        <pin num="5" name="Pin_5" type="passive"/>
+        <pin num="6" name="Pin_6" type="passive"/>
+        <pin num="7" name="Pin_7" type="passive"/>
+        <pin num="8" name="Pin_8" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector" part="USB_C_Receptacle_USB2.0_16P">
+      <description>USB 2.0-only 16P Type-C Receptacle connector</description>
+      <docs>https://www.usb.org/sites/default/files/documents/usb_type-c.zip</docs>
+      <footprints>
+        <fp>USB*C*Receptacle*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J1</field>
+        <field name="Value">USB_C_USB20</field>
+        <field name="Footprint">00_tracker_fp:USB_C_Receptacle_G-Switch_GT-USB-7010ASV_local3d</field>
+        <field name="Datasheet">https://www.usb.org/sites/default/files/documents/usb_type-c.zip</field>
+      </fields>
+      <pins>
+        <pin num="A1" name="GND" type="passive"/>
+        <pin num="A4" name="VBUS" type="passive"/>
+        <pin num="A5" name="CC1" type="bidirectional"/>
+        <pin num="A6" name="D+" type="bidirectional"/>
+        <pin num="A7" name="D-" type="bidirectional"/>
+        <pin num="A8" name="SBU1" type="bidirectional"/>
+        <pin num="A9" name="VBUS" type="power_out"/>
+        <pin num="A12" name="GND" type="passive"/>
+        <pin num="B1" name="GND" type="passive"/>
+        <pin num="B4" name="VBUS" type="passive"/>
+        <pin num="B5" name="CC2" type="bidirectional"/>
+        <pin num="B6" name="D+" type="bidirectional"/>
+        <pin num="B7" name="D-" type="bidirectional"/>
+        <pin num="B8" name="SBU2" type="bidirectional"/>
+        <pin num="B9" name="VBUS" type="passive"/>
+        <pin num="B12" name="GND" type="passive"/>
+        <pin num="S1" name="SHIELD" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="C_Small">
+      <description>Unpolarized capacitor, small symbol</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>C_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C_Small</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="Crystal_GND24_Small">
+      <description>Four pin crystal, GND on pins 2 and 4, small symbol</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Crystal*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">Y</field>
+        <field name="Value">Crystal_GND24_Small</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+        <pin num="3" name="3" type="passive"/>
+        <pin num="4" name="4" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="FerriteBead_Small">
+      <description>Ferrite bead, small symbol</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Inductor_*</fp>
+        <fp>L_*</fp>
+        <fp>*Ferrite*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">FB</field>
+        <field name="Value">FerriteBead_Small</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="L">
+      <description>Inductor</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Choke_*</fp>
+        <fp>*Coil*</fp>
+        <fp>Inductor_*</fp>
+        <fp>L_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">L</field>
+        <field name="Value">L</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="LED">
+      <description>Light emitting diode</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>LED*</fp>
+        <fp>LED_SMD:*</fp>
+        <fp>LED_THT:*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">LED</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="R_Small_US">
+      <description>Resistor, small US symbol</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>R_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R_Small_US</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Jumper" part="SolderJumper_3_Open">
+      <description>Solder Jumper, 3-pole, open</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>SolderJumper*Open*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">JP</field>
+        <field name="Value">SolderJumper_3_Open</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="A" type="passive"/>
+        <pin num="2" name="C" type="passive"/>
+        <pin num="3" name="B" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="MCU_ST_STM32G0" part="STM32G070CBTx">
+      <description>STMicroelectronics Arm Cortex-M0+ MCU, 128KB flash, 36KB RAM, 64 MHz, 2.0-3.6V, 43 GPIO, LQFP48</description>
+      <docs>https://www.st.com/resource/en/datasheet/stm32g070cb.pdf</docs>
+      <footprints>
+        <fp>LQFP*7x7mm*P0.5mm*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U?</field>
+        <field name="Value">STM32G070CBTx</field>
+        <field name="Footprint">Package_QFP:LQFP-48_7x7mm_P0.5mm</field>
+        <field name="Datasheet">https://www.st.com/resource/en/datasheet/stm32g070cb.pdf</field>
+      </fields>
+      <pins>
+        <pin num="1" name="PC13" type="bidirectional"/>
+        <pin num="2" name="PC14" type="bidirectional"/>
+        <pin num="3" name="PC15" type="bidirectional"/>
+        <pin num="4" name="VBAT" type="power_in"/>
+        <pin num="5" name="VREF+" type="input"/>
+        <pin num="6" name="VDD" type="power_in"/>
+        <pin num="7" name="VSS" type="power_in"/>
+        <pin num="8" name="PF0" type="bidirectional"/>
+        <pin num="9" name="PF1" type="bidirectional"/>
+        <pin num="10" name="NRST" type="input"/>
+        <pin num="11" name="PA0" type="bidirectional"/>
+        <pin num="12" name="PA1" type="bidirectional"/>
+        <pin num="13" name="PA2" type="bidirectional"/>
+        <pin num="14" name="PA3" type="bidirectional"/>
+        <pin num="15" name="PA4" type="bidirectional"/>
+        <pin num="16" name="PA5" type="bidirectional"/>
+        <pin num="17" name="PA6" type="bidirectional"/>
+        <pin num="18" name="PA7" type="bidirectional"/>
+        <pin num="19" name="PB0" type="bidirectional"/>
+        <pin num="20" name="PB1" type="bidirectional"/>
+        <pin num="21" name="PB2" type="bidirectional"/>
+        <pin num="22" name="PB10" type="bidirectional"/>
+        <pin num="23" name="PB11" type="bidirectional"/>
+        <pin num="24" name="PB12" type="bidirectional"/>
+        <pin num="25" name="PB13" type="bidirectional"/>
+        <pin num="26" name="PB14" type="bidirectional"/>
+        <pin num="27" name="PB15" type="bidirectional"/>
+        <pin num="28" name="PA8" type="bidirectional"/>
+        <pin num="29" name="PA9/NC" type="bidirectional"/>
+        <pin num="30" name="PC6" type="bidirectional"/>
+        <pin num="31" name="PC7" type="bidirectional"/>
+        <pin num="32" name="PA10/NC" type="bidirectional"/>
+        <pin num="33" name="PA11/PA9" type="bidirectional"/>
+        <pin num="34" name="PA12/PA10" type="bidirectional"/>
+        <pin num="35" name="PA13" type="bidirectional"/>
+        <pin num="36" name="PA14" type="bidirectional"/>
+        <pin num="37" name="PA15" type="bidirectional"/>
+        <pin num="38" name="PD0" type="bidirectional"/>
+        <pin num="39" name="PD1" type="bidirectional"/>
+        <pin num="40" name="PD2" type="bidirectional"/>
+        <pin num="41" name="PD3" type="bidirectional"/>
+        <pin num="42" name="PB3" type="bidirectional"/>
+        <pin num="43" name="PB4" type="bidirectional"/>
+        <pin num="44" name="PB5" type="bidirectional"/>
+        <pin num="45" name="PB6" type="bidirectional"/>
+        <pin num="46" name="PB7" type="bidirectional"/>
+        <pin num="47" name="PB8" type="bidirectional"/>
+        <pin num="48" name="PB9" type="bidirectional"/>
+      </pins>
+    </libpart>
+    <libpart lib="Mechanical" part="MountingHole_Pad">
+      <description>Mounting Hole with connection</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>MountingHole*Pad*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">H</field>
+        <field name="Value">MountingHole_Pad</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="input"/>
+      </pins>
+    </libpart>
+    <libpart lib="Switch" part="SW_Push">
+      <description>Push button switch, generic, two pins</description>
+      <docs>~</docs>
+      <fields>
+        <field name="Reference">SW</field>
+        <field name="Value">SW_Push</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="00_tracker_sym">
+      <uri>C:\Users\Anton\Documents\GitHub_Projs\sil-sync-hw-local\Tracker_Charger_V1/custom_sym_fp/00_tracker_sym.kicad_sym</uri>
+    </library>
+    <library logical="Amplifier_Current">
+      <uri>D:\Ext_Prog_Files_A\KiCad\7.0\share\kicad\symbols\/Amplifier_Current.kicad_sym</uri>
+    </library>
+    <library logical="Connector">
+      <uri>D:\Ext_Prog_Files_A\KiCad\7.0\share\kicad\symbols\/Connector.kicad_sym</uri>
+    </library>
+    <library logical="Device">
+      <uri>D:\Ext_Prog_Files_A\KiCad\7.0\share\kicad\symbols\/Device.kicad_sym</uri>
+    </library>
+    <library logical="Jumper">
+      <uri>D:\Ext_Prog_Files_A\KiCad\7.0\share\kicad\symbols\/Jumper.kicad_sym</uri>
+    </library>
+    <library logical="MCU_ST_STM32G0">
+      <uri>D:\Ext_Prog_Files_A\KiCad\7.0\share\kicad\symbols\/MCU_ST_STM32G0.kicad_sym</uri>
+    </library>
+    <library logical="Mechanical">
+      <uri>D:\Ext_Prog_Files_A\KiCad\7.0\share\kicad\symbols\/Mechanical.kicad_sym</uri>
+    </library>
+    <library logical="Switch">
+      <uri>D:\Ext_Prog_Files_A\KiCad\7.0\share\kicad\symbols\/Switch.kicad_sym</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="+3.3V">
+      <node ref="C10" pin="1" pintype="passive"/>
+      <node ref="C24" pin="1" pintype="passive"/>
+      <node ref="C4" pin="1" pintype="passive"/>
+      <node ref="C6" pin="1" pintype="passive"/>
+      <node ref="C7" pin="1" pintype="passive"/>
+      <node ref="C8" pin="1" pintype="passive"/>
+      <node ref="C9" pin="1" pintype="passive"/>
+      <node ref="D3" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="FB2" pin="1" pintype="passive"/>
+      <node ref="J8" pin="8" pinfunction="Pin_8" pintype="passive"/>
+      <node ref="L2" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="R1" pin="1" pintype="passive"/>
+      <node ref="R16" pin="1" pintype="passive"/>
+      <node ref="R17" pin="1" pintype="passive"/>
+      <node ref="U2" pin="2" pinfunction="VDD" pintype="power_in"/>
+      <node ref="U4" pin="6" pinfunction="VDD" pintype="power_in"/>
+      <node ref="U6" pin="2" pinfunction="VDD" pintype="power_in"/>
+      <node ref="U7" pin="2" pinfunction="VDD" pintype="power_in"/>
+      <node ref="U8" pin="2" pinfunction="VDD" pintype="power_in"/>
+      <node ref="U9" pin="2" pinfunction="VDD" pintype="power_in"/>
+    </net>
+    <net code="2" name="/3V3_RAW">
+      <node ref="C3" pin="1" pintype="passive"/>
+      <node ref="L1" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="L2" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U3" pin="6" pinfunction="VOUT" pintype="power_out"/>
+    </net>
+    <net code="3" name="/BAND_RX1">
+      <node ref="R4" pin="2" pintype="passive"/>
+      <node ref="U4" pin="34" pinfunction="PA12/PA10" pintype="bidirectional"/>
+    </net>
+    <net code="4" name="/BAND_RX2">
+      <node ref="R9" pin="2" pintype="passive"/>
+      <node ref="U4" pin="23" pinfunction="PB11" pintype="bidirectional"/>
+    </net>
+    <net code="5" name="/BAND_RX3">
+      <node ref="R12" pin="2" pintype="passive"/>
+      <node ref="U4" pin="19" pinfunction="PB0" pintype="bidirectional"/>
+    </net>
+    <net code="6" name="/BAND_RX4">
+      <node ref="R24" pin="2" pintype="passive"/>
+      <node ref="U4" pin="12" pinfunction="PA1" pintype="bidirectional"/>
+    </net>
+    <net code="7" name="/BAND_RX5">
+      <node ref="R27" pin="2" pintype="passive"/>
+      <node ref="U4" pin="46" pinfunction="PB7" pintype="bidirectional"/>
+    </net>
+    <net code="8" name="/BAND_TX1">
+      <node ref="R2" pin="1" pintype="passive"/>
+      <node ref="R3" pin="2" pintype="passive"/>
+      <node ref="U4" pin="33" pinfunction="PA11/PA9" pintype="bidirectional"/>
+    </net>
+    <net code="9" name="/BAND_TX2">
+      <node ref="R5" pin="1" pintype="passive"/>
+      <node ref="R6" pin="2" pintype="passive"/>
+      <node ref="U4" pin="22" pinfunction="PB10" pintype="bidirectional"/>
+    </net>
+    <net code="10" name="/BAND_TX3">
+      <node ref="R10" pin="1" pintype="passive"/>
+      <node ref="R11" pin="2" pintype="passive"/>
+      <node ref="U4" pin="21" pinfunction="PB2" pintype="bidirectional"/>
+    </net>
+    <net code="11" name="/BAND_TX4">
+      <node ref="R15" pin="1" pintype="passive"/>
+      <node ref="R23" pin="2" pintype="passive"/>
+      <node ref="U4" pin="11" pinfunction="PA0" pintype="bidirectional"/>
+    </net>
+    <net code="12" name="/BAND_TX5">
+      <node ref="R25" pin="1" pintype="passive"/>
+      <node ref="R26" pin="2" pintype="passive"/>
+      <node ref="U4" pin="45" pinfunction="PB6" pintype="bidirectional"/>
+    </net>
+    <net code="13" name="/I_SENS1">
+      <node ref="C29" pin="1" pintype="passive"/>
+      <node ref="R30" pin="1" pintype="passive"/>
+      <node ref="U4" pin="24" pinfunction="PB12" pintype="bidirectional"/>
+    </net>
+    <net code="14" name="/I_SENS2">
+      <node ref="C34" pin="1" pintype="passive"/>
+      <node ref="R32" pin="1" pintype="passive"/>
+      <node ref="U4" pin="18" pinfunction="PA7" pintype="bidirectional"/>
+    </net>
+    <net code="15" name="/I_SENS3">
+      <node ref="C39" pin="1" pintype="passive"/>
+      <node ref="R34" pin="1" pintype="passive"/>
+      <node ref="U4" pin="17" pinfunction="PA6" pintype="bidirectional"/>
+    </net>
+    <net code="16" name="/I_SENS4">
+      <node ref="C44" pin="1" pintype="passive"/>
+      <node ref="R36" pin="1" pintype="passive"/>
+      <node ref="U4" pin="16" pinfunction="PA5" pintype="bidirectional"/>
+    </net>
+    <net code="17" name="/I_SENS5">
+      <node ref="C49" pin="1" pintype="passive"/>
+      <node ref="R38" pin="1" pintype="passive"/>
+      <node ref="U4" pin="15" pinfunction="PA4" pintype="bidirectional"/>
+    </net>
+    <net code="18" name="/LX">
+      <node ref="L1" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U3" pin="4" pinfunction="LX" pintype="power_out"/>
+    </net>
+    <net code="19" name="/MCU_NRST">
+      <node ref="C21" pin="1" pintype="passive"/>
+      <node ref="J8" pin="4" pinfunction="Pin_4" pintype="passive"/>
+      <node ref="R1" pin="2" pintype="passive"/>
+      <node ref="SW6" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U4" pin="10" pinfunction="NRST" pintype="input"/>
+    </net>
+    <net code="20" name="/MCU_SCL">
+      <node ref="J5" pin="3" pinfunction="SCL" pintype="input"/>
+      <node ref="J8" pin="6" pinfunction="Pin_6" pintype="passive"/>
+      <node ref="R16" pin="2" pintype="passive"/>
+      <node ref="U4" pin="47" pinfunction="PB8" pintype="bidirectional"/>
+    </net>
+    <net code="21" name="/MCU_SDA">
+      <node ref="J5" pin="4" pinfunction="SDA" pintype="bidirectional"/>
+      <node ref="J8" pin="7" pinfunction="Pin_7" pintype="passive"/>
+      <node ref="R17" pin="2" pintype="passive"/>
+      <node ref="U4" pin="48" pinfunction="PB9" pintype="bidirectional"/>
+    </net>
+    <net code="22" name="/MCU_XI">
+      <node ref="C22" pin="2" pintype="passive"/>
+      <node ref="U4" pin="8" pinfunction="PF0" pintype="bidirectional"/>
+      <node ref="Y1" pin="3" pinfunction="3" pintype="passive"/>
+    </net>
+    <net code="23" name="/MCU_XO">
+      <node ref="C23" pin="1" pintype="passive"/>
+      <node ref="U4" pin="9" pinfunction="PF1" pintype="bidirectional"/>
+      <node ref="Y1" pin="1" pinfunction="1" pintype="passive"/>
+    </net>
+    <net code="24" name="/PRES1">
+      <node ref="J2" pin="B5" pinfunction="CC2" pintype="bidirectional"/>
+      <node ref="R39" pin="2" pintype="passive"/>
+      <node ref="U4" pin="28" pinfunction="PA8" pintype="bidirectional"/>
+    </net>
+    <net code="25" name="/PRES2">
+      <node ref="J3" pin="A5" pinfunction="CC1" pintype="bidirectional"/>
+      <node ref="R40" pin="2" pintype="passive"/>
+      <node ref="U4" pin="26" pinfunction="PB14" pintype="bidirectional"/>
+    </net>
+    <net code="26" name="/PRES3">
+      <node ref="J4" pin="A5" pinfunction="CC1" pintype="bidirectional"/>
+      <node ref="R41" pin="2" pintype="passive"/>
+      <node ref="U4" pin="25" pinfunction="PB13" pintype="bidirectional"/>
+    </net>
+    <net code="27" name="/PRES4">
+      <node ref="J6" pin="A5" pinfunction="CC1" pintype="bidirectional"/>
+      <node ref="R42" pin="2" pintype="passive"/>
+      <node ref="U4" pin="27" pinfunction="PB15" pintype="bidirectional"/>
+    </net>
+    <net code="28" name="/PRES5">
+      <node ref="J7" pin="A5" pinfunction="CC1" pintype="bidirectional"/>
+      <node ref="R43" pin="2" pintype="passive"/>
+      <node ref="U4" pin="38" pinfunction="PD0" pintype="bidirectional"/>
+    </net>
+    <net code="29" name="/RGB_LED">
+      <node ref="U4" pin="44" pinfunction="PB5" pintype="bidirectional"/>
+      <node ref="U6" pin="1" pinfunction="DIN" pintype="input"/>
+    </net>
+    <net code="30" name="/RGB_LED1">
+      <node ref="U6" pin="3" pinfunction="DOUT" pintype="output"/>
+      <node ref="U7" pin="1" pinfunction="DIN" pintype="input"/>
+    </net>
+    <net code="31" name="/RGB_LED2">
+      <node ref="U7" pin="3" pinfunction="DOUT" pintype="output"/>
+      <node ref="U8" pin="1" pinfunction="DIN" pintype="input"/>
+    </net>
+    <net code="32" name="/RGB_LED3">
+      <node ref="U8" pin="3" pinfunction="DOUT" pintype="output"/>
+      <node ref="U9" pin="1" pinfunction="DIN" pintype="input"/>
+    </net>
+    <net code="33" name="/RGB_LED4">
+      <node ref="U2" pin="1" pinfunction="DIN" pintype="input"/>
+      <node ref="U9" pin="3" pinfunction="DOUT" pintype="output"/>
+    </net>
+    <net code="34" name="/ST_SWCLK">
+      <node ref="J8" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="U4" pin="36" pinfunction="PA14" pintype="bidirectional"/>
+    </net>
+    <net code="35" name="/ST_SWDIO">
+      <node ref="J8" pin="3" pinfunction="Pin_3" pintype="passive"/>
+      <node ref="U4" pin="35" pinfunction="PA13" pintype="bidirectional"/>
+    </net>
+    <net code="36" name="/SW1">
+      <node ref="C20" pin="1" pintype="passive"/>
+      <node ref="SW1" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="U4" pin="43" pinfunction="PB4" pintype="bidirectional"/>
+    </net>
+    <net code="37" name="/SW2">
+      <node ref="C19" pin="1" pintype="passive"/>
+      <node ref="SW2" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="U4" pin="42" pinfunction="PB3" pintype="bidirectional"/>
+    </net>
+    <net code="38" name="/SW3">
+      <node ref="C17" pin="1" pintype="passive"/>
+      <node ref="SW3" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="U4" pin="40" pinfunction="PD2" pintype="bidirectional"/>
+    </net>
+    <net code="39" name="/SW4">
+      <node ref="C18" pin="1" pintype="passive"/>
+      <node ref="SW4" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="U4" pin="39" pinfunction="PD1" pintype="bidirectional"/>
+    </net>
+    <net code="40" name="/SW5">
+      <node ref="C1" pin="1" pintype="passive"/>
+      <node ref="SW5" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="U4" pin="41" pinfunction="PD3" pintype="bidirectional"/>
+    </net>
+    <net code="41" name="/USB_D+">
+      <node ref="C12" pin="1" pintype="passive"/>
+      <node ref="J1" pin="A6" pinfunction="D+" pintype="bidirectional"/>
+      <node ref="J1" pin="B6" pinfunction="D+" pintype="bidirectional"/>
+      <node ref="R14" pin="1" pintype="passive"/>
+    </net>
+    <net code="42" name="/USB_D-">
+      <node ref="C14" pin="1" pintype="passive"/>
+      <node ref="J1" pin="A7" pinfunction="D-" pintype="bidirectional"/>
+      <node ref="J1" pin="B7" pinfunction="D-" pintype="bidirectional"/>
+      <node ref="R13" pin="1" pintype="passive"/>
+    </net>
+    <net code="43" name="/VBUS1">
+      <node ref="C26" pin="2" pintype="passive"/>
+      <node ref="C27" pin="1" pintype="passive"/>
+      <node ref="J2" pin="A4" pinfunction="VBUS_A" pintype="power_in"/>
+      <node ref="J2" pin="A9" pinfunction="VBUS_A__1" pintype="power_in"/>
+      <node ref="J2" pin="B4" pinfunction="VBUS_B" pintype="power_in"/>
+      <node ref="J2" pin="B9" pinfunction="VBUS_B__1" pintype="power_in"/>
+      <node ref="R29" pin="2" pintype="passive"/>
+      <node ref="R39" pin="1" pintype="passive"/>
+      <node ref="U5" pin="4" pinfunction="-" pintype="input"/>
+    </net>
+    <net code="44" name="/VBUS2">
+      <node ref="C31" pin="2" pintype="passive"/>
+      <node ref="C32" pin="1" pintype="passive"/>
+      <node ref="J3" pin="A4" pinfunction="VBUS_A" pintype="power_in"/>
+      <node ref="J3" pin="A9" pinfunction="VBUS_A__1" pintype="power_in"/>
+      <node ref="J3" pin="B4" pinfunction="VBUS_B" pintype="power_in"/>
+      <node ref="J3" pin="B9" pinfunction="VBUS_B__1" pintype="power_in"/>
+      <node ref="R31" pin="2" pintype="passive"/>
+      <node ref="R40" pin="1" pintype="passive"/>
+      <node ref="U10" pin="4" pinfunction="-" pintype="input"/>
+    </net>
+    <net code="45" name="/VBUS3">
+      <node ref="C36" pin="2" pintype="passive"/>
+      <node ref="C37" pin="1" pintype="passive"/>
+      <node ref="J4" pin="A4" pinfunction="VBUS_A" pintype="power_in"/>
+      <node ref="J4" pin="A9" pinfunction="VBUS_A__1" pintype="power_in"/>
+      <node ref="J4" pin="B4" pinfunction="VBUS_B" pintype="power_in"/>
+      <node ref="J4" pin="B9" pinfunction="VBUS_B__1" pintype="power_in"/>
+      <node ref="R33" pin="2" pintype="passive"/>
+      <node ref="R41" pin="1" pintype="passive"/>
+      <node ref="U11" pin="4" pinfunction="-" pintype="input"/>
+    </net>
+    <net code="46" name="/VBUS4">
+      <node ref="C41" pin="2" pintype="passive"/>
+      <node ref="C42" pin="1" pintype="passive"/>
+      <node ref="J6" pin="A4" pinfunction="VBUS_A" pintype="power_in"/>
+      <node ref="J6" pin="A9" pinfunction="VBUS_A__1" pintype="power_in"/>
+      <node ref="J6" pin="B4" pinfunction="VBUS_B" pintype="power_in"/>
+      <node ref="J6" pin="B9" pinfunction="VBUS_B__1" pintype="power_in"/>
+      <node ref="R35" pin="2" pintype="passive"/>
+      <node ref="R42" pin="1" pintype="passive"/>
+      <node ref="U12" pin="4" pinfunction="-" pintype="input"/>
+    </net>
+    <net code="47" name="/VBUS5">
+      <node ref="C46" pin="2" pintype="passive"/>
+      <node ref="C47" pin="1" pintype="passive"/>
+      <node ref="J7" pin="A4" pinfunction="VBUS_A" pintype="power_in"/>
+      <node ref="J7" pin="A9" pinfunction="VBUS_A__1" pintype="power_in"/>
+      <node ref="J7" pin="B4" pinfunction="VBUS_B" pintype="power_in"/>
+      <node ref="J7" pin="B9" pinfunction="VBUS_B__1" pintype="power_in"/>
+      <node ref="R37" pin="2" pintype="passive"/>
+      <node ref="R43" pin="1" pintype="passive"/>
+      <node ref="U13" pin="4" pinfunction="-" pintype="input"/>
+    </net>
+    <net code="48" name="/VCP_RX">
+      <node ref="R20" pin="2" pintype="passive"/>
+      <node ref="U4" pin="13" pinfunction="PA2" pintype="bidirectional"/>
+    </net>
+    <net code="49" name="/VCP_TX">
+      <node ref="R19" pin="2" pintype="passive"/>
+      <node ref="U4" pin="14" pinfunction="PA3" pintype="bidirectional"/>
+    </net>
+    <net code="50" name="GND">
+      <node ref="C1" pin="2" pintype="passive"/>
+      <node ref="C10" pin="2" pintype="passive"/>
+      <node ref="C11" pin="2" pintype="passive"/>
+      <node ref="C12" pin="2" pintype="passive"/>
+      <node ref="C13" pin="2" pintype="passive"/>
+      <node ref="C14" pin="2" pintype="passive"/>
+      <node ref="C15" pin="2" pintype="passive"/>
+      <node ref="C16" pin="2" pintype="passive"/>
+      <node ref="C17" pin="2" pintype="passive"/>
+      <node ref="C18" pin="2" pintype="passive"/>
+      <node ref="C19" pin="2" pintype="passive"/>
+      <node ref="C2" pin="2" pintype="passive"/>
+      <node ref="C20" pin="2" pintype="passive"/>
+      <node ref="C21" pin="2" pintype="passive"/>
+      <node ref="C22" pin="1" pintype="passive"/>
+      <node ref="C23" pin="2" pintype="passive"/>
+      <node ref="C24" pin="2" pintype="passive"/>
+      <node ref="C25" pin="2" pintype="passive"/>
+      <node ref="C27" pin="2" pintype="passive"/>
+      <node ref="C28" pin="2" pintype="passive"/>
+      <node ref="C29" pin="2" pintype="passive"/>
+      <node ref="C3" pin="2" pintype="passive"/>
+      <node ref="C30" pin="2" pintype="passive"/>
+      <node ref="C32" pin="2" pintype="passive"/>
+      <node ref="C33" pin="2" pintype="passive"/>
+      <node ref="C34" pin="2" pintype="passive"/>
+      <node ref="C35" pin="2" pintype="passive"/>
+      <node ref="C37" pin="2" pintype="passive"/>
+      <node ref="C38" pin="2" pintype="passive"/>
+      <node ref="C39" pin="2" pintype="passive"/>
+      <node ref="C4" pin="2" pintype="passive"/>
+      <node ref="C40" pin="2" pintype="passive"/>
+      <node ref="C42" pin="2" pintype="passive"/>
+      <node ref="C43" pin="2" pintype="passive"/>
+      <node ref="C44" pin="2" pintype="passive"/>
+      <node ref="C45" pin="2" pintype="passive"/>
+      <node ref="C47" pin="2" pintype="passive"/>
+      <node ref="C48" pin="2" pintype="passive"/>
+      <node ref="C49" pin="2" pintype="passive"/>
+      <node ref="C5" pin="2" pintype="passive"/>
+      <node ref="C50" pin="2" pintype="passive"/>
+      <node ref="C6" pin="2" pintype="passive"/>
+      <node ref="C7" pin="2" pintype="passive"/>
+      <node ref="C8" pin="2" pintype="passive"/>
+      <node ref="C9" pin="2" pintype="passive"/>
+      <node ref="D2" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="J1" pin="A1" pinfunction="GND" pintype="passive"/>
+      <node ref="J1" pin="A12" pinfunction="GND" pintype="passive"/>
+      <node ref="J1" pin="B1" pinfunction="GND" pintype="passive"/>
+      <node ref="J1" pin="B12" pinfunction="GND" pintype="passive"/>
+      <node ref="J1" pin="S1" pinfunction="SHIELD" pintype="passive"/>
+      <node ref="J2" pin="A1" pinfunction="GND_A" pintype="power_in"/>
+      <node ref="J2" pin="A12" pinfunction="GND_A__1" pintype="power_in"/>
+      <node ref="J2" pin="B1" pinfunction="GND_B" pintype="power_in"/>
+      <node ref="J2" pin="B12" pinfunction="GND_B__1" pintype="power_in"/>
+      <node ref="J2" pin="SH1" pinfunction="SHIELD" pintype="passive"/>
+      <node ref="J2" pin="SH2" pinfunction="SHIELD__1" pintype="passive"/>
+      <node ref="J2" pin="SH3" pinfunction="SHIELD__2" pintype="passive"/>
+      <node ref="J2" pin="SH4" pinfunction="SHIELD__3" pintype="passive"/>
+      <node ref="J2" pin="SH5" pinfunction="SHIELD__4" pintype="passive"/>
+      <node ref="J3" pin="A1" pinfunction="GND_A" pintype="power_in"/>
+      <node ref="J3" pin="A12" pinfunction="GND_A__1" pintype="power_in"/>
+      <node ref="J3" pin="B1" pinfunction="GND_B" pintype="power_in"/>
+      <node ref="J3" pin="B12" pinfunction="GND_B__1" pintype="power_in"/>
+      <node ref="J3" pin="SH1" pinfunction="SHIELD" pintype="passive"/>
+      <node ref="J3" pin="SH2" pinfunction="SHIELD__1" pintype="passive"/>
+      <node ref="J3" pin="SH3" pinfunction="SHIELD__2" pintype="passive"/>
+      <node ref="J3" pin="SH4" pinfunction="SHIELD__3" pintype="passive"/>
+      <node ref="J3" pin="SH5" pinfunction="SHIELD__4" pintype="passive"/>
+      <node ref="J4" pin="A1" pinfunction="GND_A" pintype="power_in"/>
+      <node ref="J4" pin="A12" pinfunction="GND_A__1" pintype="power_in"/>
+      <node ref="J4" pin="B1" pinfunction="GND_B" pintype="power_in"/>
+      <node ref="J4" pin="B12" pinfunction="GND_B__1" pintype="power_in"/>
+      <node ref="J4" pin="SH1" pinfunction="SHIELD" pintype="passive"/>
+      <node ref="J4" pin="SH2" pinfunction="SHIELD__1" pintype="passive"/>
+      <node ref="J4" pin="SH3" pinfunction="SHIELD__2" pintype="passive"/>
+      <node ref="J4" pin="SH4" pinfunction="SHIELD__3" pintype="passive"/>
+      <node ref="J4" pin="SH5" pinfunction="SHIELD__4" pintype="passive"/>
+      <node ref="J5" pin="1" pinfunction="GND" pintype="power_in"/>
+      <node ref="J6" pin="A1" pinfunction="GND_A" pintype="power_in"/>
+      <node ref="J6" pin="A12" pinfunction="GND_A__1" pintype="power_in"/>
+      <node ref="J6" pin="B1" pinfunction="GND_B" pintype="power_in"/>
+      <node ref="J6" pin="B12" pinfunction="GND_B__1" pintype="power_in"/>
+      <node ref="J6" pin="SH1" pinfunction="SHIELD" pintype="passive"/>
+      <node ref="J6" pin="SH2" pinfunction="SHIELD__1" pintype="passive"/>
+      <node ref="J6" pin="SH3" pinfunction="SHIELD__2" pintype="passive"/>
+      <node ref="J6" pin="SH4" pinfunction="SHIELD__3" pintype="passive"/>
+      <node ref="J6" pin="SH5" pinfunction="SHIELD__4" pintype="passive"/>
+      <node ref="J7" pin="A1" pinfunction="GND_A" pintype="power_in"/>
+      <node ref="J7" pin="A12" pinfunction="GND_A__1" pintype="power_in"/>
+      <node ref="J7" pin="B1" pinfunction="GND_B" pintype="power_in"/>
+      <node ref="J7" pin="B12" pinfunction="GND_B__1" pintype="power_in"/>
+      <node ref="J7" pin="SH1" pinfunction="SHIELD" pintype="passive"/>
+      <node ref="J7" pin="SH2" pinfunction="SHIELD__1" pintype="passive"/>
+      <node ref="J7" pin="SH3" pinfunction="SHIELD__2" pintype="passive"/>
+      <node ref="J7" pin="SH4" pinfunction="SHIELD__3" pintype="passive"/>
+      <node ref="J7" pin="SH5" pinfunction="SHIELD__4" pintype="passive"/>
+      <node ref="J8" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="J8" pin="5" pinfunction="Pin_5" pintype="passive"/>
+      <node ref="R18" pin="2" pintype="passive"/>
+      <node ref="R7" pin="2" pintype="passive"/>
+      <node ref="R8" pin="2" pintype="passive"/>
+      <node ref="SW1" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="SW2" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="SW3" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="SW4" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="SW5" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="SW6" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="U1" pin="13" pinfunction="GND__1" pintype="power_in"/>
+      <node ref="U1" pin="5" pinfunction="GND" pintype="power_in"/>
+      <node ref="U10" pin="2" pinfunction="GND" pintype="power_in"/>
+      <node ref="U11" pin="2" pinfunction="GND" pintype="power_in"/>
+      <node ref="U12" pin="2" pinfunction="GND" pintype="power_in"/>
+      <node ref="U13" pin="2" pinfunction="GND" pintype="power_in"/>
+      <node ref="U2" pin="4" pinfunction="GND" pintype="power_in"/>
+      <node ref="U3" pin="5" pinfunction="GND" pintype="power_in"/>
+      <node ref="U3" pin="7" pinfunction="EP" pintype="passive"/>
+      <node ref="U4" pin="7" pinfunction="VSS" pintype="power_in"/>
+      <node ref="U5" pin="2" pinfunction="GND" pintype="power_in"/>
+      <node ref="U6" pin="4" pinfunction="GND" pintype="power_in"/>
+      <node ref="U7" pin="4" pinfunction="GND" pintype="power_in"/>
+      <node ref="U8" pin="4" pinfunction="GND" pintype="power_in"/>
+      <node ref="U9" pin="4" pinfunction="GND" pintype="power_in"/>
+      <node ref="Y1" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="Y1" pin="4" pinfunction="4" pintype="passive"/>
+    </net>
+    <net code="51" name="Net-(D1-A)">
+      <node ref="D1" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="R22" pin="2" pintype="passive"/>
+    </net>
+    <net code="52" name="Net-(D1-K)">
+      <node ref="D1" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="U1" pin="6" pinfunction="CBUS0" pintype="bidirectional"/>
+    </net>
+    <net code="53" name="Net-(D2-A)">
+      <node ref="D2" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="R28" pin="2" pintype="passive"/>
+    </net>
+    <net code="54" name="Net-(D3-K)">
+      <node ref="D3" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="R18" pin="1" pintype="passive"/>
+    </net>
+    <net code="55" name="Net-(J1-CC1)">
+      <node ref="J1" pin="A5" pinfunction="CC1" pintype="bidirectional"/>
+      <node ref="R8" pin="1" pintype="passive"/>
+    </net>
+    <net code="56" name="Net-(J1-CC2)">
+      <node ref="J1" pin="B5" pinfunction="CC2" pintype="bidirectional"/>
+      <node ref="R7" pin="1" pintype="passive"/>
+    </net>
+    <net code="57" name="Net-(J2-DP2)">
+      <node ref="J2" pin="B6" pinfunction="DP2" pintype="bidirectional"/>
+    </net>
+    <net code="58" name="Net-(J2-SBU1)">
+      <node ref="J2" pin="A8" pinfunction="SBU1" pintype="bidirectional"/>
+      <node ref="R3" pin="1" pintype="passive"/>
+    </net>
+    <net code="59" name="Net-(J2-SBU2)">
+      <node ref="J2" pin="B8" pinfunction="SBU2" pintype="bidirectional"/>
+      <node ref="R2" pin="2" pintype="passive"/>
+    </net>
+    <net code="60" name="Net-(J3-DP2)">
+      <node ref="J3" pin="B6" pinfunction="DP2" pintype="bidirectional"/>
+    </net>
+    <net code="61" name="Net-(J3-SBU1)">
+      <node ref="J3" pin="A8" pinfunction="SBU1" pintype="bidirectional"/>
+      <node ref="R6" pin="1" pintype="passive"/>
+    </net>
+    <net code="62" name="Net-(J3-SBU2)">
+      <node ref="J3" pin="B8" pinfunction="SBU2" pintype="bidirectional"/>
+      <node ref="R5" pin="2" pintype="passive"/>
+    </net>
+    <net code="63" name="Net-(J4-DP2)">
+      <node ref="J4" pin="B6" pinfunction="DP2" pintype="bidirectional"/>
+    </net>
+    <net code="64" name="Net-(J4-SBU1)">
+      <node ref="J4" pin="A8" pinfunction="SBU1" pintype="bidirectional"/>
+      <node ref="R11" pin="1" pintype="passive"/>
+    </net>
+    <net code="65" name="Net-(J4-SBU2)">
+      <node ref="J4" pin="B8" pinfunction="SBU2" pintype="bidirectional"/>
+      <node ref="R10" pin="2" pintype="passive"/>
+    </net>
+    <net code="66" name="Net-(J5-VCC)">
+      <node ref="J5" pin="2" pinfunction="VCC" pintype="power_in"/>
+    </net>
+    <net code="67" name="Net-(J6-DP2)">
+      <node ref="J6" pin="B6" pinfunction="DP2" pintype="bidirectional"/>
+    </net>
+    <net code="68" name="Net-(J6-SBU1)">
+      <node ref="J6" pin="A8" pinfunction="SBU1" pintype="bidirectional"/>
+      <node ref="R23" pin="1" pintype="passive"/>
+    </net>
+    <net code="69" name="Net-(J6-SBU2)">
+      <node ref="J6" pin="B8" pinfunction="SBU2" pintype="bidirectional"/>
+      <node ref="R15" pin="2" pintype="passive"/>
+    </net>
+    <net code="70" name="Net-(J7-DP2)">
+      <node ref="J7" pin="B6" pinfunction="DP2" pintype="bidirectional"/>
+    </net>
+    <net code="71" name="Net-(J7-SBU1)">
+      <node ref="J7" pin="A8" pinfunction="SBU1" pintype="bidirectional"/>
+      <node ref="R26" pin="1" pintype="passive"/>
+    </net>
+    <net code="72" name="Net-(J7-SBU2)">
+      <node ref="J7" pin="B8" pinfunction="SBU2" pintype="bidirectional"/>
+      <node ref="R25" pin="2" pintype="passive"/>
+    </net>
+    <net code="73" name="Net-(JP2-C)">
+      <node ref="R4" pin="1" pintype="passive"/>
+    </net>
+    <net code="74" name="Net-(JP3-C)">
+      <node ref="R9" pin="1" pintype="passive"/>
+    </net>
+    <net code="75" name="Net-(JP4-C)">
+      <node ref="R12" pin="1" pintype="passive"/>
+    </net>
+    <net code="76" name="Net-(JP5-C)">
+      <node ref="R24" pin="1" pintype="passive"/>
+    </net>
+    <net code="77" name="Net-(JP6-C)">
+      <node ref="R27" pin="1" pintype="passive"/>
+    </net>
+    <net code="78" name="Net-(R30-Pad2)">
+      <node ref="R30" pin="2" pintype="passive"/>
+      <node ref="U5" pin="1" pintype="output"/>
+    </net>
+    <net code="79" name="Net-(R32-Pad2)">
+      <node ref="R32" pin="2" pintype="passive"/>
+      <node ref="U10" pin="1" pintype="output"/>
+    </net>
+    <net code="80" name="Net-(R34-Pad2)">
+      <node ref="R34" pin="2" pintype="passive"/>
+      <node ref="U11" pin="1" pintype="output"/>
+    </net>
+    <net code="81" name="Net-(R36-Pad2)">
+      <node ref="R36" pin="2" pintype="passive"/>
+      <node ref="U12" pin="1" pintype="output"/>
+    </net>
+    <net code="82" name="Net-(R38-Pad2)">
+      <node ref="R38" pin="2" pintype="passive"/>
+      <node ref="U13" pin="1" pintype="output"/>
+    </net>
+    <net code="83" name="Net-(U1-3V3OUT)">
+      <node ref="C13" pin="1" pintype="passive"/>
+      <node ref="C15" pin="1" pintype="passive"/>
+      <node ref="R21" pin="1" pintype="passive"/>
+      <node ref="R22" pin="1" pintype="passive"/>
+      <node ref="U1" pin="3" pinfunction="3V3OUT" pintype="power_in"/>
+      <node ref="U1" pin="9" pinfunction="VCCIO" pintype="power_in"/>
+    </net>
+    <net code="84" name="Net-(U1-RXD)">
+      <node ref="R20" pin="1" pintype="passive"/>
+      <node ref="U1" pin="10" pinfunction="RXD" pintype="input"/>
+    </net>
+    <net code="85" name="Net-(U1-TXD)">
+      <node ref="R19" pin="1" pintype="passive"/>
+      <node ref="U1" pin="7" pinfunction="TXD" pintype="output"/>
+    </net>
+    <net code="86" name="Net-(U1-USBDM)">
+      <node ref="R13" pin="2" pintype="passive"/>
+      <node ref="U1" pin="1" pinfunction="USBDM" pintype="bidirectional"/>
+    </net>
+    <net code="87" name="Net-(U1-USBDP)">
+      <node ref="R14" pin="2" pintype="passive"/>
+      <node ref="U1" pin="12" pinfunction="USBDP" pintype="bidirectional"/>
+    </net>
+    <net code="88" name="Net-(U1-VCC)">
+      <node ref="C11" pin="1" pintype="passive"/>
+      <node ref="FB1" pin="2" pintype="passive"/>
+      <node ref="U1" pin="4" pinfunction="VCC" pintype="power_in"/>
+    </net>
+    <net code="89" name="Net-(U1-~{RESET}#)">
+      <node ref="C16" pin="1" pintype="passive"/>
+      <node ref="R21" pin="2" pintype="passive"/>
+      <node ref="U1" pin="2" pinfunction="~{RESET}#" pintype="input"/>
+    </net>
+    <net code="90" name="Net-(U4-VREF+)">
+      <node ref="C50" pin="1" pintype="passive"/>
+      <node ref="FB2" pin="2" pintype="passive"/>
+      <node ref="U4" pin="5" pinfunction="VREF+" pintype="input"/>
+    </net>
+    <net code="91" name="VBUS">
+      <node ref="C2" pin="1" pintype="passive"/>
+      <node ref="C25" pin="1" pintype="passive"/>
+      <node ref="C26" pin="1" pintype="passive"/>
+      <node ref="C28" pin="1" pintype="passive"/>
+      <node ref="C30" pin="1" pintype="passive"/>
+      <node ref="C31" pin="1" pintype="passive"/>
+      <node ref="C33" pin="1" pintype="passive"/>
+      <node ref="C35" pin="1" pintype="passive"/>
+      <node ref="C36" pin="1" pintype="passive"/>
+      <node ref="C38" pin="1" pintype="passive"/>
+      <node ref="C40" pin="1" pintype="passive"/>
+      <node ref="C41" pin="1" pintype="passive"/>
+      <node ref="C43" pin="1" pintype="passive"/>
+      <node ref="C45" pin="1" pintype="passive"/>
+      <node ref="C46" pin="1" pintype="passive"/>
+      <node ref="C48" pin="1" pintype="passive"/>
+      <node ref="C5" pin="1" pintype="passive"/>
+      <node ref="FB1" pin="1" pintype="passive"/>
+      <node ref="J1" pin="A4" pinfunction="VBUS" pintype="passive"/>
+      <node ref="J1" pin="A9" pinfunction="VBUS" pintype="power_out"/>
+      <node ref="J1" pin="B4" pinfunction="VBUS" pintype="passive"/>
+      <node ref="J1" pin="B9" pinfunction="VBUS" pintype="passive"/>
+      <node ref="R28" pin="1" pintype="passive"/>
+      <node ref="R29" pin="1" pintype="passive"/>
+      <node ref="R31" pin="1" pintype="passive"/>
+      <node ref="R33" pin="1" pintype="passive"/>
+      <node ref="R35" pin="1" pintype="passive"/>
+      <node ref="R37" pin="1" pintype="passive"/>
+      <node ref="U10" pin="3" pinfunction="+" pintype="input"/>
+      <node ref="U10" pin="5" pinfunction="V+" pintype="power_in"/>
+      <node ref="U11" pin="3" pinfunction="+" pintype="input"/>
+      <node ref="U11" pin="5" pinfunction="V+" pintype="power_in"/>
+      <node ref="U12" pin="3" pinfunction="+" pintype="input"/>
+      <node ref="U12" pin="5" pinfunction="V+" pintype="power_in"/>
+      <node ref="U13" pin="3" pinfunction="+" pintype="input"/>
+      <node ref="U13" pin="5" pinfunction="V+" pintype="power_in"/>
+      <node ref="U3" pin="2" pinfunction="EN" pintype="input"/>
+      <node ref="U3" pin="3" pinfunction="VIN" pintype="power_in"/>
+      <node ref="U5" pin="3" pinfunction="+" pintype="input"/>
+      <node ref="U5" pin="5" pinfunction="V+" pintype="power_in"/>
+    </net>
+    <net code="98" name="unconnected-(J1-SBU1-PadA8)">
+      <node ref="J1" pin="A8" pinfunction="SBU1" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="99" name="unconnected-(J1-SBU2-PadB8)">
+      <node ref="J1" pin="B8" pinfunction="SBU2" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="100" name="unconnected-(J2-CC1-PadA5)">
+      <node ref="J2" pin="A5" pinfunction="CC1" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="101" name="unconnected-(J2-DN1-PadA7)">
+      <node ref="J2" pin="A7" pinfunction="DN1" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="102" name="unconnected-(J2-DN2-PadB7)">
+      <node ref="J2" pin="B7" pinfunction="DN2" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="103" name="unconnected-(J2-DP1-PadA6)">
+      <node ref="J2" pin="A6" pinfunction="DP1" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="104" name="unconnected-(J2-SSRXN1-PadB10)">
+      <node ref="J2" pin="B10" pinfunction="SSRXN1" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="105" name="unconnected-(J2-SSRXN2-PadA10)">
+      <node ref="J2" pin="A10" pinfunction="SSRXN2" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="106" name="unconnected-(J2-SSRXP1-PadB11)">
+      <node ref="J2" pin="B11" pinfunction="SSRXP1" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="107" name="unconnected-(J2-SSRXP2-PadA11)">
+      <node ref="J2" pin="A11" pinfunction="SSRXP2" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="108" name="unconnected-(J2-SSTXN1-PadA3)">
+      <node ref="J2" pin="A3" pinfunction="SSTXN1" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="109" name="unconnected-(J2-SSTXN2-PadB3)">
+      <node ref="J2" pin="B3" pinfunction="SSTXN2" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="110" name="unconnected-(J2-SSTXP1-PadA2)">
+      <node ref="J2" pin="A2" pinfunction="SSTXP1" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="111" name="unconnected-(J2-SSTXP2-PadB2)">
+      <node ref="J2" pin="B2" pinfunction="SSTXP2" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="112" name="unconnected-(J3-CC2-PadB5)">
+      <node ref="J3" pin="B5" pinfunction="CC2" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="113" name="unconnected-(J3-DN1-PadA7)">
+      <node ref="J3" pin="A7" pinfunction="DN1" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="114" name="unconnected-(J3-DN2-PadB7)">
+      <node ref="J3" pin="B7" pinfunction="DN2" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="115" name="unconnected-(J3-DP1-PadA6)">
+      <node ref="J3" pin="A6" pinfunction="DP1" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="116" name="unconnected-(J3-SSRXN1-PadB10)">
+      <node ref="J3" pin="B10" pinfunction="SSRXN1" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="117" name="unconnected-(J3-SSRXN2-PadA10)">
+      <node ref="J3" pin="A10" pinfunction="SSRXN2" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="118" name="unconnected-(J3-SSRXP1-PadB11)">
+      <node ref="J3" pin="B11" pinfunction="SSRXP1" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="119" name="unconnected-(J3-SSRXP2-PadA11)">
+      <node ref="J3" pin="A11" pinfunction="SSRXP2" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="120" name="unconnected-(J3-SSTXN1-PadA3)">
+      <node ref="J3" pin="A3" pinfunction="SSTXN1" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="121" name="unconnected-(J3-SSTXN2-PadB3)">
+      <node ref="J3" pin="B3" pinfunction="SSTXN2" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="122" name="unconnected-(J3-SSTXP1-PadA2)">
+      <node ref="J3" pin="A2" pinfunction="SSTXP1" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="123" name="unconnected-(J3-SSTXP2-PadB2)">
+      <node ref="J3" pin="B2" pinfunction="SSTXP2" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="124" name="unconnected-(J4-CC2-PadB5)">
+      <node ref="J4" pin="B5" pinfunction="CC2" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="125" name="unconnected-(J4-DN1-PadA7)">
+      <node ref="J4" pin="A7" pinfunction="DN1" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="126" name="unconnected-(J4-DN2-PadB7)">
+      <node ref="J4" pin="B7" pinfunction="DN2" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="127" name="unconnected-(J4-DP1-PadA6)">
+      <node ref="J4" pin="A6" pinfunction="DP1" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="128" name="unconnected-(J4-SSRXN1-PadB10)">
+      <node ref="J4" pin="B10" pinfunction="SSRXN1" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="129" name="unconnected-(J4-SSRXN2-PadA10)">
+      <node ref="J4" pin="A10" pinfunction="SSRXN2" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="130" name="unconnected-(J4-SSRXP1-PadB11)">
+      <node ref="J4" pin="B11" pinfunction="SSRXP1" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="131" name="unconnected-(J4-SSRXP2-PadA11)">
+      <node ref="J4" pin="A11" pinfunction="SSRXP2" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="132" name="unconnected-(J4-SSTXN1-PadA3)">
+      <node ref="J4" pin="A3" pinfunction="SSTXN1" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="133" name="unconnected-(J4-SSTXN2-PadB3)">
+      <node ref="J4" pin="B3" pinfunction="SSTXN2" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="134" name="unconnected-(J4-SSTXP1-PadA2)">
+      <node ref="J4" pin="A2" pinfunction="SSTXP1" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="135" name="unconnected-(J4-SSTXP2-PadB2)">
+      <node ref="J4" pin="B2" pinfunction="SSTXP2" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="136" name="unconnected-(J6-CC2-PadB5)">
+      <node ref="J6" pin="B5" pinfunction="CC2" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="137" name="unconnected-(J6-DN1-PadA7)">
+      <node ref="J6" pin="A7" pinfunction="DN1" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="138" name="unconnected-(J6-DN2-PadB7)">
+      <node ref="J6" pin="B7" pinfunction="DN2" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="139" name="unconnected-(J6-DP1-PadA6)">
+      <node ref="J6" pin="A6" pinfunction="DP1" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="140" name="unconnected-(J6-SSRXN1-PadB10)">
+      <node ref="J6" pin="B10" pinfunction="SSRXN1" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="141" name="unconnected-(J6-SSRXN2-PadA10)">
+      <node ref="J6" pin="A10" pinfunction="SSRXN2" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="142" name="unconnected-(J6-SSRXP1-PadB11)">
+      <node ref="J6" pin="B11" pinfunction="SSRXP1" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="143" name="unconnected-(J6-SSRXP2-PadA11)">
+      <node ref="J6" pin="A11" pinfunction="SSRXP2" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="144" name="unconnected-(J6-SSTXN1-PadA3)">
+      <node ref="J6" pin="A3" pinfunction="SSTXN1" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="145" name="unconnected-(J6-SSTXN2-PadB3)">
+      <node ref="J6" pin="B3" pinfunction="SSTXN2" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="146" name="unconnected-(J6-SSTXP1-PadA2)">
+      <node ref="J6" pin="A2" pinfunction="SSTXP1" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="147" name="unconnected-(J6-SSTXP2-PadB2)">
+      <node ref="J6" pin="B2" pinfunction="SSTXP2" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="148" name="unconnected-(J7-CC2-PadB5)">
+      <node ref="J7" pin="B5" pinfunction="CC2" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="149" name="unconnected-(J7-DN1-PadA7)">
+      <node ref="J7" pin="A7" pinfunction="DN1" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="150" name="unconnected-(J7-DN2-PadB7)">
+      <node ref="J7" pin="B7" pinfunction="DN2" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="151" name="unconnected-(J7-DP1-PadA6)">
+      <node ref="J7" pin="A6" pinfunction="DP1" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="152" name="unconnected-(J7-SSRXN1-PadB10)">
+      <node ref="J7" pin="B10" pinfunction="SSRXN1" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="153" name="unconnected-(J7-SSRXN2-PadA10)">
+      <node ref="J7" pin="A10" pinfunction="SSRXN2" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="154" name="unconnected-(J7-SSRXP1-PadB11)">
+      <node ref="J7" pin="B11" pinfunction="SSRXP1" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="155" name="unconnected-(J7-SSRXP2-PadA11)">
+      <node ref="J7" pin="A11" pinfunction="SSRXP2" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="156" name="unconnected-(J7-SSTXN1-PadA3)">
+      <node ref="J7" pin="A3" pinfunction="SSTXN1" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="157" name="unconnected-(J7-SSTXN2-PadB3)">
+      <node ref="J7" pin="B3" pinfunction="SSTXN2" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="158" name="unconnected-(J7-SSTXP1-PadA2)">
+      <node ref="J7" pin="A2" pinfunction="SSTXP1" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="159" name="unconnected-(J7-SSTXP2-PadB2)">
+      <node ref="J7" pin="B2" pinfunction="SSTXP2" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="160" name="unconnected-(U1-CTS#-Pad11)">
+      <node ref="U1" pin="11" pinfunction="CTS#" pintype="input+no_connect"/>
+    </net>
+    <net code="161" name="unconnected-(U1-RTS#-Pad8)">
+      <node ref="U1" pin="8" pinfunction="RTS#" pintype="output+no_connect"/>
+    </net>
+    <net code="162" name="unconnected-(U2-DOUT-Pad3)">
+      <node ref="U2" pin="3" pinfunction="DOUT" pintype="output+no_connect"/>
+    </net>
+    <net code="163" name="unconnected-(U3-IC-Pad1)">
+      <node ref="U3" pin="1" pinfunction="IC" pintype="no_connect"/>
+    </net>
+    <net code="164" name="unconnected-(U4-PA9{slash}NC-Pad29)">
+      <node ref="U4" pin="29" pinfunction="PA9/NC" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="165" name="unconnected-(U4-PA10{slash}NC-Pad32)">
+      <node ref="U4" pin="32" pinfunction="PA10/NC" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="166" name="unconnected-(U4-PA15-Pad37)">
+      <node ref="U4" pin="37" pinfunction="PA15" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="167" name="unconnected-(U4-PB1-Pad20)">
+      <node ref="U4" pin="20" pinfunction="PB1" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="168" name="unconnected-(U4-PC6-Pad30)">
+      <node ref="U4" pin="30" pinfunction="PC6" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="169" name="unconnected-(U4-PC7-Pad31)">
+      <node ref="U4" pin="31" pinfunction="PC7" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="170" name="unconnected-(U4-PC13-Pad1)">
+      <node ref="U4" pin="1" pinfunction="PC13" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="171" name="unconnected-(U4-PC14-Pad2)">
+      <node ref="U4" pin="2" pinfunction="PC14" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="172" name="unconnected-(U4-PC15-Pad3)">
+      <node ref="U4" pin="3" pinfunction="PC15" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="173" name="unconnected-(U4-VBAT-Pad4)">
+      <node ref="U4" pin="4" pinfunction="VBAT" pintype="power_in+no_connect"/>
+    </net>
+  </nets>
+</export>
