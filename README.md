@@ -21,10 +21,10 @@ Open source motion tracker band intended for athletics analytics.
 - Decide on full breadth of features ✔️
 - Finalize IMU selection ✔️
 - Determine user inputs ✔️
-- Finalize schematic
-- Finalize layout
+- Finalize schematic ✔️
+- Finalize layout✔️
 - First PCB bring-up
-- Test power draw for batter selection
+- Test power draw for battery selection
 - Design device enclosure
 
 ### Software
@@ -41,10 +41,10 @@ Open source motion tracker band intended for athletics analytics.
 - Run tests and determine whether WiFi or BLE will be used to communicate with software ✔️
 - Write driver for BLE or UDP (maybe TCP?) over WiFi ✔️
 - Write driver class for BNO085 SPI IMU ✔️
+- Implement addressable LEDs ✔️
 - Write battery gauge driver (decided to go with ADC battery measurement)
 - Write suit calibration routine 
 - Improve wireless stability
-- Implement addressable LEDs
 - Implement device power up and power sensing algorithm
 
 ## License
