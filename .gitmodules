@@ -1,0 +1,6 @@
+[submodule "Firmware/SilhouetteSync_FW/components/esp32_BNO08x"]
+	path = Firmware/SilhouetteSync_FW/components/esp32_BNO08x
+	url = https://github.com/myles-parfeniuk/esp32_BNO08x.git
+[submodule "Firmware/SilhouetteSync_FW/components/data_control"]
+	path = Firmware/SilhouetteSync_FW/components/data_control
+	url = https://github.com/myles-parfeniuk/data_control.git
