@@ -6,6 +6,7 @@ UDPServer::UDPServer(Device& d)
     , request_handler(d, packet_stream)
     , s_retry_num(0)
     , connected(false)
+    , discovered(false)
 {
     esp_err_t ret = nvs_flash_init();
     if (ret == ESP_ERR_NVS_NO_FREE_PAGES || ret == ESP_ERR_NVS_NEW_VERSION_FOUND)
@@ -67,6 +68,9 @@ bool UDPServer::open_udp_socket()
     {
         ESP_LOGI(TAG, "Socket created");
 
+        set_socket_broadcast(true);
+        set_socket_timeout(SOCKET_TIMEOUT_MS);
+
         int err = bind(sock, (struct sockaddr*) &dest_addr, sizeof(dest_addr));
         if (err < 0)
         {
@@ -93,12 +97,34 @@ void UDPServer::close_udp_socket()
     }
 }
 
+void UDPServer::set_socket_broadcast(bool enable)
+{
+    int broadcast_en = (int) enable;
+    if (setsockopt(sock, SOL_SOCKET, SO_BROADCAST, &broadcast_en, sizeof(broadcast_en)) < 0)
+        ESP_LOGE(TAG, "setsockopt(SO_BROADCAST) failed: errno %d", errno);
+
+    discovered = !enable; // sending broadcast messages should only be possible if device is not discovered
+}
+
+void UDPServer::set_socket_timeout(int timeout_ms)
+{
+    struct timeval timeout;
+
+    timeout.tv_sec = 0;
+    timeout.tv_usec = (uint32_t) timeout_ms * 1000;
+
+    if (setsockopt(sock, SOL_SOCKET, SO_RCVTIMEO, &timeout, sizeof(timeout)) < 0)
+        ESP_LOGE(TAG, "setsockopt(SO_RCVTIMEO) failed: errno %d", errno);
+}
+
 void UDPServer::retransmit()
 {
     payload_t* transmit_buffer = new payload_t;
 
     if (packet_stream.receive_packet(transmit_buffer))
         parse_request(transmit_buffer);
+    else
+        set_socket_broadcast(true);
 
     delete transmit_buffer;
 }
@@ -202,15 +228,22 @@ void UDPServer::parse_request(payload_t* transmit_buffer)
 
     switch (static_cast<Requests>(transmit_buffer->request))
     {
-    case Requests::sample:
+    case Requests::client_discovery:
+        if(!discovered)
+        {
+            ESP_LOGW(TAG, "Discovered.");
+            packet_stream.send_discovered_packet(transmit_buffer);
+            set_socket_broadcast(false);
+        }
+    case Requests::client_sample:
         request_handler.handle_sample(transmit_buffer);
         break;
 
-    case Requests::tare:
+    case Requests::client_tare:
         request_handler.handle_tare(transmit_buffer);
         break;
 
-    case Requests::calibrate:
+    case Requests::client_calibrate:
         request_handler.handle_calibration(transmit_buffer);
         break;
 
