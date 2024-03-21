@@ -16,6 +16,7 @@ class PacketTransceiver
         bool send_busy_packet(payload_t* tx_buffer);
         bool send_success_packet(payload_t* tx_buffer);
         bool send_failure_packet(payload_t* tx_buffer);
+        bool send_discovered_packet(payload_t* tx_buffer);
 
     private:
         Device& d;

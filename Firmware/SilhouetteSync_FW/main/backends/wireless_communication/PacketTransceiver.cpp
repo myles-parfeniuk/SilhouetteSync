@@ -9,15 +9,21 @@ PacketTransceiver::PacketTransceiver(Device& d, int16_t& sock)
 bool PacketTransceiver::receive_packet(payload_t* rx_buffer)
 {
     int len = -1;
-    vTaskDelay(RETRANSMIT_DELAY_MS / portTICK_PERIOD_MS);
     socklen_t socklen = sizeof(source_addr);
-    len = recvfrom(sock, rx_buffer, sizeof(payload_t), 0, reinterpret_cast<struct sockaddr*>(&source_addr), &socklen); // receive packet from client
+    len = recvfrom(sock, rx_buffer, sizeof(payload_t), 0, reinterpret_cast<struct sockaddr*>(&source_addr), &socklen); // receive packet from client;
 
     // Error occurred during receiving
     if (len < 0)
     {
-        ESP_LOGE(TAG, "recvfrom failed: errno %d", errno);
+        if(errno != 11)
+            ESP_LOGE(TAG, "recvfrom failed: errno %d", errno);
+        else
+            ESP_LOGE(TAG, "recvfrom failed: socket timeout");
         return false;
+    }
+    else
+    {
+        vTaskDelay(rx_buffer->retransmit_delay / portTICK_PERIOD_MS);
     }
 
     return true;
@@ -25,7 +31,7 @@ bool PacketTransceiver::receive_packet(payload_t* rx_buffer)
 
 bool PacketTransceiver::send_sample_packet(payload_t* tx_buffer)
 {
-    build_packet(Responses::sampling, tx_buffer);
+    build_packet(Responses::server_sampling, tx_buffer);
 
     if (send_packet(tx_buffer))
         return true;
@@ -36,7 +42,7 @@ bool PacketTransceiver::send_sample_packet(payload_t* tx_buffer)
 bool PacketTransceiver::send_busy_packet(payload_t* tx_buffer)
 {
 
-    build_packet(Responses::busy, tx_buffer);
+    build_packet(Responses::server_busy, tx_buffer);
 
     if (send_packet(tx_buffer))
         return true;
@@ -47,7 +53,7 @@ bool PacketTransceiver::send_busy_packet(payload_t* tx_buffer)
 bool PacketTransceiver::send_failure_packet(payload_t* tx_buffer)
 {
 
-    build_packet(Responses::failure, tx_buffer);
+    build_packet(Responses::server_failure, tx_buffer);
 
     if (send_packet(tx_buffer))
         return true;
@@ -58,7 +64,17 @@ bool PacketTransceiver::send_failure_packet(payload_t* tx_buffer)
 bool PacketTransceiver::send_success_packet(payload_t* tx_buffer)
 {
 
-    build_packet(Responses::success, tx_buffer);
+    build_packet(Responses::server_success, tx_buffer);
+
+    if (send_packet(tx_buffer))
+        return true;
+    else
+        return false;
+}
+
+bool PacketTransceiver::send_discovered_packet(payload_t* tx_buffer)
+{
+    build_packet(Responses::server_discovered, tx_buffer);
 
     if (send_packet(tx_buffer))
         return true;

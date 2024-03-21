@@ -23,6 +23,7 @@ typedef struct payload_t
         float quat_real;
         uint8_t accuracy;
         uint64_t time_stamp;
+        uint8_t retransmit_delay;
         payload_t()
             : request(0)
             , response(0)
@@ -33,24 +34,26 @@ typedef struct payload_t
             , quat_real(0)
             , accuracy(0)
             , time_stamp(0)
+            , retransmit_delay(0)
         {
         }
 } payload_t;
 
 enum class Requests
 {
-    sample,
-    tare,
-    calibrate
+    client_discovery,
+    client_sample,
+    client_tare,
+    client_calibrate,
 };
 
 enum class Responses
 {
-    busy = 255,
-    success = 254,
-    failure = 253,
-    affirmative = 252,
-    sampling = 0
+    server_discovered,
+    server_sampling,
+    server_failure,
+    server_success,
+    server_busy,
+    client_affirmative,
+    no_resp
 };
-
-static const constexpr uint8_t RETRANSMIT_DELAY_MS = 15;

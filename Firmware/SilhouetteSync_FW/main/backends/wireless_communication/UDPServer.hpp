@@ -32,11 +32,13 @@ class UDPServer
         esp_event_handler_instance_t instance_any_id;
         esp_event_handler_instance_t instance_got_ip;
         bool connected;
+        bool discovered;
 
         static const constexpr char* WIFI_SSID = "TELUS1544";
         static const constexpr char* WIFI_PASS = "88htrk5yf9";
         static const constexpr uint16_t PORT = 49160;
         static const constexpr uint16_t MAX_CONNECTION_ATTEMPTS = 2;
+        static const constexpr int SOCKET_TIMEOUT_MS = 5000; 
         static const constexpr char* TAG = "UDPServer";
 
         void wifi_init_sta();
@@ -50,6 +52,8 @@ class UDPServer
         void handle_start();
         bool open_udp_socket();
         void close_udp_socket();
+        void set_socket_broadcast(bool enable);
+        void set_socket_timeout(int timeout_ms);
         void parse_request(payload_t* transmit_buffer);
         void retransmit();
 };

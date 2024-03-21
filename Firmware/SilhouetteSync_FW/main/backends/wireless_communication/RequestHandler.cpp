@@ -18,7 +18,7 @@ void RequestHandler::handle_tare(payload_t* transmit_buffer)
 
 void RequestHandler::handle_calibration(payload_t* transmit_buffer)
 {
-    Responses response = Responses::failure;
+    Responses response = Responses::server_failure;
     uint16_t response_attempts = 0;
 
     d.imu.state.set(IMUState::calibrate);
@@ -38,7 +38,7 @@ void RequestHandler::handle_calibration(payload_t* transmit_buffer)
         {
             response = static_cast<Responses>(transmit_buffer->response);
 
-            if (response != Responses::affirmative)
+            if (response != Responses::client_affirmative)
             {
 
                 if (d.imu.calibration_status.get())
@@ -53,5 +53,5 @@ void RequestHandler::handle_calibration(payload_t* transmit_buffer)
                 break;
         }
 
-    } while (response != Responses::affirmative);
+    } while (response != Responses::client_affirmative);
 }
