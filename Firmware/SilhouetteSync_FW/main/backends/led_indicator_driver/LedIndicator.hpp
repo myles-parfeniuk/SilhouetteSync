@@ -41,6 +41,6 @@ class LedIndicator
         void remove_animation_from_queue(AnimationPriorities priority);
         void play_next_animation();
 
-        static const constexpr uint8_t LED_COUNT = 3;
+        static const constexpr uint8_t LED_COUNT = 4;
         static const constexpr char* TAG = "LedIndicator";
 };

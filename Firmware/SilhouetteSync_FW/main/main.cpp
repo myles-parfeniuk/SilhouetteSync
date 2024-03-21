@@ -14,8 +14,8 @@
 extern "C" void app_main(void)
 {
     Device d;          // create device model
-    IMU imu_driver(d); // initialize IMU driver
     LedIndicator led_indicator_driver(d);
+    IMU imu_driver(d); // initialize IMU driver
     UDPServer server(d);
 
     // uncomment for live IMU data over serial for debug
