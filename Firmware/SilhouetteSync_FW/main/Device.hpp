@@ -31,6 +31,8 @@ class Device
         imu_t imu;                                                          ///<Device IMU frontend.
         DataControl::CallAlways<LANConnectionStatus> lan_connection_status; ///<Current connection status of device to LAN
 
+        static const constexpr char* TAG = "Device"; ///<Device tag used in debug statements
+
         private:
-        uint32_t get_hardware_id();
+        uint64_t get_hardware_id();
 };

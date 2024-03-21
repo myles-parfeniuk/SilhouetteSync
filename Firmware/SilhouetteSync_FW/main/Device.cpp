@@ -7,9 +7,10 @@ Device::Device()
     , imu{IMUState::sleep, imu_data_t(), false}
     , lan_connection_status(LANConnectionStatus::failed_connection)
 {
+    ESP_LOGI(TAG, "Hardware ID: %llu", id.get());
 }
 
-uint32_t Device::get_hardware_id()
+uint64_t Device::get_hardware_id()
 {
     uint8_t mac_addr[8];
 
