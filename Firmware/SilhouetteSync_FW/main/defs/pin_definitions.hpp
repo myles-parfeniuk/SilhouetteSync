@@ -15,7 +15,7 @@ static constexpr gpio_num_t pin_user_sw = GPIO_NUM_21; ///<Power switch doubles 
 
 // Dock UART
 static constexpr gpio_num_t pin_dock_rx = GPIO_NUM_0; ///<ESP side UART RX pin from the dock
-static constexpr gpio_num_t pin_dock_tx = GPIO_NUM_19; ///<ESP side UART TX pin to the dock
+static constexpr gpio_num_t pin_dock_tx = GPIO_NUM_18; ///<ESP side UART TX pin to the dock
 
 // Power Stuff
 static constexpr gpio_num_t pin_charge_stat = GPIO_NUM_1; ///<LiPo charge IC status. Low when charging
