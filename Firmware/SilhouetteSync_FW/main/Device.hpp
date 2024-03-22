@@ -1,5 +1,6 @@
 #pragma once
-// third party includes
+// standard library includes
+#include <string>
 // in-house includes
 #include "defs/imu_defs.hpp"
 #include "defs/pin_definitions.hpp"
@@ -27,12 +28,13 @@ class Device
         } imu_t;
 
         Device();
-        DataControl::CallAlways<uint64_t> id;                                ///<Device id (unique MAC address).
+        DataControl::CallAlways<std::string> id;                                ///<Device id (unique MAC address).
         imu_t imu;                                                          ///<Device IMU frontend.
         DataControl::CallAlways<LANConnectionStatus> lan_connection_status; ///<Current connection status of device to LAN
 
+        static const constexpr uint8_t HARDWARE_ID_OFFSET = 6;
         static const constexpr char* TAG = "Device"; ///<Device tag used in debug statements
 
         private:
-        uint64_t get_hardware_id();
+        std::string get_hardware_id();
 };

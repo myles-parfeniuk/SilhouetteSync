@@ -1,5 +1,6 @@
 #pragma once
 #include <stdint.h>
+#include <cstring>
 
 /**
  *   @brief  The different LAN connection states device can be in.
@@ -12,11 +13,13 @@ enum class LANConnectionStatus
     max
 };
 
+static const constexpr uint8_t HARDWARE_ID_SZ = 32;
+
 typedef struct payload_t
 {
         uint8_t request;
         uint8_t response;
-        uint64_t id;
+        char id[HARDWARE_ID_SZ];
         float quat_i;
         float quat_j;
         float quat_k;
@@ -27,7 +30,6 @@ typedef struct payload_t
         payload_t()
             : request(0)
             , response(0)
-            , id(0)
             , quat_i(0)
             , quat_j(0)
             , quat_k(0)
@@ -36,6 +38,7 @@ typedef struct payload_t
             , time_stamp(0)
             , retransmit_delay(0)
         {
+            memset(id, 0, sizeof(id));
         }
 } payload_t;
 

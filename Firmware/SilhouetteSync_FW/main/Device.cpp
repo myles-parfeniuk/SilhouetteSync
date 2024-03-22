@@ -1,5 +1,8 @@
+//standard library includes
+#include <string.h>
 // esp-idf includes
 #include "esp_mac.h"
+#include "esp_efuse.h"
 #include "Device.hpp"
 
 Device::Device()
@@ -7,15 +10,16 @@ Device::Device()
     , imu{IMUState::sleep, imu_data_t(), false}
     , lan_connection_status(LANConnectionStatus::failed_connection)
 {
-    ESP_LOGI(TAG, "Hardware ID: %llu", id.get());
+        ESP_LOGW(TAG, "HARDWARE ID: %s", id.get().erase(id.get().find_last_not_of('_') + 1).c_str());
 }
 
-uint64_t Device::get_hardware_id()
+std::string Device::get_hardware_id()
 {
-    uint8_t mac_addr[8];
+    char unique_id[HARDWARE_ID_SZ];
+    memset(unique_id, '_', HARDWARE_ID_SZ);
 
-    esp_efuse_mac_get_default(mac_addr);
+    ESP_ERROR_CHECK(esp_efuse_read_block(EFUSE_BLK3, unique_id, HARDWARE_ID_OFFSET*8, (HARDWARE_ID_SZ - HARDWARE_ID_OFFSET)*8));
+    unique_id[HARDWARE_ID_SZ - 1] = '\0';
 
-    return (uint64_t) ((mac_addr[0] << 40) | (mac_addr[1] << 32) | (mac_addr[2] << 24) | (mac_addr[3] << 16) | (mac_addr[4] << 8) |
-                       (mac_addr[5] << 0));
+    return std::string(unique_id);
 }

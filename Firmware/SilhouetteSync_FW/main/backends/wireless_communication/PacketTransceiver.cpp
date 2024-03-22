@@ -88,7 +88,7 @@ void PacketTransceiver::build_packet(Responses response, payload_t* tx_buffer)
 
     tx_buffer->response = static_cast<uint8_t>(response);
     tx_buffer->request = 0;
-    tx_buffer->id = d.id.get();
+    std::memcpy(tx_buffer->id, d.id.get().c_str(), HARDWARE_ID_SZ);
     tx_buffer->quat_i = current_data.quaternion_heading.i;
     tx_buffer->quat_j = current_data.quaternion_heading.j;
     tx_buffer->quat_k = current_data.quaternion_heading.k;
