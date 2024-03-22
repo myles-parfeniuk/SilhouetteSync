@@ -9,5 +9,4 @@ public class BodyLocation
     public const string leftWrist = "leftWrist";
     public const string rightBicep = "rightBicep";
     public const string rightWrist = "rightWrist";
-
 }

@@ -15,7 +15,8 @@ public class IMUDataGrabber
     {
         public byte request;        ///< The requested action by client.
         public byte response;       ///< The response from server when receiving, client when sending.
-        public ulong id;            ///< The hardware ID of the device
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
+        public string id;               ///< The hardware ID of the device
         public float quat_i;        ///< The quaternion component (i).
         public float quat_j;        ///< The quaternion component (j).
         public float quat_k;        ///< The quaternion component (k).
@@ -55,8 +56,8 @@ public class IMUDataGrabber
     private static IMUDataGrabber instance; ///< Singleton instance of the IMUDataGrabber.
     private Thread check_data_thread_hdl; ///< Thread handle for checking data.
     private ManualResetEvent stop_threads_evt = new ManualResetEvent(false); ///< Event to signal all transceiver threads to stop.
-    private Dictionary<ulong, SilSyncDevice> id_to_device_dict = new Dictionary<ulong, SilSyncDevice>(); ///< Dictionary mapping device IDs to SilSyncDevice objects.
-    private Dictionary<string, ulong> location_to_id_dict = new Dictionary<string, ulong>(); ///< Dictionary mapping locations to device IDs.
+    private Dictionary<string, SilSyncDevice> id_to_device_dict = new Dictionary<string, SilSyncDevice>(); ///< Dictionary mapping device IDs to SilSyncDevice objects.
+    private Dictionary<string, string> location_to_id_dict = new Dictionary<string, string>(); ///< Dictionary mapping locations to device IDs.
     private Semaphore data_ready_sem; ///< Semaphore for signaling data readiness.
     private readonly Mutex dictionary_mutex = new Mutex(); ///< Mutex for ensuring thread safety in dictionary operations.
 
@@ -86,9 +87,16 @@ public class IMUDataGrabber
     */
     private void init_location_to_id_dict()
     {
-        location_to_id_dict.Add("chest", 3813451978);
-        location_to_id_dict.Add("leftBicep", 821093102);
-        location_to_id_dict.Add("leftWrist", 820964062);
+        location_to_id_dict.Add("chest", "samaritan-blender");
+        location_to_id_dict.Add("leftBicep", "juicy-toaster");
+        location_to_id_dict.Add("leftWrist", "paris-flexible");
+        location_to_id_dict.Add("rightBicep", "gorilla-birdy");
+        location_to_id_dict.Add("rightWrist", "imagination-wonderland");
+        location_to_id_dict.Add("leftThigh", "heuristic-assault");
+        location_to_id_dict.Add("leftCalf", "corp-burger");
+        location_to_id_dict.Add("leftFoot", "dream-opachki");
+        location_to_id_dict.Add("rightThigh", "heuristic-assault");
+        location_to_id_dict.Add("righCalf", "bobik-distasteful");
     }
 
     /**
@@ -132,7 +140,7 @@ public class IMUDataGrabber
                 try
                 {
                     //check to see if ID is registered to a body location
-                    string location = get_location_by_id(payload_in.id);
+                    string location = get_location_by_id(payload_in.id.TrimEnd('_'));
                     if(location != null)
                     {
                         //attempt to add device to dictionary, check in case it already exists within the dictionary
@@ -163,7 +171,7 @@ public class IMUDataGrabber
             check_data_thread_hdl.Start();
 
             Debug.Log(TAG + "Discovery Complete IDs Found: ");
-            foreach (KeyValuePair<ulong, SilSyncDevice> pair in id_to_device_dict)
+            foreach (KeyValuePair<string, SilSyncDevice> pair in id_to_device_dict)
             {
                 Debug.Log(TAG + "ID: " + pair.Key);
                 pair.Value.transceiver_thread_hdl = new Thread(new ParameterizedThreadStart(transceiver_thread));
@@ -184,7 +192,7 @@ public class IMUDataGrabber
     {
         stop_threads_evt.Set();
 
-        foreach (KeyValuePair<ulong, SilSyncDevice> pair in id_to_device_dict)
+        foreach (KeyValuePair<string, SilSyncDevice> pair in id_to_device_dict)
         {
             pair.Value.transceiver_thread_hdl.Join();
         }
@@ -202,9 +210,9 @@ public class IMUDataGrabber
     */
     public Quaternion get_sensor_data(string location)
     {
-        ulong id = get_id_by_location(location);
+        string id = get_id_by_location(location);
 
-        if (id != 0)
+        if (id != null)
         {
             return id_to_device_dict[id].imu_heading_stable;
         }
@@ -223,9 +231,9 @@ public class IMUDataGrabber
     public bool get_sensor_connection_state(string location)
     {
         SilSyncDevice current_device = new SilSyncDevice(); 
-        ulong id = get_id_by_location(location);
+        string id = get_id_by_location(location);
 
-        if (id != 0)
+        if (id != null)
         {
             if (get_device_by_id(id, ref current_device))
                 return current_device.connection_state;
@@ -261,7 +269,7 @@ public class IMUDataGrabber
         if(location_to_id_dict.ContainsKey(location_one) && location_to_id_dict.ContainsKey(location_two))
         {
             dictionary_mutex.WaitOne();
-            ulong temp = location_to_id_dict[location_one];
+            string temp = location_to_id_dict[location_one];
             location_to_id_dict[location_one] = location_to_id_dict[location_two];
             location_to_id_dict[location_two] = temp;
             dictionary_mutex.ReleaseMutex(); 
@@ -280,10 +288,10 @@ public class IMUDataGrabber
     */
     public void calibrate_sensor(string location)
     {
-        ulong id = get_id_by_location(location);
+        string id = get_id_by_location(location);
         SilSyncDevice device = new SilSyncDevice();
 
-        if(id != 0)
+        if(id != null)
         {
             get_device_by_id(id, ref device);
 
@@ -301,10 +309,10 @@ public class IMUDataGrabber
     */
     public void tare_sensor(string location)
     {
-        ulong id = get_id_by_location(location);
+        string id = get_id_by_location(location);
         SilSyncDevice device = new SilSyncDevice();
 
-        if (id != 0)
+        if (id != null)
         {
             get_device_by_id(id, ref device);
 
@@ -320,9 +328,9 @@ public class IMUDataGrabber
     * @param location The body location of the sensor.
     * @return The ID of the sensor if found, otherwise 0.
     */
-    private ulong get_id_by_location(string location)
+    private string get_id_by_location(string location)
     {
-        ulong id = 0;
+        string id = null;
 
         if(location_to_id_dict.ContainsKey(location))
         {
@@ -341,10 +349,10 @@ public class IMUDataGrabber
     * @param id The hardware ID of the sensor.
     * @return The location of the sensor if found, otherwise null.
     */
-    private string get_location_by_id(ulong id)
+    private string get_location_by_id(string id)
     {
         dictionary_mutex.WaitOne();
-        foreach (KeyValuePair<string, ulong> pair in location_to_id_dict)
+        foreach (KeyValuePair<string, string> pair in location_to_id_dict)
         {
             if (pair.Value == id)
             {
@@ -363,15 +371,18 @@ public class IMUDataGrabber
     * @param device Reference to store the device if found.
     * @return True if the device is found, otherwise false.
     */
-    private bool get_device_by_id(ulong id, ref SilSyncDevice device)
+    private bool get_device_by_id(string id, ref SilSyncDevice device)
     {
-        if (id_to_device_dict.ContainsKey(id))
+        if(id != null)
         {
-            device = id_to_device_dict[id];
+            if (id_to_device_dict.ContainsKey(id))
+            {
+                device = id_to_device_dict[id];
 
-            return true;
+                return true;
+            }
         }
-
+     
         return false;
     }
 
@@ -384,13 +395,13 @@ public class IMUDataGrabber
     {
         SilSyncDevice device = new SilSyncDevice();
 
-        device.id = payload_in.id; 
+        device.id = payload_in.id.TrimEnd('_'); 
         device.client = new UdpClient(server_address.Address.ToString(), PORT);
         device.connection_state = false;
         device.disconnection_count = 0;
         device.imu_heading = new Quaternion(0, 0, 0, 1);
 
-        id_to_device_dict.Add(payload_in.id, device);
+        id_to_device_dict.Add(payload_in.id.TrimEnd('_'), device);
     }
 
     /**
@@ -428,7 +439,7 @@ public class IMUDataGrabber
     */
     private payload_t assemble_sample_packet(SilSyncDevice device)
     {
-        return new payload_t { request = (byte)Requests.client_sample, response = (byte)Responses.no_resp, id = 0, quat_i = 0, quat_j = 0, quat_k = 0, quat_real = 0, accuracy = 0, time_stamp = 0, retransmit_delay = device.retransmit_delay };
+        return new payload_t { request = (byte)Requests.client_sample, response = (byte)Responses.no_resp, id = "client", quat_i = 0, quat_j = 0, quat_k = 0, quat_real = 0, accuracy = 0, time_stamp = 0, retransmit_delay = device.retransmit_delay };
     }
 
     /**
@@ -438,7 +449,7 @@ public class IMUDataGrabber
     */
     private payload_t assemble_discovery_packet()
     {
-        return new payload_t { request = (byte)Requests.client_discovery, response = (byte)Responses.no_resp, id = 0, quat_i = 0, quat_j = 0, quat_k = 0, quat_real = 0, accuracy = 0, time_stamp = 0, retransmit_delay = 15};
+        return new payload_t { request = (byte)Requests.client_discovery, response = (byte)Responses.no_resp, id = "client", quat_i = 0, quat_j = 0, quat_k = 0, quat_real = 0, accuracy = 0, time_stamp = 0, retransmit_delay = 15};
     }
 
     /**
@@ -448,7 +459,7 @@ public class IMUDataGrabber
     */
     private payload_t assemble_calibration_packet(SilSyncDevice device)
     {
-        return new payload_t { request = (byte)Requests.client_calibrate, response = (byte)Responses.no_resp, id = 0, quat_i = 0, quat_j = 0, quat_k = 0, quat_real = 0, accuracy = 0, time_stamp = 0, retransmit_delay = device.retransmit_delay };
+        return new payload_t { request = (byte)Requests.client_calibrate, response = (byte)Responses.no_resp, id = "client", quat_i = 0, quat_j = 0, quat_k = 0, quat_real = 0, accuracy = 0, time_stamp = 0, retransmit_delay = device.retransmit_delay };
     }
 
     /**
@@ -458,7 +469,7 @@ public class IMUDataGrabber
     */
     private payload_t assemble_affirmative_packet(SilSyncDevice device)
     {
-        return new payload_t { request = (byte)Requests.client_sample, response = (byte)Responses.client_affirmative, id = 0, quat_i = 0, quat_j = 0, quat_k = 0, quat_real = 0, accuracy = 0, time_stamp = 0, retransmit_delay = device.retransmit_delay };
+        return new payload_t { request = (byte)Requests.client_sample, response = (byte)Responses.client_affirmative, id = "client", quat_i = 0, quat_j = 0, quat_k = 0, quat_real = 0, accuracy = 0, time_stamp = 0, retransmit_delay = device.retransmit_delay };
     }
 
    /**
@@ -468,7 +479,7 @@ public class IMUDataGrabber
    */
     private payload_t assemble_tare_packet(SilSyncDevice device)
     {
-        return new payload_t { request = (byte)Requests.client_tare, response = (byte)Responses.no_resp, id = 0, quat_i = 0, quat_j = 0, quat_k = 0, quat_real = 0, accuracy = 0, time_stamp = 0, retransmit_delay = device.retransmit_delay };
+        return new payload_t { request = (byte)Requests.client_tare, response = (byte)Responses.no_resp, id = "client", quat_i = 0, quat_j = 0, quat_k = 0, quat_real = 0, accuracy = 0, time_stamp = 0, retransmit_delay = device.retransmit_delay };
     }
 
     /**
@@ -487,7 +498,7 @@ public class IMUDataGrabber
         device.connection_state = true; //sensor is connected if data is received within TIMEOUT_MS
         device.disconnection_count = 0; //reset disconnection count after successful read
         device.retransmit_delay = (byte)(id_to_device_dict.Count + 1);
-        device.id = payload_in.id; //set id of current device
+        device.id = payload_in.id.TrimEnd('_'); //set id of current device
         device.imu_heading = assemble_quaternion(payload_in); //set new heading of current device
 
         return payload_in;
@@ -665,7 +676,7 @@ public class IMUDataGrabber
     private void print_packet(payload_t packet)
     {
         Debug.Log(TAG + 
-            " | ID: 0x" + packet.id.ToString("X") + "| Time Stamp: " + packet.time_stamp + " | Req: " + packet.request + '\n' +
+            " | ID: " + packet.id.Trim('_') + "| Time Stamp: " + packet.time_stamp + " | Req: " + packet.request + '\n' +
             " | I: " + packet.quat_i.ToString("F4") + " | J: " + packet.quat_j.ToString("F4") + " | K: " + packet.quat_k.ToString("F4") +
             " | Real: " + packet.quat_real.ToString("F4") + " | Accuracy: " + packet.accuracy + " |"
         );
@@ -677,7 +688,7 @@ public class IMUDataGrabber
     private void update_device_stable_headings()
     {
         dictionary_mutex.WaitOne();
-        foreach (KeyValuePair<ulong, SilSyncDevice> pair in id_to_device_dict)
+        foreach (KeyValuePair<string, SilSyncDevice> pair in id_to_device_dict)
         {
             pair.Value.imu_heading_stable = pair.Value.imu_heading;
         }
@@ -690,7 +701,7 @@ public class IMUDataGrabber
     private void set_update_events()
     {
         dictionary_mutex.WaitOne();
-        foreach (KeyValuePair<ulong, SilSyncDevice> pair in id_to_device_dict)
+        foreach (KeyValuePair<string, SilSyncDevice> pair in id_to_device_dict)
         {
             pair.Value.update_evt.Set();
         }
@@ -705,8 +716,6 @@ public class IMUDataGrabber
     {
         String location = (string)arg;
         SilSyncDevice device = new SilSyncDevice();
-        payload_t payload_out;
-        payload_t payload_in;
 
         while (!stop_threads_evt.WaitOne(0))
         {

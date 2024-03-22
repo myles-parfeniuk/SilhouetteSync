@@ -387,7 +387,7 @@ public class JointControlBench : MonoBehaviour
 
     void ReceiveData()
     {
-        imu_data_stream.scan_for_devices(3);
+        imu_data_stream.scan_for_devices(4);
 
         while (!stop_rx_data_thread_evt.WaitOne(0))
         {

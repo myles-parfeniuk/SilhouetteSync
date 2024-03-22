@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class SilSyncDevice
 {
-    public ulong id;
+    public string id;
     public UdpClient client;
     public bool connection_state;
     public int disconnection_count;
@@ -21,7 +21,7 @@ public class SilSyncDevice
 
     public SilSyncDevice()
     {
-        id = 0; 
+        id = null; 
         client = null;
         connection_state = false;
         disconnection_count = 0;
