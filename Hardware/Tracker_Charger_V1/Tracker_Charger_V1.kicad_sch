@@ -5742,6 +5742,11 @@
     (uuid fab916bb-2916-47e1-b153-62407a1e0903)
   )
 
+  (text "VER1 PCB USBC PLUG FOOTPRINT B SIDE INCORRECT PIN NUMBERING!"
+    (at 152.4 388.62 0)
+    (effects (font (size 5 5) (thickness 0.6) bold (color 198 23 0 1)) (justify left bottom))
+    (uuid 12346821-c16d-4efd-83e4-acf085ac4f3a)
+  )
   (text "USART1" (at 481.33 171.45 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 1c4a825a-adf9-412f-846b-20bdb17f8e16)
