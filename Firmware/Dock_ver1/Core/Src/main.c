@@ -22,6 +22,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include <stdio.h>
+#include "ssd1306.h"
 
 /* USER CODE END Includes */
 
@@ -72,7 +73,6 @@ static void MX_USART2_UART_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
 uint32_t AD_RES_BUFFER[5];
 
 /* USER CODE END 0 */
@@ -118,10 +118,13 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  ssd1306_Init();
 
   while(1){
   // Start ADC Conversion in DMA Mode (Periodically Every 1ms)
   HAL_ADC_Start_DMA(&hadc1, AD_RES_BUFFER, 5);
+  //ssd1306_TestBorder();
+  //ssd1306_TestAll();
   HAL_Delay(100);
   }
 
@@ -196,7 +199,7 @@ void SystemClock_Config(void)
 
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 {
-	uint8_t str[100];
+	uint8_t str[100], str_oled[100];
 	uint32_t value_current[5];
 	uint16_t str_len, value_current_tot;
 
@@ -206,8 +209,16 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 	value_current_tot += value_current[i];
 	}
 
-	str_len = sprintf(str, "1:%ldma 2:%ldma 3:%ldma 4:%ldma 5:%ldma\n\rtotal:%ldma\n\n\r", value_current[4], value_current[3], value_current[2], value_current[1], value_current[0], value_current_tot);
+	str_len = sprintf(str, "1:%ldma 2:%ldma 3:%ldma 4:%ldma 5:%ldma\n\rtotal:%dma\n\n\r", value_current[4], value_current[3], value_current[2], value_current[1], value_current[0], value_current_tot);
 	HAL_UART_Transmit(&huart2, str, str_len, 100);
+
+	sprintf(str_oled, "1:%ldma 2:%ldma 3:%ldma      ", value_current[4], value_current[3], value_current[2]);
+    ssd1306_SetCursor(0,0);
+    ssd1306_WriteString(str_oled, Font_6x8, White);
+	sprintf(str_oled, "4:%ldma 5:%ldma T:%dma      ", value_current[1], value_current[0], value_current_tot);
+    ssd1306_SetCursor(0,10);
+    ssd1306_WriteString(str_oled, Font_6x8, White);
+    ssd1306_UpdateScreen();
 }
 
 /**
