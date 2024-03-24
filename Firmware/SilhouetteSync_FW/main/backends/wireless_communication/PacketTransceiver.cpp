@@ -15,7 +15,7 @@ bool PacketTransceiver::receive_packet(payload_t* rx_buffer)
     // Error occurred during receiving
     if (len < 0)
     {
-        if(errno != 11)
+        if (errno != 11)
             ESP_LOGE(TAG, "recvfrom failed: errno %d", errno);
         else
             ESP_LOGE(TAG, "recvfrom failed: socket timeout");
@@ -95,6 +95,8 @@ void PacketTransceiver::build_packet(Responses response, payload_t* tx_buffer)
     tx_buffer->quat_real = current_data.quaternion_heading.real;
     tx_buffer->accuracy = current_data.quaternion_heading.accuracy;
     tx_buffer->time_stamp = esp_timer_get_time();
+    tx_buffer->battery_voltage = d.battery_voltage.get();
+    tx_buffer->power_state = (uint8_t) d.power_state.get();
     // ESP_LOGW(TAG, "Time: %llu", tx_buffer->time_stamp);
 }
 

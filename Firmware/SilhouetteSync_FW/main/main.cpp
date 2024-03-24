@@ -10,13 +10,19 @@
 #include "defs/imu_defs.hpp"
 #include "backends/wireless_communication/UDPServer.hpp"
 #include "backends/led_indicator_driver/LedIndicator.hpp"
+#include "backends/BatteryMonitor.hpp"
+#include "backends/PowerManagement.hpp"
 
 extern "C" void app_main(void)
 {
-    Device d;          // create device model
-    LedIndicator led_indicator_driver(d);
-    IMU imu_driver(d); // initialize IMU driver
-    UDPServer server(d);
+    // create device model
+    Device* d = new Device;
+    // create backends
+    //PowerManagement* power_manager = new PowerManagement(*d);
+    LedIndicator* led_indicator_driver = new LedIndicator(*d);
+    BatteryMonitor* battery_monitor = new BatteryMonitor(*d);
+    IMU* imu_driver = new IMU(*d);
+    UDPServer* server = new UDPServer(*d);
 
     // uncomment for live IMU data over serial for debug
     /*d.imu.data.follow([&d](imu_data_t new_data)
@@ -30,7 +36,7 @@ extern "C" void app_main(void)
      }, true);*/
 
     // char task_run_time_stats[255];
-    // char task_list[255];
+    // char task_list[355];
     while (1)
     {
         vTaskDelay(5000 / portTICK_PERIOD_MS);
@@ -42,7 +48,7 @@ extern "C" void app_main(void)
         // vTaskGetRunTimeStats(task_run_time_stats);
         // ESP_LOGW("Main","%s\n", task_run_time_stats);
 
-        // debugging: uncomment for task stack usage logs
+        // debugging:s uncomment for task stack usage logs
         // vTaskList(task_list);
         // ESP_LOGW("Main","%s\n", task_list);
     }

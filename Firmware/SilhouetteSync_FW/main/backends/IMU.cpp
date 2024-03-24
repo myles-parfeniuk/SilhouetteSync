@@ -7,44 +7,44 @@ IMU::IMU(Device& d)
 {
     // follow device struct to check for current sensor mode
     d.imu.state.follow(
-            [this, &d](IMUState new_state)
+        [this, &d](IMUState new_state)
+        {
+            switch (new_state)
             {
-                switch (new_state)
-                {
-                case IMUState::sleep:
-                    // do nothing
-                    break;
+            case IMUState::sleep:
+                // do nothing
+                break;
 
-                case IMUState::sample:
-                    ESP_LOGW(TAG, "SAMPLE STATE");
-                    xEventGroupClearBits(imu_state_event_group_hdl, ALL_IMU_STATE_BITS);
-                    xEventGroupSetBits(imu_state_event_group_hdl, SAMPLING_STATE_BIT);
-                    break;
+            case IMUState::sample:
+                ESP_LOGW(TAG, "SAMPLE STATE");
+                xEventGroupClearBits(imu_state_event_group_hdl, ALL_IMU_STATE_BITS);
+                xEventGroupSetBits(imu_state_event_group_hdl, SAMPLING_STATE_BIT);
+                break;
 
-                case IMUState::tare:
-                    ESP_LOGW(TAG, "TARE STATE");
-                    xEventGroupClearBits(imu_state_event_group_hdl, ALL_IMU_STATE_BITS);
-                    xEventGroupSetBits(imu_state_event_group_hdl, TARE_STATE_BIT);
-                    break;
+            case IMUState::tare:
+                ESP_LOGW(TAG, "TARE STATE");
+                xEventGroupClearBits(imu_state_event_group_hdl, ALL_IMU_STATE_BITS);
+                xEventGroupSetBits(imu_state_event_group_hdl, TARE_STATE_BIT);
+                break;
 
-                case IMUState::calibrate:
-                    ESP_LOGW(TAG, "CALIBRATE STATE");
-                    xEventGroupClearBits(imu_state_event_group_hdl, ALL_IMU_STATE_BITS);
-                    xEventGroupSetBits(imu_state_event_group_hdl, CALIBRATION_STATE_BIT);
-                    break;
+            case IMUState::calibrate:
+                ESP_LOGW(TAG, "CALIBRATE STATE");
+                xEventGroupClearBits(imu_state_event_group_hdl, ALL_IMU_STATE_BITS);
+                xEventGroupSetBits(imu_state_event_group_hdl, CALIBRATION_STATE_BIT);
+                break;
 
-                default:
+            default:
 
-                    break;
-                }
-            },
-            true);
+                break;
+            }
+        },
+        true);
 
     imu.initialize(); // initialize IMU unit
 
     // initialize imu game rotation vector and gyro
     imu.enable_game_rotation_vector(ROTATION_VECTOR_REPORT_PERIOD_US);
-    //imu.enable_gyro(GYRO_REPORT_PERIOD_US);
+    // imu.enable_gyro(GYRO_REPORT_PERIOD_US);
 
     xTaskCreate(&imu_task_trampoline, "imu_task", 4096, this, 7, &imu_task_hdl);
 
@@ -78,7 +78,7 @@ void IMU::take_samples()
 {
     imu_data_t new_data;
     imu.enable_game_rotation_vector(ROTATION_VECTOR_REPORT_PERIOD_US);
-    //imu.enable_gyro(GYRO_REPORT_PERIOD_US);
+    // imu.enable_gyro(GYRO_REPORT_PERIOD_US);
     do
     {
         if (imu.data_available())
@@ -182,7 +182,7 @@ bool IMU::calibration_routine()
                         if (imu.calibration_complete())
                         {
                             ESP_LOGW(TAG, "Calibration data successfully stored.");
-                            imu.disable_magnetometer(); 
+                            imu.disable_magnetometer();
                             return true;
                         }
                         else
@@ -199,7 +199,7 @@ bool IMU::calibration_routine()
                 if (save_calibration_attempt >= 20)
                     ESP_LOGE(TAG, "Calibration data failed to store.");
 
-                imu.disable_magnetometer(); 
+                imu.disable_magnetometer();
                 return false;
             }
         }

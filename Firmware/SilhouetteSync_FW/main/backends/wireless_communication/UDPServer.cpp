@@ -17,7 +17,7 @@ UDPServer::UDPServer(Device& d)
     ESP_ERROR_CHECK(ret);
     ESP_LOGI(TAG, "ESP_WIFI_MODE_STA");
 
-    xTaskCreate(&udp_server_task_trampoline, "udp_server_task", 8192, this, 6, &udp_server_task_hdl); // launch tcp server task
+    xTaskCreate(&udp_server_task_trampoline, "udp_server_task", 4096, this, 6, &udp_server_task_hdl); // launch UDP server task
 }
 
 void UDPServer::wifi_init_sta()
@@ -34,11 +34,11 @@ void UDPServer::wifi_init_sta()
     ESP_ERROR_CHECK(esp_event_handler_instance_register(IP_EVENT, IP_EVENT_STA_GOT_IP, event_handler_trampoline, this, &instance_got_ip));
 
     wifi_config_t wifi_config = {
-            .sta =
-                    {
-                            .threshold = {.authmode = WIFI_AUTH_OPEN},
-                            .sae_pwe_h2e = WPA3_SAE_PWE_BOTH,
-                    },
+        .sta =
+            {
+                .threshold = {.authmode = WIFI_AUTH_OPEN},
+                .sae_pwe_h2e = WPA3_SAE_PWE_BOTH,
+            },
     };
     strcpy((char*) wifi_config.sta.ssid, WIFI_SSID);
     strcpy((char*) wifi_config.sta.password, WIFI_PASS);
@@ -229,7 +229,7 @@ void UDPServer::parse_request(payload_t* transmit_buffer)
     switch (static_cast<Requests>(transmit_buffer->request))
     {
     case Requests::client_discovery:
-        if(!discovered)
+        if (!discovered)
         {
             ESP_LOGW(TAG, "Discovered.");
             packet_stream.send_discovered_packet(transmit_buffer);
