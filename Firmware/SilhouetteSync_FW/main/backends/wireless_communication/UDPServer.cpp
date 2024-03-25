@@ -34,11 +34,11 @@ void UDPServer::wifi_init_sta()
     ESP_ERROR_CHECK(esp_event_handler_instance_register(IP_EVENT, IP_EVENT_STA_GOT_IP, event_handler_trampoline, this, &instance_got_ip));
 
     wifi_config_t wifi_config = {
-        .sta =
-            {
-                .threshold = {.authmode = WIFI_AUTH_OPEN},
-                .sae_pwe_h2e = WPA3_SAE_PWE_BOTH,
-            },
+            .sta =
+                    {
+                            .threshold = {.authmode = WIFI_AUTH_OPEN},
+                            .sae_pwe_h2e = WPA3_SAE_PWE_BOTH,
+                    },
     };
     strcpy((char*) wifi_config.sta.ssid, WIFI_SSID);
     strcpy((char*) wifi_config.sta.password, WIFI_PASS);

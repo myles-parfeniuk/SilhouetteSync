@@ -6,12 +6,12 @@ from prettytable import PrettyTable
 from PacketTransceiver import *
 
 def send_sample_req(data_stream, server_address):
-    payload_out = send_packet(data_stream, server_address, Requests.SAMPLE_REQ.value, Responses.NULL_RESP.value)
+    payload_out = send_packet(data_stream, server_address, Requests.CLIENT_SAMPLE.value, Responses.NO_RESP.value)
     payload_in = receive_packet(data_stream)
     return payload_out, payload_in
 
 def send_tare_req(data_stream, server_address): 
-    send_packet(data_stream, server_address, Requests.TARE_REQ.value, Responses.NULL_RESP.value)
+    send_packet(data_stream, server_address, Requests.CLIENT_TARE.value, Responses.NO_RESP.value)
     receive_packet(data_stream)
 
 
@@ -21,11 +21,11 @@ def send_calibration_req(data_stream, server_address):
     prev_time = 0
 
     #send calibration requests until success or failure response received back from esp32
-    while (response != Responses.SUCESS_RESP.value) and (response != Responses.FAILURE_RESP.value):
+    while (response != Responses.SERVER_SUCCESS.value) and (response != Responses.SERVER_FAILURE.value):
         try:
             print(colored('Awaiting sucess/fail response.', 'yellow'))
 
-            payload_out = send_packet(data_stream, server_address, Requests.CALIBRATE_REQ.value, Responses.NULL_RESP.value)
+            payload_out = send_packet(data_stream, server_address, Requests.CLIENT_CALIBRATE.value, Responses.NO_RESP.value)
             payload_in = receive_packet(data_stream); 
 
             response = payload_in.response
@@ -47,7 +47,7 @@ def send_calibration_req(data_stream, server_address):
     while response != Responses.SAMPLING_RESP.value:
         try:
             print(colored('Awaiting sampling response.', 'yellow'))
-            payload_out = send_packet(data_stream, server_address, Requests.SAMPLE_REQ.value, Responses.AFFIRMATIVE_RESP.value)
+            payload_out = send_packet(data_stream, server_address, Requests.CLIENT_SAMPLE.value, Responses.CLIENT_AFFIRMATIVE.value)
             payload_in = receive_packet(data_stream)
 
             response = payload_in.response

@@ -3,13 +3,13 @@
 #include "driver/gpio.h"
 // in-house includes
 #include "../Device.hpp"
-#include "../defs/pin_definitions.hpp"
+#include "../defs/pin_defs.hpp"
 #include "../defs/pwr_management_defs.hpp"
 
-class PowerManagement
+class PowerManager
 {
     public:
-        PowerManagement(Device& d);
+        PowerManager(Device& d);
 
     private:
         enum class PWROrState
@@ -26,7 +26,7 @@ class PowerManagement
         void set_buck_en_on_boot();
         static void power_management_task_trampoline(void* arg);
         void power_management_task();
-        void set_power_state(int or_state, int charge_state);
+        void set_power_source_state(int or_state, int charge_state);
 
         static void IRAM_ATTR pwr_or_state_ISR(void* arg);
         static void IRAM_ATTR charge_state_ISR(void* arg);
@@ -34,5 +34,5 @@ class PowerManagement
         static const constexpr uint8_t OR_STATE_EVT_BIT = BIT0;
         static const constexpr uint8_t CHARGE_STATE_EVT_BIT = BIT1;
         static const constexpr uint8_t ALL_POWER_MANAGEMENT_EVT_BITS = OR_STATE_EVT_BIT | CHARGE_STATE_EVT_BIT;
-        static const constexpr char* TAG = "PowerManagement"; ///<class tag, used in debug logs
+        static const constexpr char* TAG = "PowerManager"; ///<class tag, used in debug logs
 };

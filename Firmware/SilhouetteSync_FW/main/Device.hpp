@@ -3,17 +3,17 @@
 #include <string>
 // in-house includes
 #include "defs/imu_defs.hpp"
-#include "defs/pin_definitions.hpp"
+#include "defs/pin_defs.hpp"
 #include "defs/wireless_com_defs.hpp"
 #include "defs/pwr_management_defs.hpp"
+#include "defs/switch_defs.hpp"
 #include "DataControl.hpp"
 
 /**
  *
  * @brief Device frontend class.
  *
- * Class that represents SilhouetteSync as a whole, facilitates communication between backends (ie NavSwitch driver)
- * and frontends (ie UIManager).
+ * Class that represents SilhouetteSync as a whole, facilitates communication between backends (ie SwitchDriver and PowerManager).
  */
 class Device
 {
@@ -31,12 +31,16 @@ class Device
         Device();
         DataControl::CallAlways<std::string> id;                            ///<Device id (unique MAC address).
         imu_t imu;                                                          ///<Device IMU frontend.
-        DataControl::CallAlways<LANConnectionStatus> lan_connection_status; ///<current connection status of device to LAN
-        DataControl::CallAlways<float> battery_voltage;                     ///<current battery voltage of device
-        DataControl::CallAlways<PowerStates> power_state; ///< current power state of the device (ie battery powered, usb charging, usb fully charged)
+        DataControl::CallAlways<LANConnectionStatus> lan_connection_status; ///<Current connection status of device to LAN
+        DataControl::CallAlways<float> battery_voltage;                     ///<Current battery voltage of device
+        DataControl::CallAlways<PowerSourceStates>
+                power_source_state; ///<Current power source state of the device (ie battery powered, usb charging, usb fully charged)
+        DataControl::CallAlways<PowerStates>
+                power_state; ///<Current power state of the device (ie low powered (no wifi, buck disabled), normal operation
+        DataControl::CallAlways<SwitchEvents> user_sw; ///<Most recent user input event on switch
 
-        static const constexpr uint8_t HARDWARE_ID_OFFSET = 6;
-        static const constexpr char* TAG = "Device"; ///<Device tag used in debug statements
+        static const constexpr uint8_t HARDWARE_ID_OFFSET = 6; ///<Hardware ID offset (used for loading hardware ID from fuse block 3)
+        static const constexpr char* TAG = "Device";           ///<Device tag used in debug statements
 
     private:
         std::string get_hardware_id();

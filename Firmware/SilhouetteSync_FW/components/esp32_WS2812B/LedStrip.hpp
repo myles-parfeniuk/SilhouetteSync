@@ -50,6 +50,7 @@ class LedStrip
         void set_strip_color(rgb_color_t color);
         void write_pixel_buffer();
         void clear_pixel_buffer();
+        std::vector<rgb_color_t>& get_pixel_buffer(); 
 
     private: 
         void build_tx_buffer();

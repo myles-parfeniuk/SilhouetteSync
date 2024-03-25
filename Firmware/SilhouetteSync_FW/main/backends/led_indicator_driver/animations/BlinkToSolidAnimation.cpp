@@ -6,7 +6,7 @@ BlinkToSolidAnimation::BlinkToSolidAnimation(LedStrip& leds, uint8_t priority, r
     , blink_count(0)
 {
     esp_timer_create_args_t animation_timer_args = {
-        .callback = &this->animation_timer_cb_trampoline, .arg = this, .name = "BlinkToSolidAnimationTimer"};
+            .callback = &this->animation_timer_cb_trampoline, .arg = this, .name = "BlinkToSolidAnimationTimer"};
 
     esp_timer_create(&animation_timer_args, &animation_timer_hdl);
 }

@@ -10,7 +10,9 @@ Device::Device()
     , imu{IMUState::sleep, imu_data_t(), false}
     , lan_connection_status(LANConnectionStatus::failed_connection)
     , battery_voltage(0.0)
-    , power_state(PowerStates::battery_powered)
+    , power_source_state(PowerSourceStates::battery_powered)
+    , power_state(PowerStates::low_power)
+    , user_sw(SwitchEvents::released)
 {
     ESP_LOGW(TAG, "HARDWARE ID: %s", id.get().erase(id.get().find_last_not_of('_') + 1).c_str());
 }

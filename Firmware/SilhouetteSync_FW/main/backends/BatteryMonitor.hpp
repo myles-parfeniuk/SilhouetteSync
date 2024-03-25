@@ -12,7 +12,7 @@
 #include "esp_adc/adc_cali_scheme.h"
 // in-house includes
 #include "../Device.hpp"
-#include "../defs/pin_definitions.hpp"
+#include "../defs/pin_defs.hpp"
 
 class BatteryMonitor
 {

@@ -5,53 +5,86 @@ LedIndicator::LedIndicator(Device& d)
     , leds({LED_COUNT, pin_leds_di})
     , active_anim(nullptr)
     , attempting_connection_anim(leds, static_cast<uint8_t>(AnimationPriorities::lan_connection_status), {true, true, false}, {2, 1, 1})
-    , connected_anim(leds, static_cast<uint8_t>(AnimationPriorities::lan_connection_status), {0, 30, 0})
-    , failed_connection_anim(leds, static_cast<uint8_t>(AnimationPriorities::lan_connection_status), {120, 0, 0})
+    , connected_anim(leds, static_cast<uint8_t>(AnimationPriorities::lan_connection_status), {0, 20, 0})
+    , failed_connection_anim(leds, static_cast<uint8_t>(AnimationPriorities::lan_connection_status), {60, 0, 0})
     , calibration_anim(leds, static_cast<uint8_t>(AnimationPriorities::calibration_status), {false, false, true})
+    , shutdown_anim(leds, static_cast<uint8_t>(AnimationPriorities::shutdown), {60, 0, 0}, 80, true)
+    , boot_anim(leds, static_cast<uint8_t>(AnimationPriorities::boot), {0, 60, 0}, 80, true)
 {
     d.lan_connection_status.follow(
-        [this](LANConnectionStatus new_status)
-        {
-            switch (new_status)
+            [this](LANConnectionStatus new_status)
             {
-            case LANConnectionStatus::failed_connection:
-                ESP_LOGE(TAG, "FAILED");
-                add_animation_to_queue(&failed_connection_anim);
-                play_next_animation();
-                break;
+                switch (new_status)
+                {
+                case LANConnectionStatus::failed_connection:
+                    ESP_LOGE(TAG, "FAILED");
+                    add_animation_to_queue(&failed_connection_anim);
+                    play_next_animation();
+                    break;
 
-            case LANConnectionStatus::attempting_connection:
-                ESP_LOGE(TAG, "ATTEMPTING");
-                add_animation_to_queue(&attempting_connection_anim);
-                play_next_animation();
-                break;
+                case LANConnectionStatus::attempting_connection:
+                    ESP_LOGE(TAG, "ATTEMPTING");
+                    add_animation_to_queue(&attempting_connection_anim);
+                    play_next_animation();
+                    break;
 
-            case LANConnectionStatus::connected:
-                ESP_LOGE(TAG, "CONNECTED");
-                add_animation_to_queue(&connected_anim);
-                play_next_animation();
-                break;
+                case LANConnectionStatus::connected:
+                    ESP_LOGE(TAG, "CONNECTED");
+                    add_animation_to_queue(&connected_anim);
+                    play_next_animation();
+                    break;
 
-            default:
+                default:
 
-                break;
-            }
-        });
+                    break;
+                }
+            });
 
     d.imu.state.follow(
-        [this](IMUState new_state)
-        {
-            if (new_state == IMUState::calibrate)
+            [this](IMUState new_state)
             {
-                add_animation_to_queue(&calibration_anim);
-                play_next_animation();
-            }
-            else
+                if (new_state == IMUState::calibrate)
+                {
+                    add_animation_to_queue(&calibration_anim);
+                    play_next_animation();
+                }
+                else
+                {
+                    remove_animation_from_queue(AnimationPriorities::calibration_status);
+                    play_next_animation();
+                }
+            });
+
+    d.power_state.follow(
+            [this](PowerStates new_state)
             {
-                remove_animation_from_queue(AnimationPriorities::calibration_status);
-                play_next_animation();
-            }
-        });
+                switch (new_state)
+                {
+                case PowerStates::boot:
+                    add_animation_to_queue(&boot_anim);
+                    play_next_animation();
+                    break;
+
+                case PowerStates::normal_operation:
+                    remove_animation_from_queue(AnimationPriorities::boot);
+                    play_next_animation();
+                    break;
+
+                case PowerStates::shutdown:
+                    add_animation_to_queue(&shutdown_anim);
+                    play_next_animation();
+                    break;
+
+                case PowerStates::low_power:
+                    remove_animation_from_queue(AnimationPriorities::shutdown);
+                    play_next_animation();
+                    break;
+
+                default:
+
+                    break;
+                }
+            });
 }
 
 void LedIndicator::add_animation_to_queue(LedAnimation* new_animation)

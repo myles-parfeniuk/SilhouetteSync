@@ -7,38 +7,38 @@ IMU::IMU(Device& d)
 {
     // follow device struct to check for current sensor mode
     d.imu.state.follow(
-        [this, &d](IMUState new_state)
-        {
-            switch (new_state)
+            [this, &d](IMUState new_state)
             {
-            case IMUState::sleep:
-                // do nothing
-                break;
+                switch (new_state)
+                {
+                case IMUState::sleep:
+                    // do nothing
+                    break;
 
-            case IMUState::sample:
-                ESP_LOGW(TAG, "SAMPLE STATE");
-                xEventGroupClearBits(imu_state_event_group_hdl, ALL_IMU_STATE_BITS);
-                xEventGroupSetBits(imu_state_event_group_hdl, SAMPLING_STATE_BIT);
-                break;
+                case IMUState::sample:
+                    ESP_LOGW(TAG, "SAMPLE STATE");
+                    xEventGroupClearBits(imu_state_event_group_hdl, ALL_IMU_STATE_BITS);
+                    xEventGroupSetBits(imu_state_event_group_hdl, SAMPLING_STATE_BIT);
+                    break;
 
-            case IMUState::tare:
-                ESP_LOGW(TAG, "TARE STATE");
-                xEventGroupClearBits(imu_state_event_group_hdl, ALL_IMU_STATE_BITS);
-                xEventGroupSetBits(imu_state_event_group_hdl, TARE_STATE_BIT);
-                break;
+                case IMUState::tare:
+                    ESP_LOGW(TAG, "TARE STATE");
+                    xEventGroupClearBits(imu_state_event_group_hdl, ALL_IMU_STATE_BITS);
+                    xEventGroupSetBits(imu_state_event_group_hdl, TARE_STATE_BIT);
+                    break;
 
-            case IMUState::calibrate:
-                ESP_LOGW(TAG, "CALIBRATE STATE");
-                xEventGroupClearBits(imu_state_event_group_hdl, ALL_IMU_STATE_BITS);
-                xEventGroupSetBits(imu_state_event_group_hdl, CALIBRATION_STATE_BIT);
-                break;
+                case IMUState::calibrate:
+                    ESP_LOGW(TAG, "CALIBRATE STATE");
+                    xEventGroupClearBits(imu_state_event_group_hdl, ALL_IMU_STATE_BITS);
+                    xEventGroupSetBits(imu_state_event_group_hdl, CALIBRATION_STATE_BIT);
+                    break;
 
-            default:
+                default:
 
-                break;
-            }
-        },
-        true);
+                    break;
+                }
+            },
+            true);
 
     imu.initialize(); // initialize IMU unit
 

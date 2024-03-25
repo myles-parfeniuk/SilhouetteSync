@@ -9,12 +9,13 @@
 
 // in-house includes
 #include "../../Device.hpp"
-#include "../../defs/pin_definitions.hpp"
+#include "../../defs/pin_defs.hpp"
 #include "../../defs/wireless_com_defs.hpp"
 #include "LedStrip.hpp"
 #include "LedAnimation.hpp"
 #include "animations/PulseAnimation.hpp"
 #include "animations/BlinkToSolidAnimation.hpp"
+#include "animations/ChaseAnimation.hpp"
 
 class LedIndicator
 {
@@ -26,6 +27,8 @@ class LedIndicator
         {
             lan_connection_status = 0, ///< show connection status animation group (failed_connection_animation, attempting_connection_animation)
             calibration_status,        ///< show calibration animation
+            boot,                      ///< show boot animation
+            shutdown,                  ///< show shutdown animation
             max
         };
 
@@ -37,6 +40,9 @@ class LedIndicator
         BlinkToSolidAnimation connected_anim;
         BlinkToSolidAnimation failed_connection_anim;
         PulseAnimation calibration_anim;
+        ChaseAnimation shutdown_anim;
+        ChaseAnimation boot_anim;
+
         void add_animation_to_queue(LedAnimation* new_anim);
         void remove_animation_from_queue(AnimationPriorities priority);
         void play_next_animation();

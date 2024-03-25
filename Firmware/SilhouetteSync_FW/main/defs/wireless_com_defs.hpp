@@ -29,7 +29,7 @@ typedef struct payload_t
         uint64_t time_stamp;
         uint8_t retransmit_delay;
         float battery_voltage;
-        uint8_t power_state;
+        uint8_t power_source_state;
         payload_t()
             : request(0)
             , response(0)
@@ -41,7 +41,7 @@ typedef struct payload_t
             , time_stamp(0)
             , retransmit_delay(0)
             , battery_voltage(0.0)
-            , power_state((uint8_t) PowerStates::battery_powered)
+            , power_source_state((uint8_t) PowerSourceStates::battery_powered)
         {
             memset(id, 0, sizeof(id));
         }

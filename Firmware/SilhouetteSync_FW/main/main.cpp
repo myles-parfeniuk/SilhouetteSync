@@ -11,15 +11,17 @@
 #include "backends/wireless_communication/UDPServer.hpp"
 #include "backends/led_indicator_driver/LedIndicator.hpp"
 #include "backends/BatteryMonitor.hpp"
-#include "backends/PowerManagement.hpp"
+#include "backends/PowerManager.hpp"
+#include "backends/SwitchDriver.hpp"
 
 extern "C" void app_main(void)
 {
     // create device model
     Device* d = new Device;
     // create backends
-    //PowerManagement* power_manager = new PowerManagement(*d);
     LedIndicator* led_indicator_driver = new LedIndicator(*d);
+    PowerManager* power_manager = new PowerManager(*d);
+    SwitchDriver* switch_driver = new SwitchDriver(*d);
     BatteryMonitor* battery_monitor = new BatteryMonitor(*d);
     IMU* imu_driver = new IMU(*d);
     UDPServer* server = new UDPServer(*d);

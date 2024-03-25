@@ -96,7 +96,7 @@ void PacketTransceiver::build_packet(Responses response, payload_t* tx_buffer)
     tx_buffer->accuracy = current_data.quaternion_heading.accuracy;
     tx_buffer->time_stamp = esp_timer_get_time();
     tx_buffer->battery_voltage = d.battery_voltage.get();
-    tx_buffer->power_state = (uint8_t) d.power_state.get();
+    tx_buffer->power_source_state = (uint8_t) d.power_source_state.get();
     // ESP_LOGW(TAG, "Time: %llu", tx_buffer->time_stamp);
 }
 

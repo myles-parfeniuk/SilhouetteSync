@@ -13,13 +13,13 @@ void BatteryMonitor::adc_init()
     // create handle and cfg settings for ADC1
 
     adc_oneshot_unit_init_cfg_t adc_cfg = {
-        .unit_id = ADC_UNIT_1,
+            .unit_id = ADC_UNIT_1,
     };
 
     // create channel cfg settings
     adc_oneshot_chan_cfg_t channel_cfg = {
-        .atten = ADC_ATTEN_DB_12,
-        .bitwidth = ADC_BITWIDTH_DEFAULT, // select max supported bitwidth
+            .atten = ADC_ATTEN_DB_12,
+            .bitwidth = ADC_BITWIDTH_DEFAULT, // select max supported bitwidth
     };
 
     // declare calibration and adc handles
@@ -58,9 +58,9 @@ bool BatteryMonitor::adc_calibrate_ch(adc_unit_t unit, adc_channel_t channel, ad
     if (!calibrated)
     {
         adc_cali_curve_fitting_config_t cali_cfg = {
-            .unit_id = unit,
-            .atten = atten,
-            .bitwidth = ADC_BITWIDTH_DEFAULT,
+                .unit_id = unit,
+                .atten = atten,
+                .bitwidth = ADC_BITWIDTH_DEFAULT,
         };
 
         ret = adc_cali_create_scheme_curve_fitting(&cali_cfg, &handle);

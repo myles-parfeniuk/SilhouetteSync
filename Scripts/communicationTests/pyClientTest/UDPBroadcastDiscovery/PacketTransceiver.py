@@ -5,30 +5,38 @@ from termcolor import colored
 from prettytable import PrettyTable
 
 class Requests(Enum):
-    SAMPLE_REQ = 0
-    TARE_REQ = 1
-    CALIBRATE_REQ = 2
-    DISCOVERY_REQ = 255
+    CLIENT_DISCOVERY = 0
+    CLIENT_SAMPLE = 1
+    CLIENT_TARE = 2
+    CLIENT_CALIBRATE = 3
 
 class Responses(Enum):
-    BUSY_RESP = 255
-    SUCESS_RESP = 254
-    FAILURE_RESP = 253
-    AFFIRMATIVE_RESP = 252
-    NULL_RESP = 251
-    DISCOVERED_RESP = 250
-    SAMPLING_RESP = 0
+    SERVER_DISCOVERED = 0
+    SERVER_SAMPLING = 1
+    SERVER_FAILURE = 2
+    SERVER_SUCCESS = 3
+    SERVER_BUSY = 4
+    CLIENT_AFFIRMATIVE = 5
+    NO_RESP = 6
+
+class PowerStates(Enum):
+    USB_POWERED_CHARGING = 0
+    USB_POWERED_FULLY_CHARGED = 1
+    BATTERY_POWERED = 2
 
 class Payload(Structure):
     _fields_ = [("request", c_uint8),
                 ("response", c_uint8),
-                ("id", c_uint64),
+                ("id", c_char * 30),
                 ("quat_i", c_float),
                 ("quat_j", c_float),
                 ("quat_k", c_float),
                 ("quat_real", c_float),
                 ("accuracy", c_uint8),
-                ("time_stamp", c_uint64)
+                ("time_stamp", c_uint64),
+                ("retransmit_delay", c_uint8),
+                ("battery_voltage", c_float),
+                ("power_state", c_uint8)
                 ]
 
 
@@ -45,7 +53,8 @@ def discover_devices():
 
     #create discovery request packet
     broadcast_payload = Payload(0,0)
-    broadcast_payload.request = Requests.DISCOVERY_REQ.value
+    broadcast_payload.request = Requests.CLIENT_DISCOVERY.value
+    broadcast_payload.response = Responses.NO_RESP.value
 
     broadcast_address = ('<broadcast>', 49160)  
 
@@ -81,6 +90,7 @@ def send_packet(udp_socket, server_address, request, response):
     payload_out = Payload(0, 0)
     payload_out.request = request
     payload_out.response = response
+    payload_out.retransmit_delay = 10
     udp_socket.sendto(payload_out, server_address)
     return payload_out
 
@@ -97,30 +107,34 @@ def receive_packet(udp_socket):
     return payload_in
 
 def print_packet(payload_in, payload_out, current_time, prev_time):
-    packet_table = PrettyTable(['Packet Direction', 'Timestamp (ms)', 'Request', 'Response', 'Hardware ID', 'Quat I', 'Quat J', 'Quat K', 'Quat Real', 'Accuracy'])
+    packet_table = PrettyTable(['Packet Direction', 'Timestamp (ms)', 'Request', 'Response', 'Hardware ID', 'Quat I', 'Quat J', 'Quat K', 'Quat Real', 'Accuracy', 'PWRState', 'VBat (mv)'])
 
     timestamp = "N/A"
     request = Requests(payload_out.request).name
     response = Responses(payload_out.response).name
-    id_value = "0x{:X}".format(payload_out.id)
+    id_value = payload_out.id.decode()
     quat_i = "{:.4f}".format(payload_out.quat_i)
     quat_j = "{:.4f}".format(payload_out.quat_j)
     quat_k = "{:.4f}".format(payload_out.quat_k)
     quat_real = "{:.4f}".format(payload_out.quat_real)
     accuracy = "{:d}".format(payload_out.accuracy)
+    power_state = Responses(payload_out.power_state).name
+    battery_voltage = "{:.4f}".format(payload_out.battery_voltage)
 
-    packet_table.add_row(['Out', timestamp, request, response, id_value, quat_i, quat_j, quat_k, quat_real, accuracy])
+    packet_table.add_row(['Out', timestamp, request, response, id_value, quat_i, quat_j, quat_k, quat_real, accuracy, power_state, battery_voltage])
 
     timestamp = "{:.4f}".format((current_time - prev_time)/1000)
     request = Requests(payload_in.request).name
     response = Responses(payload_in.response).name
-    id_value = "0x{:X}".format(payload_in.id)
+    id_value = payload_in.id.decode().strip('_')
     quat_i = "{:.4f}".format(payload_in.quat_i)
     quat_j = "{:.4f}".format(payload_in.quat_j)
     quat_k = "{:.4f}".format(payload_in.quat_k)
     quat_real = "{:.4f}".format(payload_in.quat_real)
     accuracy = "{:d}".format(payload_in.accuracy)
+    power_state = PowerStates(payload_in.power_state).name
+    battery_voltage = "{:.4f}".format(payload_in.battery_voltage)
 
-    packet_table.add_row(['In', timestamp, request, response, id_value, quat_i, quat_j, quat_k, quat_real, accuracy])
+    packet_table.add_row(['In', timestamp, request, response, id_value, quat_i, quat_j, quat_k, quat_real, accuracy, power_state, battery_voltage])
 
     print(colored(packet_table, 'white'))
