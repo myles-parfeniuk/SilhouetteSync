@@ -45,7 +45,7 @@ void BatteryMonitor::take_samples(int* buffer, int sample_count)
         adc_oneshot_read(adc_hdl, ADC_CHANNEL_3, &sample);
         buffer[i] = sample;
         buffer[i] = iir_filter(buffer[i], 0.1, SAMPLE_BUFFER_LENGTH);
-        vTaskDelay(1 / portTICK_PERIOD_MS);
+        vTaskDelay(2 / portTICK_PERIOD_MS);
     }
 }
 

@@ -39,6 +39,7 @@ class UDPServer
         static const constexpr uint16_t PORT = 49160;
         static const constexpr uint16_t MAX_CONNECTION_ATTEMPTS = 2;
         static const constexpr int SOCKET_TIMEOUT_MS = 5000;
+        static const constexpr int MAX_CONNECTION_BACKOFF_DELAY_MS = 50;
         static const constexpr char* TAG = "UDPServer";
 
         void wifi_init_sta();

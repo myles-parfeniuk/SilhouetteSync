@@ -14,6 +14,7 @@ void RequestHandler::handle_sample(payload_t* transmit_buffer)
 void RequestHandler::handle_tare(payload_t* transmit_buffer)
 {
     d.imu.state.set(IMUState::tare);
+    packet_stream.send_sample_packet(transmit_buffer);
 }
 
 void RequestHandler::handle_calibration(payload_t* transmit_buffer)

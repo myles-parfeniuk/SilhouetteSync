@@ -50,7 +50,6 @@ void UDPServer::wifi_init_sta()
 
 bool UDPServer::open_udp_socket()
 {
-    char addr_str[128];
     struct sockaddr_in6 dest_addr;
     bool socket_open = false;
 
@@ -220,6 +219,7 @@ void UDPServer::handle_connection(void* event_data)
 void UDPServer::handle_start()
 {
     d.lan_connection_status.set(LANConnectionStatus::attempting_connection);
+    vTaskDelay(rand() % MAX_CONNECTION_BACKOFF_DELAY_MS); //randomized delay between 0 and 50ms before attempting to connect (prevents collisions when multiple devices boot at once)
     esp_wifi_connect();
 }
 

@@ -73,7 +73,8 @@ void PowerManager::init_gpio()
 
     // add ISR handlers
     ESP_ERROR_CHECK(gpio_isr_handler_add(pin_pwr_or_state, pwr_or_state_ISR, (void*) this)); // add or state isr handler
-    ESP_ERROR_CHECK(gpio_isr_handler_add(pin_charge_state, charge_state_ISR, (void*) this)); // add or state isr handler
+    //COMMENT-IN WITH BATTERY:
+    //ESP_ERROR_CHECK(gpio_isr_handler_add(pin_charge_state, charge_state_ISR, (void*) this)); // add or state isr handler 
 
     // enable interrupts
     gpio_intr_enable(pin_pwr_or_state);
@@ -89,7 +90,6 @@ void PowerManager::set_buck_en_on_boot()
         gpio_set_level(pin_buck_en, 1);
         d.power_state.set(PowerStates::normal_operation);
     }
-
     else
     {
         gpio_set_level(pin_buck_en, 0);
@@ -98,15 +98,22 @@ void PowerManager::set_buck_en_on_boot()
 
 void PowerManager::set_power_source_state(int or_state, int charge_state)
 {
-    if (or_state)
+    //COMMENT-IN WITH BATTERY:
+    /*if (or_state)
         d.power_source_state.set(PowerSourceStates::battery_powered);
     else if (!or_state && charge_state)
         d.power_source_state.set(PowerSourceStates::USB_powered_fully_charged);
     else if (!or_state && !charge_state)
         d.power_source_state.set(PowerSourceStates::USB_powered_charging);
     else
-        ESP_LOGE(TAG, "Invalid power state.");
-}
+        ESP_LOGE(TAG, "Invalid power state."); */
+
+    //COMMENT-OUT WITH BATTERY:
+    if(or_state)
+        d.power_source_state.set(PowerSourceStates::battery_powered);
+    else
+        d.power_source_state.set(PowerSourceStates::USB_powered_charging);
+}   
 
 void PowerManager::power_management_task_trampoline(void* arg)
 {

@@ -33,7 +33,7 @@ class BatteryMonitor
         adc_oneshot_unit_handle_t adc_hdl;
         adc_cali_handle_t adc_calibrate_ch3_hdl;
         bool channel_calibrated;
-        static const constexpr uint16_t SAMPLE_BUFFER_LENGTH = 1000;
+        static const constexpr uint16_t SAMPLE_BUFFER_LENGTH = 200;
         static const constexpr float VBAT_SCALE_FACTOR = (1.0f / 0.545f);
         static const constexpr char* TAG = "BatteryMonitor";
 };
