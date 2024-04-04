@@ -219,7 +219,8 @@ void UDPServer::handle_connection(void* event_data)
 void UDPServer::handle_start()
 {
     d.lan_connection_status.set(LANConnectionStatus::attempting_connection);
-    vTaskDelay(rand() % MAX_CONNECTION_BACKOFF_DELAY_MS); //randomized delay between 0 and 50ms before attempting to connect (prevents collisions when multiple devices boot at once)
+    vTaskDelay(rand() % MAX_CONNECTION_BACKOFF_DELAY_MS); // randomized delay between 0 and 50ms before attempting to connect (prevents collisions
+                                                          // when multiple devices boot at once)
     esp_wifi_connect();
 }
 

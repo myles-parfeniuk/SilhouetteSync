@@ -14,22 +14,23 @@ enum class LANConnectionStatus
     max
 };
 
-static const constexpr uint8_t HARDWARE_ID_SZ = 32;
+static const constexpr uint8_t HARDWARE_ID_SZ = 32; ///<size of hardware ID in characters, IDs under this length are padded with underscores
 
 typedef struct payload_t
 {
-        uint8_t request;
-        uint8_t response;
-        char id[HARDWARE_ID_SZ];
-        float quat_i;
-        float quat_j;
-        float quat_k;
-        float quat_real;
-        uint8_t accuracy;
-        uint64_t time_stamp;
-        uint8_t retransmit_delay;
-        float battery_voltage;
-        uint8_t power_source_state;
+        uint8_t request;         ///<Request sent by PC-side client when receiving.
+        uint8_t response;        ///<Response sent by PC-side client or esp-32 server when receiving or sending, respectively.
+        char id[HARDWARE_ID_SZ]; ///<String containing hardware ID.
+        float quat_i;            ///< I component of quaternion.
+        float quat_j;            ///< J component of quaternion.
+        float quat_k;            ///< K component of quaternion.
+        float quat_real;         ///< Real component of quaternion.
+        uint8_t accuracy;        ///< Accuracy of quaternion.
+        uint64_t time_stamp;     ///< Timestamp in microsecond ticks since esp32 boot.
+        uint8_t retransmit_delay; ///< Retransmit delay sent by client, UDP server will delay retransmit_delay ms before sending a response upon receiving a packet.
+        float battery_voltage;      ///< Battery voltage in millivolts.
+        uint8_t power_source_state; ///< Power source state (see pwr_managment_defs.hpp)
+        // default packet constructor
         payload_t()
             : request(0)
             , response(0)
@@ -47,21 +48,27 @@ typedef struct payload_t
         }
 } payload_t;
 
+/**
+ *   @brief  The different requests the PC-side client can send.
+ */
 enum class Requests
 {
-    client_discovery,
-    client_sample,
-    client_tare,
-    client_calibrate,
+    client_discovery, ///<Discovery request, used in broadcast discovery process.
+    client_sample,    ///<Request for a sample packet.
+    client_tare,      ///<Request to tare the IMU of bracelet.
+    client_calibrate, /// Request to calibrate IMU of bracelet.
 };
 
+/**
+ *   @brief  The different requests the PC-side client and esp-32 server can send.
+ */
 enum class Responses
 {
-    server_discovered,
-    server_sampling,
-    server_failure,
-    server_success,
-    server_busy,
-    client_affirmative,
-    no_resp
+    server_discovered,  ///< Affirmative response from esp32 server to client acknowledging discovery.
+    server_sampling,    ///< Response from esp32 server to client indicating it has sent a sample packet.
+    server_failure,     ///< Response from esp32 server to client indicating that a requested operation (ie calibration) has failed.
+    server_success,     ///< Response from esp32 server to client indicating that a requested operation (ie calibration) has succeeded.
+    server_busy,        ///< Response from esp32 server to client indicating it is current busy servicing a requested operation.
+    client_affirmative, ///< Affirmative response from PC-side client to esp-32 indicating it has acknowledged a success/failure response.
+    no_resp             ///< No response, used in packets where a response doesn't apply, ie, the client sending a packet to initiate a sample.
 };

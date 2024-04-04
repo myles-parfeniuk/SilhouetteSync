@@ -29,10 +29,10 @@ class Device
         } imu_t;
 
         Device();
-        DataControl::CallAlways<std::string> id;                            ///<Device id (unique MAC address).
+        DataControl::CallAlways<std::string> id;                            ///<Device id (unique randomized hardware ID burnt into fuse block)
         imu_t imu;                                                          ///<Device IMU frontend.
         DataControl::CallAlways<LANConnectionStatus> lan_connection_status; ///<Current connection status of device to LAN
-        DataControl::CallAlways<float> battery_voltage;                     ///<Current battery voltage of device
+        DataControl::CallAlways<float> battery_voltage;                     ///<Current battery voltage of device as sampled by ADC
         DataControl::CallAlways<PowerSourceStates>
                 power_source_state; ///<Current power source state of the device (ie battery powered, usb charging, usb fully charged)
         DataControl::CallAlways<PowerStates>
@@ -43,5 +43,14 @@ class Device
         static const constexpr char* TAG = "Device";           ///<Device tag used in debug statements
 
     private:
+        /**
+         * @brief Reads custom device hardware ID from fuse block 3.
+         *
+         * To the esp32 of each respective bracelet, custom hardware IDs have been burnt to an efuse block using a python script.
+         * These hardware IDs are strings in the flavor of two random words compounded together with a hyphen. They are used by
+         * the unity software suite to differentiate body locations.
+         *
+         * @return void, nothing to return
+         */
         std::string get_hardware_id();
 };

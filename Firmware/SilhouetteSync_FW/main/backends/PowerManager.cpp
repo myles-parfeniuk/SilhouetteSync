@@ -4,6 +4,7 @@ PowerManager::PowerManager(Device& d)
     : d(d)
     , power_management_evt_group_hdl(xEventGroupCreate())
 {
+    // follow to switch events and listen for long press to shutdown device accordingly
     d.user_sw.follow(
             [this](SwitchEvents new_event)
             {
@@ -73,8 +74,7 @@ void PowerManager::init_gpio()
 
     // add ISR handlers
     ESP_ERROR_CHECK(gpio_isr_handler_add(pin_pwr_or_state, pwr_or_state_ISR, (void*) this)); // add or state isr handler
-    //COMMENT-IN WITH BATTERY:
-    //ESP_ERROR_CHECK(gpio_isr_handler_add(pin_charge_state, charge_state_ISR, (void*) this)); // add or state isr handler 
+    ESP_ERROR_CHECK(gpio_isr_handler_add(pin_charge_state, charge_state_ISR, (void*) this)); // add or state isr handler
 
     // enable interrupts
     gpio_intr_enable(pin_pwr_or_state);
@@ -98,22 +98,15 @@ void PowerManager::set_buck_en_on_boot()
 
 void PowerManager::set_power_source_state(int or_state, int charge_state)
 {
-    //COMMENT-IN WITH BATTERY:
-    /*if (or_state)
+    if (or_state)
         d.power_source_state.set(PowerSourceStates::battery_powered);
     else if (!or_state && charge_state)
         d.power_source_state.set(PowerSourceStates::USB_powered_fully_charged);
     else if (!or_state && !charge_state)
         d.power_source_state.set(PowerSourceStates::USB_powered_charging);
     else
-        ESP_LOGE(TAG, "Invalid power state."); */
-
-    //COMMENT-OUT WITH BATTERY:
-    if(or_state)
-        d.power_source_state.set(PowerSourceStates::battery_powered);
-    else
-        d.power_source_state.set(PowerSourceStates::USB_powered_charging);
-}   
+        ESP_LOGE(TAG, "Invalid power state."); 
+}
 
 void PowerManager::power_management_task_trampoline(void* arg)
 {

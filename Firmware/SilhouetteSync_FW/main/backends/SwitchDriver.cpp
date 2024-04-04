@@ -67,7 +67,7 @@ void SwitchDriver::released_check()
 {
     do
     {
-        vTaskDelay(50 / portTICK_PERIOD_MS);
+        vTaskDelay(HELD_EVT_TIME_MS / portTICK_PERIOD_MS);
 
         generate_held_event();
 
