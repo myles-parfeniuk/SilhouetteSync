@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Opening Page.unity
+    guid: c850ee8c3b14cc8459e7e186857cf567
+  - enabled: 1
+    path: Assets/Scenes/Weight Lifting.unity
+    guid: fbd436aa7e6e04dde83aff3ed690897c
+  - enabled: 1
+    path: Assets/Scenes/Running Setup.unity
+    guid: 42a6bf3599b2e4f1e8c1d7e26ad85439
+  - enabled: 1
+    path: Assets/Scenes/HowTo/BenchPress/HowToBench1.unity
+    guid: 615412eccbf544f3ea9199b47a4a4193
+  - enabled: 1
+    path: Assets/Scenes/HowTo/BenchPress/HowToBench2.unity
+    guid: c763e561895da449797f977617802bda
+  - enabled: 1
+    path: Assets/Scenes/HowTo/BenchPress/HowToBench3.unity
+    guid: d10657602e91b45139f2858f18c1b643
+  - enabled: 1
+    path: Assets/Scenes/HowTo/BenchPress/HowToBench4.unity
+    guid: 9e75b5c0cd9f64069b8cd1e9225c97ba
+  - enabled: 1
+    path: Assets/Scenes/HowTo/BenchPress/HowToBench5.unity
+    guid: dbb1db33c52014fc5bdfc1e80b04a002
+  - enabled: 1
+    path: Assets/Scenes/HowTo/BenchPress/HowToBench6.unity
+    guid: 6ae3829c05a2c4444a8f778f862e01c9
+  - enabled: 1
+    path: Assets/Scenes/HowTo/BenchPress/HowToBench7.unity
+    guid: 3e96401964f614a70800d1db70ae5d58
+  - enabled: 1
+    path: Assets/Scenes/HowTo/DumbellCurl/HowToCurl1.unity
+    guid: 7244554c28bce46fa9ed533ae2859a05
+  - enabled: 1
+    path: Assets/Scenes/HowTo/DumbellCurl/HowToCurl2.unity
+    guid: 403699e6652114880912ff4fa5a8a3e8
+  - enabled: 1
+    path: Assets/Scenes/HowTo/DumbellCurl/HowToCurl3.unity
+    guid: de4ba2e2aceac48b7b51538fd3bfa872
+  - enabled: 1
+    path: Assets/Scenes/HowTo/DumbellCurl/HowToCurl4.unity
+    guid: ba2f1624b8cd64e08b3f054d821b5d5e
+  - enabled: 1
+    path: Assets/Scenes/HowTo/AirSquat/HowToAirSquat.unity
+    guid: 29c546c18011c425eaf52a5e7cca7914
+  - enabled: 1
+    path: Assets/Scenes/HowTo/AirSquat/HowToAirSquat 1.unity
+    guid: 6186447ee23634166857d722fcdad8f7
+  - enabled: 1
+    path: Assets/Scenes/HowTo/AirSquat/HowToAirSquat 2.unity
+    guid: 9bceb88d753044b3287b61ebf7c0573b
+  - enabled: 1
+    path: Assets/Scenes/HowTo/BackSquat/HowToBackSquat1.unity
+    guid: 622629b4e1124494e9e18eac64c110ab
+  - enabled: 1
+    path: Assets/Scenes/HowTo/BackSquat/HowToBackSquat2.unity
+    guid: 1e36412ae63714951bfff21ce0d8faa3
+  - enabled: 1
+    path: Assets/Scenes/HowTo/BackSquat/HowToBackSquat3.unity
+    guid: 7812fd88f42fc403dbf49e8670a52dcd
+  - enabled: 1
+    path: Assets/Scenes/HowTo/BackSquat/HowToBackSquat4.unity
+    guid: c47abc788cf5e498e9c192b03b606bb1
+  - enabled: 1
+    path: Assets/Scenes/HowTo/BackSquat/HowToBackSquat5.unity
+    guid: 6ccc7da95f50948e4b0900f85e95c85d
+  - enabled: 1
+    path: Assets/Scenes/Connected.unity
+    guid: a05f3935fc4334733867fbe5cf6e2dfd
+  - enabled: 1
+    path: Assets/Scenes/Golf Setup.unity
+    guid: cded5abc89b4648e1846a2ed477dbfd3
+  m_configObjects:
+    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000,
+      guid: fb1c69f6d36d643fea72436fe2c63755, type: 2}
