@@ -32,6 +32,13 @@ PowerManager::PowerManager(Device& d)
             },
             true);
 
+        d.battery_voltage.follow([this](float new_voltage)
+        {
+            if(new_voltage <= VBAT_CUTOFF_MV)
+                 gpio_set_level(pin_buck_en, 0);
+
+        }, true);
+
     init_gpio();
     set_buck_en_on_boot();
     set_power_source_state(gpio_get_level(pin_pwr_or_state), gpio_get_level(pin_charge_state));

@@ -117,5 +117,7 @@ class PowerManager
         static const constexpr uint8_t CHARGE_STATE_EVT_BIT =
                 BIT1; ///< Indicates to power_management_task that charge state ISR was responsible for posting it
         static const constexpr uint8_t ALL_POWER_MANAGEMENT_EVT_BITS = OR_STATE_EVT_BIT | CHARGE_STATE_EVT_BIT; ///< All event bits mask.
-        static const constexpr char* TAG = "PowerManager";                                                      ///<class tag, used in debug logs
+        static const constexpr float VBAT_CUTOFF_MV =
+                3500; ///< Cutoff voltage for battery, shuts off device when battery voltage drops below this number.
+        static const constexpr char* TAG = "PowerManager"; ///<class tag, used in debug logs
 };
