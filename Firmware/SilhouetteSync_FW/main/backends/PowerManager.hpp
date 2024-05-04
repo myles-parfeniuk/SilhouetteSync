@@ -1,6 +1,8 @@
 #pragma once
 // esp-idf includes
 #include "driver/gpio.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/event_groups.h"
 // in-house includes
 #include "../Device.hpp"
 #include "../defs/pin_defs.hpp"
@@ -118,6 +120,6 @@ class PowerManager
                 BIT1; ///< Indicates to power_management_task that charge state ISR was responsible for posting it
         static const constexpr uint8_t ALL_POWER_MANAGEMENT_EVT_BITS = OR_STATE_EVT_BIT | CHARGE_STATE_EVT_BIT; ///< All event bits mask.
         static const constexpr float VBAT_CUTOFF_MV =
-                3500; ///< Cutoff voltage for battery, shuts off device when battery voltage drops below this number.
+                3640; ///< Cutoff voltage for battery, shuts off device when battery voltage drops below this number.
         static const constexpr char* TAG = "PowerManager"; ///<class tag, used in debug logs
 };

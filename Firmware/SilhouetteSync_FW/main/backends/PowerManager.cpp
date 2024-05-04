@@ -10,40 +10,76 @@ PowerManager::PowerManager(Device& d)
             {
                 if (new_event == SwitchEvents::long_press)
                 {
+                    switch (this->d.power_state.get())
+                    {
+                    case PowerStates::boot:
+                        gpio_set_level(pin_buck_en, 1); // enable buck for boot
+                        break;
 
-                    if (this->d.power_state.get() == PowerStates::normal_operation)
-                    {
-                        gpio_set_level(pin_buck_en, 0); // shutdown buck if switch is long pressed in normal operation mode
-                        this->d.power_state.set(PowerStates::shutdown);
-                    }
-                    else if (this->d.power_state.get() == PowerStates::low_power)
-                    {
+                    case PowerStates::low_power:
                         gpio_set_level(pin_buck_en, 1); // enable buck if switch is long pressed in low power mode
                         this->d.power_state.set(PowerStates::boot);
+                        break;
+
+                    case PowerStates::normal_operation:
+                        gpio_set_level(pin_buck_en, 0); // shutdown buck if switch is long pressed in normal operation mode
+                        this->d.power_state.set(PowerStates::shutdown);
+                        break;
+
+                    case PowerStates::shutdown:
+                        gpio_set_level(pin_buck_en, 0);
+                        vTaskDelay(100/portTICK_PERIOD_MS); //give device time to shutdown if not connected to USB
+                        break;
+
+                    default:
+
+                        break;
                     }
                 }
                 else if (new_event == SwitchEvents::released)
                 {
-                    if (this->d.power_state.get() == PowerStates::shutdown)
-                        this->d.power_state.set(PowerStates::low_power);
-                    else if (this->d.power_state.get() == PowerStates::boot)
+
+                    switch (this->d.power_state.get())
+                    {
+                    case PowerStates::boot:
                         this->d.power_state.set(PowerStates::normal_operation);
+                        break;
+
+                    case PowerStates::shutdown:
+                        this->d.power_state.set(PowerStates::low_power);
+                        break;
+
+                    default:
+
+                        break;
+                    }
                 }
             },
             true);
 
-        d.battery_voltage.follow([this](float new_voltage)
-        {
-            if(new_voltage <= VBAT_CUTOFF_MV)
-                 gpio_set_level(pin_buck_en, 0);
-
-        }, true);
+    d.battery.voltage.follow(
+            [this](float new_voltage)
+            {
+                if (new_voltage <= VBAT_CUTOFF_MV)
+                    gpio_set_level(pin_buck_en, 0);
+            },
+            true);
 
     init_gpio();
     set_buck_en_on_boot();
     set_power_source_state(gpio_get_level(pin_pwr_or_state), gpio_get_level(pin_charge_state));
     xTaskCreate(&power_management_task_trampoline, "power_management_task", 4096, this, 1, &power_management_task_hdl);
 };
+
+void PowerManager::set_buck_en_on_boot()
+{
+    int USB_connection_state = gpio_get_level(pin_pwr_or_state);
+
+    if (USB_connection_state == (int) PWROrState::battery_powered)
+        gpio_set_level(pin_buck_en, 1);
+    else
+        gpio_set_level(pin_buck_en, 0);
+}
 
 void PowerManager::init_gpio()
 {
@@ -88,21 +124,6 @@ void PowerManager::init_gpio()
     gpio_intr_enable(pin_charge_state);
 }
 
-void PowerManager::set_buck_en_on_boot()
-{
-    int USB_connection_state = gpio_get_level(pin_pwr_or_state);
-
-    if (USB_connection_state == (int) PWROrState::battery_powered)
-    {
-        gpio_set_level(pin_buck_en, 1);
-        d.power_state.set(PowerStates::normal_operation);
-    }
-    else
-    {
-        gpio_set_level(pin_buck_en, 0);
-    }
-}
-
 void PowerManager::set_power_source_state(int or_state, int charge_state)
 {
     if (or_state)
@@ -112,7 +133,7 @@ void PowerManager::set_power_source_state(int or_state, int charge_state)
     else if (!or_state && !charge_state)
         d.power_source_state.set(PowerSourceStates::USB_powered_charging);
     else
-        ESP_LOGE(TAG, "Invalid power state."); 
+        ESP_LOGE(TAG, "Invalid power state.");
 }
 
 void PowerManager::power_management_task_trampoline(void* arg)

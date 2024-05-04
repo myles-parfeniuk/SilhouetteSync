@@ -49,6 +49,12 @@ keyboard_input_thread_hdl.start()
 
 prev_time = 0
 total_time = 0
+counter = 0
+
+with open('test_output.csv', 'w', newline= '') as test_output:
+    writer = csv.writer(test_output)
+    writer.writerow(["Voltage (mv)", "Timestamp (us)", "Power State (n/a)"])
+
 
     while not quit_flag.is_set():
             time.sleep(0.016)
@@ -61,6 +67,13 @@ total_time = 0
                 # Print the received data
                 print_packet(payload_in, payload_out, payload_in.time_stamp, prev_time)
                 prev_time = payload_in.time_stamp
+
+                counter = counter + 1
+
+                if counter >= 60:
+                    writer.writerow([payload_in.battery_voltage, payload_in.time_stamp, payload_in.power_state])
+                    counter = 0
+
 
             except socket.timeout:
                 print(colored('ERROR: Timeout occurred, resending request...', 'red'))

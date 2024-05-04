@@ -6,18 +6,67 @@ UDPServer::UDPServer(Device& d)
     , request_handler(d, packet_stream)
     , s_retry_num(0)
     , connected(false)
+    , wifi_active(false)
     , discovered(false)
 {
+    d.power_state.follow(
+            [this](PowerStates new_state)
+            {
+                switch (new_state)
+                {
+                case PowerStates::shutdown:
+                    this->wifi_active = false;
+                    esp_wifi_stop();
+                    break;
+
+                case PowerStates::boot:
+                    this->wifi_active = true;
+                    this->connected = true;
+                    ESP_ERROR_CHECK(esp_wifi_start());
+                    xTaskNotifyGive(this->udp_server_task_hdl);
+                    break;
+
+                case PowerStates::low_power:
+
+                    break;
+
+                case PowerStates::normal_operation:
+
+                    break;
+
+                default:
+
+                    break;
+                }
+            },
+            true);
+
     esp_err_t ret = nvs_flash_init();
     if (ret == ESP_ERR_NVS_NO_FREE_PAGES || ret == ESP_ERR_NVS_NEW_VERSION_FOUND)
     {
         ESP_ERROR_CHECK(nvs_flash_erase());
         ret = nvs_flash_init();
     }
+    
     ESP_ERROR_CHECK(ret);
     ESP_LOGI(TAG, "ESP_WIFI_MODE_STA");
 
+    esp_timer_create_args_t discovery_timer_args = {.callback = &this->discovery_timer_cb_trampoline, .arg = this, .name = "DiscoveryTimer"};
+    esp_timer_create(&discovery_timer_args, &discovery_timer_hdl);
+
     xTaskCreate(&udp_server_task_trampoline, "udp_server_task", 4096, this, 6, &udp_server_task_hdl); // launch UDP server task
+}
+
+void UDPServer::discovery_timer_cb_trampoline(void* arg)
+{
+    UDPServer* local_server = (UDPServer*) arg;
+    local_server->discovery_timer_cb();
+}
+
+void UDPServer::discovery_timer_cb()
+{
+    set_socket_broadcast(false);
+    esp_timer_stop(discovery_timer_hdl);
 }
 
 void UDPServer::wifi_init_sta()
@@ -45,7 +94,6 @@ void UDPServer::wifi_init_sta()
 
     ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
     ESP_ERROR_CHECK(esp_wifi_set_config(WIFI_IF_STA, &wifi_config));
-    ESP_ERROR_CHECK(esp_wifi_start());
 }
 
 bool UDPServer::open_udp_socket()
@@ -92,7 +140,6 @@ void UDPServer::close_udp_socket()
         ESP_LOGE(TAG, "Shutting down socket and restarting...");
         shutdown(sock, 0);
         close(sock);
-        vTaskDelay(2000 / portTICK_PERIOD_MS);
     }
 }
 
@@ -122,8 +169,6 @@ void UDPServer::retransmit()
 
     if (packet_stream.receive_packet(transmit_buffer))
         parse_request(transmit_buffer);
-    else
-        set_socket_broadcast(true);
 
     delete transmit_buffer;
 }
@@ -143,20 +188,26 @@ void UDPServer::event_handler_trampoline(void* arg, esp_event_base_t event_base,
 void UDPServer::udp_server_task()
 {
     wifi_init_sta();
+    ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+    open_udp_socket();
 
     while (1)
     {
-        vTaskDelay(3000 / portTICK_PERIOD_MS);
-
-        if (open_udp_socket())
+        while (connected && wifi_active)
         {
-            while (connected)
-            {
-                retransmit();
-            }
-
-            close_udp_socket();
+            retransmit();
         }
+
+        if (!wifi_active)
+            esp_wifi_disconnect();
+
+        if (!connected)
+        {
+            close_udp_socket();
+            open_udp_socket();
+        }
+
+        ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
     }
 }
 
@@ -170,8 +221,12 @@ void UDPServer::event_handler(void* arg, esp_event_base_t event_base, int32_t ev
             handle_start();
             break;
 
+        case WIFI_EVENT_STA_STOP:
+            handle_connection_stop();
+            break;
+
         case WIFI_EVENT_STA_DISCONNECTED:
-            if (s_retry_num < MAX_CONNECTION_ATTEMPTS)
+            if ((s_retry_num < MAX_CONNECTION_ATTEMPTS) && wifi_active)
                 handle_connection_retry();
             else
                 handle_connection_failed();
@@ -186,6 +241,16 @@ void UDPServer::event_handler(void* arg, esp_event_base_t event_base, int32_t ev
     {
         if (event_id == IP_EVENT_STA_GOT_IP)
             handle_connection(event_data);
+    }
+}
+
+void UDPServer::handle_connection_stop()
+{
+    wifi_active = false;
+
+    if (sock != -1)
+    {
+        shutdown(this->sock, 0);
     }
 }
 
@@ -218,6 +283,7 @@ void UDPServer::handle_connection(void* event_data)
 
 void UDPServer::handle_start()
 {
+    wifi_active = true;
     d.lan_connection_status.set(LANConnectionStatus::attempting_connection);
     vTaskDelay(rand() % MAX_CONNECTION_BACKOFF_DELAY_MS); // randomized delay between 0 and 50ms before attempting to connect (prevents collisions
                                                           // when multiple devices boot at once)
@@ -235,6 +301,7 @@ void UDPServer::parse_request(payload_t* transmit_buffer)
             ESP_LOGW(TAG, "Discovered.");
             packet_stream.send_discovered_packet(transmit_buffer);
             set_socket_broadcast(false);
+            esp_timer_start_periodic(discovery_timer_hdl, 100000);
         }
     case Requests::client_sample:
         request_handler.handle_sample(transmit_buffer);

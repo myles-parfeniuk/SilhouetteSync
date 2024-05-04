@@ -16,6 +16,8 @@
 #include "animations/PulseAnimation.hpp"
 #include "animations/BlinkToSolidAnimation.hpp"
 #include "animations/ChaseAnimation.hpp"
+#include "animations/SolidAnimation.hpp"
+#include "animations/StatusBarAnimation.hpp"
 
 class LedIndicator
 {
@@ -27,21 +29,26 @@ class LedIndicator
         {
             lan_connection_status = 0, ///< show connection status animation group (failed_connection_animation, attempting_connection_animation)
             calibration_status,        ///< show calibration animation
-            boot,                      ///< show boot animation
+            battery_indicator,         ///< show battery indicator animation
+            low_power_mode,            ///< show low power mode animation
             shutdown,                  ///< show shutdown animation
+            boot,                      ///< show boot animation
             max
         };
 
         Device d;
         LedStrip leds;
+        bool display_battery_indicator; 
         LedAnimation* active_anim;
         std::vector<LedAnimation*> queued_anims;
         PulseAnimation attempting_connection_anim;
-        BlinkToSolidAnimation connected_anim;
+        SolidAnimation connected_anim;
         BlinkToSolidAnimation failed_connection_anim;
         PulseAnimation calibration_anim;
         ChaseAnimation shutdown_anim;
         ChaseAnimation boot_anim;
+        StatusBarAnimation low_power_anim;
+        StatusBarAnimation battery_indicator_anim;
 
         void add_animation_to_queue(LedAnimation* new_anim);
         void remove_animation_from_queue(AnimationPriorities priority);

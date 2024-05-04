@@ -2,6 +2,7 @@
 // standard library includes
 #include <stdio.h>
 #include <math.h>
+#include <cmath>
 // esp-idf includes
 #include "esp_log.h"
 #include "freertos/FreeRTOS.h"
@@ -97,6 +98,32 @@ class BatteryMonitor
          * @return void, nothing to return
          */
         void take_samples(int* buffer, int sample_count);
+
+        /**
+         * @brief Converts battery voltage to battery state of charge during discharging.
+         *
+         * Converts battery voltage to battery state of charge during discharging. The equation
+         * was obtained via MATLAB using the discharging curve of the battery. It was modeled as a third
+         * order polynomial using MATLAB's polyfit method. 
+         * 
+         * @param voltage The voltage (in mv) to convert to SOC percentage
+         *
+         * @return The calculated SOC percentage.
+         */
+        uint8_t discharge_voltage_to_soc(float voltage);
+
+             /**
+         * @brief Converts battery voltage to battery state of charge during charging.
+         *
+         * Converts battery voltage to battery state of charge during charging. The equation
+         * was obtained via MATLAB using the charging curve of the battery. It was modeled as a third
+         * order polynomial using MATLAB's polyfit method. 
+         * 
+         * @param voltage The voltage (in mv) to convert to SOC percentage
+         *
+         * @return The calculated SOC percentage.
+         */
+        uint8_t charge_voltage_to_soc(float voltage);
 
         Device& d;                                                        ///<reference to device fontend to update with new battery voltage levels
         TaskHandle_t battery_monitor_task_hdl;                            ///<battery monitor task handle

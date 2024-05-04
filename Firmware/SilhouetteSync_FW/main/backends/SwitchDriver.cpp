@@ -2,6 +2,7 @@
 
 SwitchDriver::SwitchDriver(Device& d)
     : d(d)
+    , double_tap_counter(0)
 {
     init_gpio();
     xTaskCreate(&switch_task_trampoline, "switch_task", 4096, this, 2, &switch_task_hdl);
@@ -22,10 +23,16 @@ void SwitchDriver::init_gpio()
 
     // add interrupt handler
     ESP_ERROR_CHECK(gpio_isr_handler_add(pin_user_sw, switch_ISR, (void*) this));
+
+    esp_timer_create_args_t double_tap_reset_timer_args = {
+            .callback = double_tap_reset_timer_cb_trampoline, .arg = this, .name = "DoubleTapResetTimer"};
+    esp_timer_create(&double_tap_reset_timer_args, &double_tap_reset_timer_hdl);
 }
 
 void SwitchDriver::switch_task()
 {
+    handle_boot();
+
     // enable interrupts
     gpio_intr_enable(pin_user_sw);
 
@@ -33,7 +40,16 @@ void SwitchDriver::switch_task()
     {
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY); // block until notified by switch ISR
         if (!quick_press_check())
+        {
             released_check();
+        }
+        else
+        {
+            esp_timer_start_once(double_tap_reset_timer_hdl, 270000ULL);
+            double_tap_counter++;
+            if (double_tap_counter > 1)
+                generate_double_tap_event();
+        }
     }
 }
 
@@ -41,6 +57,48 @@ void SwitchDriver::switch_task_trampoline(void* arg)
 {
     SwitchDriver* local_switch_driver = (SwitchDriver*) arg; // cast to SwitchDriver pointer
     local_switch_driver->switch_task();                      // launch switch task
+}
+
+void SwitchDriver::handle_boot()
+{
+    int64_t start_time = esp_timer_get_time();
+    int64_t elapsed_time = 0;
+    bool held = true;
+
+    do
+    {
+        if (gpio_get_level(pin_user_sw))
+            held = true;
+        else
+            held = false;
+
+        elapsed_time = esp_timer_get_time() - start_time;
+
+        vTaskDelay(5 / portTICK_PERIOD_MS);
+
+    } while ((elapsed_time < 200000) && held);
+
+    // if switch is being held, valid boot state
+    if (held)
+    {
+        d.power_state.set(PowerStates::boot);
+        generate_long_press_event();
+        released_check();
+    }
+    else
+    {
+        if (d.power_source_state.get() == (PowerSourceStates::battery_powered))
+        {
+            d.power_state.set(PowerStates::shutdown);
+            generate_long_press_event();
+            generate_released_event();
+        }
+        else
+        {
+            d.power_state.set(PowerStates::low_power);
+            gpio_set_level(pin_buck_en, 0);
+        }
+    }
 }
 
 bool SwitchDriver::quick_press_check()
@@ -82,6 +140,11 @@ void SwitchDriver::generate_quick_press_event()
     d.user_sw.set(SwitchEvents::quick_press);
 }
 
+void SwitchDriver::generate_double_tap_event()
+{
+    d.user_sw.set(SwitchEvents::double_tap);
+}
+
 void SwitchDriver::generate_long_press_event()
 {
     d.user_sw.set(SwitchEvents::long_press);
@@ -94,6 +157,18 @@ void SwitchDriver::generate_held_event()
 void SwitchDriver::generate_released_event()
 {
     d.user_sw.set(SwitchEvents::released);
+}
+
+void SwitchDriver::double_tap_reset_timer_cb_trampoline(void* arg)
+{
+    SwitchDriver* local_switch_driver = (SwitchDriver*) arg;
+
+    local_switch_driver->double_tap_reset_timer_cb();
+}
+
+void SwitchDriver::double_tap_reset_timer_cb()
+{
+    double_tap_counter = 0;
 }
 
 void IRAM_ATTR SwitchDriver::switch_ISR(void* arg)

@@ -5,6 +5,16 @@ IMU::IMU(Device& d)
     , imu(bno08x_config_t(SPI2_HOST, pin_imu_di, pin_imu_sda, pin_imu_scl, pin_imu_cs, pin_imu_hint, pin_imu_rst, GPIO_NUM_NC, 2000000UL, false))
     , imu_state_event_group_hdl(xEventGroupCreate())
 {
+    d.power_state.follow(
+            [this, &d](PowerStates new_state)
+            {
+                if (new_state == PowerStates::boot)
+                    d.imu.state.set(IMUState::sample);
+                else if (new_state == PowerStates::low_power)
+                    d.imu.state.set(IMUState::sleep);
+            },
+            true);
+
     // follow device struct to check for current sensor mode
     d.imu.state.follow(
             [this, &d](IMUState new_state)
@@ -12,7 +22,7 @@ IMU::IMU(Device& d)
                 switch (new_state)
                 {
                 case IMUState::sleep:
-                    // do nothing
+                    xEventGroupClearBits(imu_state_event_group_hdl, ALL_IMU_STATE_BITS);
                     break;
 
                 case IMUState::sample:
@@ -47,8 +57,6 @@ IMU::IMU(Device& d)
     // imu.enable_gyro(GYRO_REPORT_PERIOD_US);
 
     xTaskCreate(&imu_task_trampoline, "imu_task", 4096, this, 7, &imu_task_hdl);
-
-    d.imu.state.set(IMUState::sample);
 }
 
 void IMU::imu_task_trampoline(void* arg)
@@ -160,7 +168,6 @@ bool IMU::calibration_routine()
             new_data.quaternion_heading.accuracy = imu.get_quat_accuracy();
 
             d.imu.data.set(new_data);
-            ESP_LOGI(TAG, "Magnetometer: x: %.3f y: %.3f z: %.3f, accuracy: %d", magf_x, magf_y, magf_z, magnetometer_accuracy);
 
             if ((magnetometer_accuracy >= (uint8_t) IMUAccuracy::MED) && (new_data.quaternion_heading.accuracy == (uint8_t) IMUAccuracy::HIGH))
                 high_accuracy++;

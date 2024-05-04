@@ -7,7 +7,9 @@
 #include "defs/wireless_com_defs.hpp"
 #include "defs/pwr_management_defs.hpp"
 #include "defs/switch_defs.hpp"
+#include "defs/nvs_key_defs.hpp"
 #include "DataControl.hpp"
+#include "backends/NVSManager.hpp"
 
 /**
  *
@@ -28,11 +30,18 @@ class Device
                 DataControl::CallAlways<bool> calibration_status; ///<Whether or not the IMU has been calibrated.
         } imu_t;
 
+        typedef struct
+        {
+                DataControl::CallAlways<float> voltage;          ///<Current battery voltage of device as sampled by ADC
+                DataControl::CallAlways<uint8_t> soc_percentage; ///<Current battery state of charge of device 
+                nvs_handle_t soc_nvs_handle; ///<Battery state of charge of device non-volatile-storage key
+        } battery_t;
+
         Device();
         DataControl::CallAlways<std::string> id;                            ///<Device id (unique randomized hardware ID burnt into fuse block)
         imu_t imu;                                                          ///<Device IMU frontend.
+        battery_t battery;                                                  ///<Device battery frontend.
         DataControl::CallAlways<LANConnectionStatus> lan_connection_status; ///<Current connection status of device to LAN
-        DataControl::CallAlways<float> battery_voltage;                     ///<Current battery voltage of device as sampled by ADC
         DataControl::CallAlways<PowerSourceStates>
                 power_source_state; ///<Current power source state of the device (ie battery powered, usb charging, usb fully charged)
         DataControl::CallAlways<PowerStates>

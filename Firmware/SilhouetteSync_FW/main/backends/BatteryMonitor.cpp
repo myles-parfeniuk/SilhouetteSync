@@ -18,7 +18,7 @@ void BatteryMonitor::adc_init()
 
     // create channel cfg settings
     adc_oneshot_chan_cfg_t channel_cfg = {
-            .atten = ADC_ATTEN_DB_12,
+            .atten = ADC_ATTEN_DB_11,
             .bitwidth = ADC_BITWIDTH_DEFAULT, // select max supported bitwidth
     };
 
@@ -33,7 +33,7 @@ void BatteryMonitor::adc_init()
     ESP_ERROR_CHECK(adc_oneshot_config_channel(adc_hdl, ADC_CHANNEL_3, &channel_cfg));
 
     // calibrate channels
-    channel_calibrated = adc_calibrate_ch(ADC_UNIT_1, ADC_CHANNEL_3, ADC_ATTEN_DB_12, &adc_calibrate_ch3_hdl); // channel 3 is GPIO3
+    channel_calibrated = adc_calibrate_ch(ADC_UNIT_1, ADC_CHANNEL_3, ADC_ATTEN_DB_11, &adc_calibrate_ch3_hdl); // channel 3 is GPIO3
 }
 
 void BatteryMonitor::take_samples(int* buffer, int sample_count)
@@ -123,11 +123,38 @@ void BatteryMonitor::battery_monitor_task_trampoline(void* arg)
     local_battery_monitor->battery_monitor_task();
 }
 
+uint8_t BatteryMonitor::discharge_voltage_to_soc(float voltage)
+{
+    int soc = round(-9.60793904232693e-07 * pow(voltage, 3) + 0.0111898302885909 * pow(voltage, 2) - 43.1825705771347 * voltage + 55263.5169294168);
+
+    if (soc < 0)
+        soc = 0;
+    else if (soc > 100)
+        soc = 100;
+
+    return (uint8_t) soc;
+}
+
+uint8_t BatteryMonitor::charge_voltage_to_soc(float voltage)
+{
+    int soc =
+            round(-5.23052000216911e-09 * pow(voltage, 3) - 1.60622939859106e-05 * pow(voltage, 2) + 0.623432964243526 * voltage - 1854.43701498477);
+
+    if (soc < 0)
+        soc = 0;
+    else if (soc > 100)
+        soc = 100;
+
+    return (uint8_t) soc;
+}
+
 void BatteryMonitor::battery_monitor_task()
 {
     int adc_sample_buff[SAMPLE_BUFFER_LENGTH]; // raw adc samples
     int adc_average;                           // SAMPLE_BUFFER_LENGTH adc samples averaged
     int voltage;                               // adc_average converted to mv
+    float voltage_conv;                        // Actual voltage after accounting for onboard voltage divider
+    uint8_t soc;
 
     memset(adc_sample_buff, 0, SAMPLE_BUFFER_LENGTH * sizeof(int));
 
@@ -141,7 +168,36 @@ void BatteryMonitor::battery_monitor_task()
         {
             ESP_ERROR_CHECK(adc_cali_raw_to_voltage(adc_calibrate_ch3_hdl, adc_average, &voltage));
         }
-        d.battery_voltage.set(VBAT_SCALE_FACTOR * (float) voltage);
+        voltage_conv = VBAT_SCALE_FACTOR * (float) voltage;
+
+        if (d.power_source_state.get() == PowerSourceStates::battery_powered)
+        {
+            // discharging case
+            soc = discharge_voltage_to_soc(voltage_conv);
+
+            if (d.battery.soc_percentage.get() > soc)
+            {
+                d.battery.soc_percentage.set(soc);
+                NVSManager::write_uint8_value(d.battery.soc_nvs_handle, NVS_KEY_BATTERY_SOC, soc);
+            }
+        }
+        else
+        {
+            // charging chase
+            if (d.power_source_state.get() == PowerSourceStates::USB_powered_fully_charged)
+                soc = 100;
+            else
+                soc = charge_voltage_to_soc(voltage_conv);
+
+            if (d.battery.soc_percentage.get() < soc)
+            {
+                d.battery.soc_percentage.set(soc);
+                NVSManager::write_uint8_value(d.battery.soc_nvs_handle, NVS_KEY_BATTERY_SOC, soc);
+            }
+        }
+
+        d.battery.voltage.set(voltage_conv);
+
         vTaskDelay(5000 / portTICK_PERIOD_MS);
     }
 }

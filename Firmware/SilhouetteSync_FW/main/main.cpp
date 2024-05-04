@@ -13,6 +13,7 @@
 #include "backends/BatteryMonitor.hpp"
 #include "backends/PowerManager.hpp"
 #include "backends/SwitchDriver.hpp"
+#include "backends/DockCommunications.hpp"
 
 extern "C" void app_main(void)
 {
@@ -20,14 +21,15 @@ extern "C" void app_main(void)
     Device* d = new Device;
     // create backends
     LedIndicator* led_indicator_driver = new LedIndicator(*d);
+    UDPServer* server = new UDPServer(*d);
+    IMU* imu_driver = new IMU(*d);
     PowerManager* power_manager = new PowerManager(*d);
     SwitchDriver* switch_driver = new SwitchDriver(*d);
     BatteryMonitor* battery_monitor = new BatteryMonitor(*d);
-    IMU* imu_driver = new IMU(*d);
-    UDPServer* server = new UDPServer(*d);
+    DockCommunications* dock_communications_driver = new DockCommunications(*d);
 
     // uncomment for live IMU data over serial for debug
-    /*d.imu.data.follow([&d](imu_data_t new_data)
+    /*d->imu.data.follow([&d](imu_data_t new_data)
      {
          ESP_LOGI("Main", "x_heading: %.3f y_heading: %.3f z_heading: %.3f accuracy: %d",
          new_data.euler_heading.x,

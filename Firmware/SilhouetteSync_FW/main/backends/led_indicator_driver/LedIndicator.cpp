@@ -3,6 +3,7 @@
 LedIndicator::LedIndicator(Device& d)
     : d(d)
     , leds({LED_COUNT, pin_leds_di})
+    , display_battery_indicator(false)
     , active_anim(nullptr)
     , attempting_connection_anim(leds, static_cast<uint8_t>(AnimationPriorities::lan_connection_status), {true, true, false}, {2, 1, 1})
     , connected_anim(leds, static_cast<uint8_t>(AnimationPriorities::lan_connection_status), {0, 20, 0})
@@ -10,6 +11,8 @@ LedIndicator::LedIndicator(Device& d)
     , calibration_anim(leds, static_cast<uint8_t>(AnimationPriorities::calibration_status), {false, false, true})
     , shutdown_anim(leds, static_cast<uint8_t>(AnimationPriorities::shutdown), {60, 0, 0}, 80, true)
     , boot_anim(leds, static_cast<uint8_t>(AnimationPriorities::boot), {0, 60, 0}, 80, true)
+    , low_power_anim(leds, static_cast<uint8_t>(AnimationPriorities::low_power_mode), d, true)
+    , battery_indicator_anim(leds, static_cast<uint8_t>(AnimationPriorities::battery_indicator), d, false)
 {
     d.lan_connection_status.follow(
             [this](LANConnectionStatus new_status)
@@ -61,6 +64,7 @@ LedIndicator::LedIndicator(Device& d)
                 switch (new_state)
                 {
                 case PowerStates::boot:
+                    remove_animation_from_queue(AnimationPriorities::low_power_mode);
                     add_animation_to_queue(&boot_anim);
                     play_next_animation();
                     break;
@@ -76,7 +80,10 @@ LedIndicator::LedIndicator(Device& d)
                     break;
 
                 case PowerStates::low_power:
+                    remove_animation_from_queue(AnimationPriorities::battery_indicator);
+                    this->display_battery_indicator = false;
                     remove_animation_from_queue(AnimationPriorities::shutdown);
+                    add_animation_to_queue(&low_power_anim);
                     play_next_animation();
                     break;
 
@@ -85,6 +92,30 @@ LedIndicator::LedIndicator(Device& d)
                     break;
                 }
             });
+
+    d.user_sw.follow(
+            [this, &d](SwitchEvents new_event)
+            {
+                if (d.power_state.get() == PowerStates::normal_operation)
+                {
+                    if (new_event == SwitchEvents::double_tap)
+                    {
+                        this->display_battery_indicator = !this->display_battery_indicator;
+
+                        if (display_battery_indicator)
+                        {
+                            add_animation_to_queue(&battery_indicator_anim);
+                            play_next_animation();
+                        }
+                        else
+                        {
+                            remove_animation_from_queue(AnimationPriorities::battery_indicator);
+                            play_next_animation();
+                        }
+                    }
+                }
+            },
+            true);
 }
 
 void LedIndicator::add_animation_to_queue(LedAnimation* new_animation)

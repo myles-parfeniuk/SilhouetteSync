@@ -43,12 +43,16 @@ class UDPServer
         int16_t sock;                                 ///<UDP socket used for communication with PC side client
         TaskHandle_t udp_server_task_hdl;             ///<UDP server task handle
         esp_event_handler_instance_t instance_any_id; ///<Event handler instance for WI-FI events
-        esp_event_handler_instance_t instance_got_ip; /// Event handler instance for IP events
-        bool connected;                               /// Whether or not the device is currently connected to a LAN
-        bool discovered;                              /// Whether or not the device is currently discovered by a PC side client.
+        esp_event_handler_instance_t instance_got_ip; ///< Event handler instance for IP events
+        esp_timer_handle_t discovery_timer_hdl;       ///< Timer to re-enable discovery.
+        esp_timer_handle_t calibration_reset_timer_hdl;       ///< Timer to re-enable calibration.
+        bool connected;                               ///< Whether or not the device is currently connected to a LAN
+        bool recently_calibrated;                     ///< Whether or not the device was recently calibrated to prevent state re-entry.
+        bool wifi_active;                             ///< Whether or not the wifi peripheral is booted and trying to connect to network
+        bool discovered;                              ///< Whether or not the device is currently discovered by a PC side client.
 
-        static const constexpr char* WIFI_SSID = "TELUS1544";  ///<Wifi network name
-        static const constexpr char* WIFI_PASS = "88htrk5yf9"; ///<Wifi network pass
+        static const constexpr char* WIFI_SSID = "NETGEAR28";  ///<Wifi network name
+        static const constexpr char* WIFI_PASS = "hxbc6333"; ///<Wifi network pass
         static const constexpr uint16_t PORT = 49160;          ///< Port associated with PC side client
         static const constexpr uint16_t MAX_CONNECTION_ATTEMPTS =
                 2; ///< Max ammount of LAN connection attempts before displaying failure animation and retrying.
@@ -64,6 +68,31 @@ class UDPServer
          * @return void, nothing to return
          */
         void wifi_init_sta();
+
+          /**
+         * @brief Executes discovery timer callback.
+         *
+         * This function is used to get around the fact xTaskCreate() from the freertos api requires a static task function.
+         *
+         * To prevent having to write the discovery_timer_cb from the context of a static function, this launches the discovery_timer_cb
+         * from the UDPServer object passed into esp_timer_create().
+         *
+         * @param arg a void pointer to the UDPServer object from esp_timer_create() call
+         * @return void, nothing to return
+         */
+        static void discovery_timer_cb_trampoline(void* arg);
+
+        
+         /**
+         * @brief Re-enables discovery
+         * 
+         * Call back to timer which is started after device is discovered, disabling responses to discovery
+         * packets to prevent conflicts with other devices during the discovery process.
+         * This call back re-enables responses to discovery packets.
+         * 
+         * @return void, nothing to return
+         */
+        void discovery_timer_cb();
 
         /**
          * @brief Launches udp_server_task.
@@ -117,6 +146,13 @@ class UDPServer
          * @return void, nothing to return
          */
         void handle_connection_failed();
+
+        /**
+         * @brief Called by event handler after connection stopped (entering low power mode)
+         *
+         * @return void, nothing to return
+         */
+        void handle_connection_stop();
 
         /**
          * @brief Called by event handler after connection failure (max connection attempts not exceeded)

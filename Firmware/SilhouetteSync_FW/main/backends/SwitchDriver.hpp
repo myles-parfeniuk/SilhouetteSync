@@ -28,6 +28,8 @@ class SwitchDriver
     private:
         Device& d;                    ///<reference to device fontend to update with new switch events
         TaskHandle_t switch_task_hdl; ///<Switch task handle
+        esp_timer_handle_t double_tap_reset_timer_hdl;
+        uint8_t double_tap_counter;
 
         /**
          * @brief Initializes GPIO for user IO switch.
@@ -62,6 +64,13 @@ class SwitchDriver
         static void switch_task_trampoline(void* arg);
 
         /**
+         * @brief Checks for boot or shutdown state (accidental touch) on device power-up.
+         *
+         * @return true if boot state, false if shutdown
+         */
+        void handle_boot();
+
+        /**
          * @brief Checks for a quick-press event.
          *
          * Checks for a quick press event, meaning the switch was pressed and released before LONG_PRESS_EVT_TIME_US elapsed.
@@ -88,6 +97,13 @@ class SwitchDriver
         void generate_quick_press_event();
 
         /**
+         * @brief Generates a double tap event.
+         *
+         * @return n/a
+         */
+        void generate_double_tap_event();
+
+        /**
          * @brief Generates long press event.
          *
          * @return n/a
@@ -107,6 +123,10 @@ class SwitchDriver
          * @return n/a
          */
         void generate_released_event();
+
+        static void double_tap_reset_timer_cb_trampoline(void* arg);
+
+        void double_tap_reset_timer_cb();
 
         /**
          * @brief Interrupt service routine registered to switch GPIO.

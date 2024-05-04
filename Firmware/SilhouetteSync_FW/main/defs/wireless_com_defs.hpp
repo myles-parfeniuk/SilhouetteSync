@@ -11,6 +11,7 @@ enum class LANConnectionStatus
     attempting_connection, ///<attempting connection to LAN
     connected,             ///<currently connected to LAN
     failed_connection,     ///<failed connection to LAN
+    sleep_mode,
     max
 };
 
@@ -29,6 +30,7 @@ typedef struct payload_t
         uint64_t time_stamp;     ///< Timestamp in microsecond ticks since esp32 boot.
         uint8_t retransmit_delay; ///< Retransmit delay sent by client, UDP server will delay retransmit_delay ms before sending a response upon receiving a packet.
         float battery_voltage;      ///< Battery voltage in millivolts.
+        uint8_t soc_percentage; ///< Battery SOC (state of charge) in %
         uint8_t power_source_state; ///< Power source state (see pwr_managment_defs.hpp)
         // default packet constructor
         payload_t()
@@ -42,6 +44,7 @@ typedef struct payload_t
             , time_stamp(0)
             , retransmit_delay(0)
             , battery_voltage(0.0)
+            , soc_percentage(0)
             , power_source_state((uint8_t) PowerSourceStates::battery_powered)
         {
             memset(id, 0, sizeof(id));

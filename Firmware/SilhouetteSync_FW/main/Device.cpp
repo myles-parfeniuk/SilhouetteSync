@@ -8,13 +8,20 @@
 Device::Device()
     : id(get_hardware_id())
     , imu{IMUState::sleep, imu_data_t(), false}
+    , battery{0.0, 0}
     , lan_connection_status(LANConnectionStatus::failed_connection)
-    , battery_voltage(0.0)
     , power_source_state(PowerSourceStates::battery_powered)
-    , power_state(PowerStates::low_power)
+    , power_state(PowerStates::boot)
     , user_sw(SwitchEvents::released)
 {
+    uint8_t saved_battery_soc = 0;
+
     ESP_LOGW(TAG, "HARDWARE ID: %s", id.get().erase(id.get().find_last_not_of('_') + 1).c_str());
+
+    NVSManager::initialize_NVS(); 
+
+    if(NVSManager::read_uint8_value(battery.soc_nvs_handle, NVS_KEY_BATTERY_SOC, &saved_battery_soc))
+        battery.soc_percentage = saved_battery_soc;
 }
 
 std::string Device::get_hardware_id()

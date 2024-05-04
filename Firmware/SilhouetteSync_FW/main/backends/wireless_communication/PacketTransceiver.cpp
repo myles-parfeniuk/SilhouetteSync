@@ -95,9 +95,15 @@ void PacketTransceiver::build_packet(Responses response, payload_t* tx_buffer)
     tx_buffer->quat_real = current_data.quaternion_heading.real;
     tx_buffer->accuracy = current_data.quaternion_heading.accuracy;
     tx_buffer->time_stamp = esp_timer_get_time();
-    tx_buffer->battery_voltage = d.battery_voltage.get();
+    tx_buffer->battery_voltage = d.battery.voltage.get();
+    tx_buffer->soc_percentage = d.battery.soc_percentage.get(); 
     tx_buffer->power_source_state = (uint8_t) d.power_source_state.get();
-    // ESP_LOGW(TAG, "Time: %llu", tx_buffer->time_stamp);
+    //ESP_LOGW(TAG, "Time: %llu", tx_buffer->time_stamp);
+     /*ESP_LOGI(TAG, "i_heading: %.3f j_heading: %.3f k_heading: %.3f real: %.3f",
+         current_data.quaternion_heading.i,
+         current_data.quaternion_heading.j,
+         current_data.quaternion_heading.k,
+         current_data.quaternion_heading.real);*/
 }
 
 bool PacketTransceiver::send_packet(payload_t* tx_buffer)
